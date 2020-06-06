@@ -37,6 +37,9 @@
     },
     "back-shared": {
       "tags": ["back"]
+    },
+    "back-auth": {
+      "tags": ["back"]
     }
   }
 }

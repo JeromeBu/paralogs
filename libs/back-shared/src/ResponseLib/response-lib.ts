@@ -1,20 +1,11 @@
-import type { Response } from "express";
-import { EitherAsync } from "purify-ts";
-import { liftPromise } from "purify-ts/EitherAsync";
-import * as R from "ramda";
-import { ObjectSchema, Shape } from "yup";
+import type { Response } from 'express';
+import { EitherAsync } from 'purify-ts';
+import { liftPromise } from 'purify-ts/EitherAsync';
+import * as R from 'ramda';
+import { ObjectSchema, Shape } from 'yup';
 
-import { AppError, validationError } from "../errors";
-import { LeftAsync, ResultAsync } from "../purifyAdds";
-
-const buildResponse = (statusCode: number, body: unknown): HttpResponse => ({
-  statusCode,
-  headers: {
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Credentials": true,
-  },
-  body,
-});
+import { AppError, validationError } from '../errors';
+import { LeftAsync, ResultAsync } from '../purifyAdds';
 
 export const success = (body: unknown, statusCode = 200) =>
   buildResponse(statusCode, body);
@@ -22,21 +13,29 @@ export const success = (body: unknown, statusCode = 200) =>
 export const failure = (errorMessage: string, statusCode?: number) =>
   buildResponse(statusCode ?? 500, { message: errorMessage });
 
+const buildResponse = (statusCode: number, body: unknown): HttpResponse => ({
+  statusCode,
+  headers: {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Credentials': true,
+  },
+  body,
+});
+
 export interface HttpResponse {
   statusCode: number;
   headers: Record<string, unknown>;
   body: unknown;
 }
 
-
 export const validateSchema = <T extends object>(
   validationSchema: ObjectSchema<Shape<object, T>>,
-  body: any,
+  body: any
 ): ResultAsync<Shape<object, T>> => {
   if (R.isEmpty(body))
-    return LeftAsync(validationError("No body was provided"));
+    return LeftAsync(validationError('No body was provided'));
   return liftPromise(() =>
-    validationSchema.validate(body, { abortEarly: false }),
+    validationSchema.validate(body, { abortEarly: false })
   );
 };
 
@@ -56,7 +55,7 @@ export const callUseCase = <P>({
       eitherReturned
         .map(success)
         .mapLeft((error) => failure(error.message, error.code))
-        .extract(),
+        .extract()
     );
 };
 
