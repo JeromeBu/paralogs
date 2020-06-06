@@ -2,6 +2,8 @@
   "compileOnSave": false,
   "compilerOptions": {
     "rootDir": ".",
+    "strict": true,
+    "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "declaration": false,
     "moduleResolution": "node",
@@ -16,7 +18,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@paralogs/api-interfaces": ["libs/api-interfaces/src/index.ts"]
+      "@paralogs/api-interfaces": ["libs/api-interfaces/src/index.ts"],
+      "@paralogs/shared": ["libs/shared/src/index.ts"],
+      "@paralogs/back-shared": ["libs/back-shared/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

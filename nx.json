@@ -31,6 +31,12 @@
     },
     "api-interfaces": {
       "tags": []
+    },
+    "shared": {
+      "tags": []
+    },
+    "back-shared": {
+      "tags": ["back"]
     }
   }
 }
