@@ -1,20 +1,25 @@
-import { expectEitherToMatchError, expectRight } from "@paralogs/back-shared";
+/**
+ * @group pg
+ * @group integration
+ */
 
-import { UserEntity } from "../../../../../domain/writes/entities/UserEntity";
-import { UserRepo } from "../../../../../domain/writes/gateways/UserRepo";
-import { makeUserEntityCreator } from "../../../../../domain/writes/testBuilders/makeUserEntityCreator";
-import { Email } from "../../../../../domain/writes/valueObjects/user/Email";
-import { TestHashAndTokenManager } from "../../../TestHashAndTokenManager";
-import { getKnex, resetDb } from "../knex/db";
-import { PgUserRepo } from "./PgUserRepo";
-import { UserPersisted, UserPersistence } from "./UserPersistence";
-import { userPersistenceMapper } from "./userPersistenceMapper";
+import { expectEitherToMatchError, expectRight } from '@paralogs/back-shared';
 
-describe("User repository postgres tests", () => {
+import { UserEntity } from '../../../../../domain/writes/entities/UserEntity';
+import { UserRepo } from '../../../../../domain/writes/gateways/UserRepo';
+import { makeUserEntityCreator } from '../../../../../domain/writes/testBuilders/makeUserEntityCreator';
+import { Email } from '../../../../../domain/writes/valueObjects/user/Email';
+import { TestHashAndTokenManager } from '../../../TestHashAndTokenManager';
+import { getKnex, resetDb } from '../knex/db';
+import { PgUserRepo } from './PgUserRepo';
+import { UserPersisted, UserPersistence } from './UserPersistence';
+import { userPersistenceMapper } from './userPersistenceMapper';
+
+describe('User repository postgres tests', () => {
   const makeUserEntity = makeUserEntityCreator(new TestHashAndTokenManager());
   let pgUserRepo: UserRepo;
-  const knex = getKnex("test");
-  const johnEmail = "john@mail.com";
+  const knex = getKnex('test');
+  const johnEmail = 'john@mail.com';
   let johnEntity: UserEntity;
 
   beforeEach(async () => {
@@ -22,14 +27,14 @@ describe("User repository postgres tests", () => {
     pgUserRepo = new PgUserRepo(knex);
     johnEntity = await makeUserEntity({ id: 125, email: johnEmail });
     const johnPersistence = userPersistenceMapper.toPersistence(johnEntity);
-    await knex<UserPersistence>("users").insert(johnPersistence);
+    await knex<UserPersistence>('users').insert(johnPersistence);
   });
 
   afterAll(() => knex.destroy());
 
-  it("Creates a user, than an other", async () => {
+  it('Creates a user, than an other', async () => {
     const createdUserEntity = await makeUserEntity({
-      email: "createduser@mail.com",
+      email: 'createduser@mail.com',
     });
     const resultSavedUserEntity = await pgUserRepo
       .save(createdUserEntity)
@@ -48,14 +53,14 @@ describe("User repository postgres tests", () => {
     };
 
     expect(
-      await knex<UserPersisted>("users")
+      await knex<UserPersisted>('users')
         .where({ uuid: createdUserEntity.uuid })
-        .first(),
+        .first()
     ).toMatchObject(userPersistenceToMatch);
 
     // This second created user is build to check that there is no identity conflict
     const created2ndUserEntity = await makeUserEntity({
-      email: "seconduser@mail.com",
+      email: 'seconduser@mail.com',
     });
     const resultSecondUserEntity = await pgUserRepo
       .save(created2ndUserEntity)
@@ -63,50 +68,50 @@ describe("User repository postgres tests", () => {
     expectRight(resultSecondUserEntity);
   });
 
-  it("Cannot create a user with the same email", async () => {
+  it('Cannot create a user with the same email', async () => {
     const userEntity = await makeUserEntity({ email: johnEmail });
     const resultSavedUserEntity = await pgUserRepo.save(userEntity).run();
-    await knex.from<UserPersisted>("users");
+    await knex.from<UserPersisted>('users');
     expectEitherToMatchError(
       resultSavedUserEntity,
-      "Email is already taken. Consider logging in.",
+      'Email is already taken. Consider logging in.'
     );
   });
 
-  it("finds a user from its email", async () => {
+  it('finds a user from its email', async () => {
     const email = Email.create(johnEmail)
-      .ifLeft(() => expect("Email not created").toBeNull())
+      .ifLeft(() => expect('Email not created').toBeNull())
       .extract() as Email;
     const userEntity = (await pgUserRepo.findByEmail(email).run()).extract();
     expect(userEntity).toEqual(johnEntity);
   });
 
   it("does not find user if it doesn't exist", async () => {
-    const email = Email.create("notfound@mail.com")
-      .ifLeft(() => expect("Email not created").toBeNull())
+    const email = Email.create('notfound@mail.com')
+      .ifLeft(() => expect('Email not created').toBeNull())
       .extract() as Email;
     expect((await pgUserRepo.findByEmail(email).run()).isNothing()).toBe(true);
   });
 
-  it("finds a user from its id", async () => {
+  it('finds a user from its id', async () => {
     const userEntity = await pgUserRepo.findByUuid(johnEntity.uuid).run();
     expect(userEntity.extract()).toEqual(johnEntity);
   });
 
   it("does not find user if it doesn't exist", async () => {
     expect(
-      (await pgUserRepo.findByUuid("not found").run()).isNothing(),
+      (await pgUserRepo.findByUuid('not found').run()).isNothing()
     ).toBeTruthy();
   });
 
-  it("updates a user", async () => {
+  it('updates a user', async () => {
     const userPersisted = (await knex
-      .from<UserPersisted>("users")
+      .from<UserPersisted>('users')
       .where({ uuid: johnEntity.uuid })
       .first())!;
 
-    const firstName = "New first name";
-    const lastName = "New Last name";
+    const firstName = 'New first name';
+    const lastName = 'New Last name';
 
     expect(userPersisted).toBeDefined();
     const updatedUserEntity = await makeUserEntity({
@@ -124,9 +129,9 @@ describe("User repository postgres tests", () => {
     };
     expect(
       await knex
-        .from<UserPersisted>("users")
+        .from<UserPersisted>('users')
         .where({ uuid: johnEntity.uuid })
-        .first(),
+        .first()
     ).toEqual(expectUserPersisted);
   });
 });

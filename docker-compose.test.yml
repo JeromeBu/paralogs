@@ -1,0 +1,13 @@
+version: "3"
+services:
+  pg-test:
+    image: postgres
+    restart: unless-stopped
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_DB: paralogs-test
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: pg-password
+    volumes:
+      - ./pgdata/test:/var/lib/postgresql/data

@@ -1,0 +1,15 @@
+version: "3"
+services:
+  pg-dev:
+    image: postgres
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: paralogs-dev
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: pg-password
+    volumes:
+      - ./pgdata/dev:/var/lib/postgresql/data
+  redis:
+    image: "redis:alpine"
