@@ -1,21 +1,21 @@
-import { cleanup, getByText, render, wait } from '@testing-library/react';
-import React from 'react';
-import App from './app';
+import { cleanup, getByText, render, wait } from "@testing-library/react";
+import React from "react";
+import App from "./app";
 
-describe('App', () => {
+describe("App", () => {
   afterEach(() => {
-    delete global['fetch'];
+    delete global["fetch"];
     cleanup();
   });
 
-  it('should render successfully', async () => {
-    global['fetch'] = jest.fn().mockResolvedValueOnce({
+  it("should render successfully", async () => {
+    global["fetch"] = jest.fn().mockResolvedValueOnce({
       json: () => ({
-        message: 'my message',
+        message: "my message",
       }),
     });
 
     const { baseElement } = render(<App />);
-    await wait(() => getByText(baseElement, 'my message'));
+    await wait(() => getByText(baseElement, "my message"));
   });
 });

@@ -9,43 +9,43 @@ import {
   loginRoute,
   SignUpParams,
   signUpRoute,
-} from '@paralogs/shared';
-import supertest from 'supertest';
+} from "@paralogs/shared";
+import supertest from "supertest";
 
-import { ENV } from '../../../config/env';
+import { ENV } from "../../../config/env";
 import {
   getKnex,
   resetDb,
-} from '../../secondaries/persistence/postGres/knex/db';
-import { app } from '../express/server';
+} from "../../secondaries/persistence/postGres/knex/db";
+import { app } from "../express/server";
 
 const request = supertest(app);
 
-describe('Authentication routes', () => {
+describe("Authentication routes", () => {
   beforeAll(async () => {
-    if (ENV.nodeEnv !== 'test') throw new Error('Should be TEST env');
+    if (ENV.nodeEnv !== "test") throw new Error("Should be TEST env");
     const knex = getKnex(ENV.nodeEnv);
     await resetDb(knex);
   });
 
-  describe('when body is empty', () => {
-    it('refuses to signup with an explicit message', async () => {
+  describe("when body is empty", () => {
+    it("refuses to signup with an explicit message", async () => {
       const signUpResponse = await request.post(signUpRoute);
       expect(signUpResponse.status).toBe(400);
       expect(signUpResponse.body).toMatchObject({
-        message: 'No body was provided',
+        message: "No body was provided",
       });
     });
   });
 
-  describe('when all is good', () => {
-    it('calls sign up than login, than getMe', async () => {
-      const email = 'hey@mail.com';
-      const password = 'CraZy123';
+  describe("when all is good", () => {
+    it("calls sign up than login, than getMe", async () => {
+      const email = "hey@mail.com";
+      const password = "CraZy123";
       const signUpParams: SignUpParams = {
         email,
-        firstName: 'John',
-        lastName: 'Doe',
+        firstName: "John",
+        lastName: "Doe",
         password,
       };
       const signUpResponse = await request.post(signUpRoute).send(signUpParams);
@@ -65,7 +65,7 @@ describe('Authentication routes', () => {
       const { token } = loginResponse.body;
       const getMeResponse = await request
         .get(getMeRoute)
-        .set('Authorization', `Bearer ${token}`);
+        .set("Authorization", `Bearer ${token}`);
       expect(getMeResponse.body).toMatchObject({
         currentUser: { email },
       });

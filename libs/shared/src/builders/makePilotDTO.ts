@@ -1,8 +1,8 @@
-import * as faker from 'faker';
-import merge from 'ramda/src/merge';
+import * as faker from "faker";
+import merge from "ramda/src/merge";
 
-import { PilotDTO } from '../DTOs';
-import { generateUuid } from '../generalTypes/uuid';
+import { PilotDTO } from "../DTOs";
+import { generateUuid } from "../generalTypes/uuid";
 
 export const makePilotDTO = (pilotParams: Partial<PilotDTO> = {}): PilotDTO => {
   const randomUser: PilotDTO = {

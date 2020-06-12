@@ -3,7 +3,7 @@ import {
   RightAsync,
   sendHttpResponse,
   validateSchema,
-} from '@paralogs/back-shared';
+} from "@paralogs/back-shared";
 import {
   getMeRoute,
   loginRoute,
@@ -12,10 +12,10 @@ import {
   signUpSchema,
   updateUserSchema,
   usersRoute,
-} from '@paralogs/shared';
-import { Router } from 'express';
+} from "@paralogs/shared";
+import { Router } from "express";
 
-import { authUseCases } from '../../../config/useCasesChoice';
+import { authUseCases } from "../../../config/useCasesChoice";
 
 const authRouter = Router();
 

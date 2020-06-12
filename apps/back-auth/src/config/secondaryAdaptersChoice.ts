@@ -55,10 +55,9 @@ const getInMemoryPersistence = (): Persistence => {
 
 const getPgPersistence = (): Persistence => {
   const knex = getKnex(ENV.nodeEnv);
-
+  console.log("\n \n NODE_ENV : ", ENV.nodeEnv, "\n \n");
   // eslint-disable-next-line @typescript-eslint/no-floating-promises
-  knex.migrate.latest();
-  // TODO: await when updating eslint and prettier
+  if (ENV.nodeEnv !== "test") knex.migrate.latest();
   return {
     repositories: {
       user: new PgUserRepo(knex),

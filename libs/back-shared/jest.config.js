@@ -1,10 +1,10 @@
 module.exports = {
-  name: 'back-shared',
-  preset: '../../jest.config.js',
-  testEnvironment: 'node',
+  name: "back-shared",
+  preset: "../../jest.config.js",
+  testEnvironment: "node",
   transform: {
-    '^.+\\.[tj]sx?$': 'ts-jest',
+    "^.+\\.[tj]sx?$": "ts-jest",
   },
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'html'],
-  coverageDirectory: '../../coverage/libs/back-shared',
+  moduleFileExtensions: ["ts", "tsx", "js", "jsx", "html"],
+  coverageDirectory: "../../coverage/libs/back-shared",
 };

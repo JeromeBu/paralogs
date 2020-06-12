@@ -7,19 +7,19 @@ import {
   createInMemoryEventBus,
   expectRight,
   InMemoryEventBus,
-} from '@paralogs/back-shared';
+} from "@paralogs/back-shared";
 
-import { InMemoryUserRepo } from '../../../adapters/secondaries/persistence/inMemory/InMemoryUserRepo';
-import { TestHashAndTokenManager } from '../../../adapters/secondaries/TestHashAndTokenManager';
-import { UserEntity } from '../entities/UserEntity';
-import { HashAndTokenManager } from '../gateways/HashAndTokenManager';
-import { userMapper } from '../mappers/user.mapper';
-import { setupCurrentUserCreator } from '../testBuilders/makeUserEntityCreator';
-import { updateUserCommandHandler } from './updateUserCommandHandler';
+import { InMemoryUserRepo } from "../../../adapters/secondaries/persistence/inMemory/InMemoryUserRepo";
+import { TestHashAndTokenManager } from "../../../adapters/secondaries/TestHashAndTokenManager";
+import { UserEntity } from "../entities/UserEntity";
+import { HashAndTokenManager } from "../gateways/HashAndTokenManager";
+import { userMapper } from "../mappers/user.mapper";
+import { setupCurrentUserCreator } from "../testBuilders/makeUserEntityCreator";
+import { updateUserCommandHandler } from "./updateUserCommandHandler";
 
-describe('Update user', () => {
-  describe('all is good', () => {
-    const now = new Date('2020-02-01');
+describe("Update user", () => {
+  describe("all is good", () => {
+    const now = new Date("2020-02-01");
     let userRepo: InMemoryUserRepo;
     let currentUser: UserEntity;
     let updateUser: ReturnType<typeof updateUserCommandHandler>;
@@ -45,8 +45,8 @@ describe('Update user', () => {
     });
 
     it("updates user's data", async () => {
-      const newFirstName = 'Changedfirstname';
-      const newLastName = 'ChangedLastName';
+      const newFirstName = "Changedfirstname";
+      const newLastName = "ChangedLastName";
       const result = await updateUser({
         uuid: currentUser.uuid,
         firstName: newFirstName,
@@ -58,7 +58,7 @@ describe('Update user', () => {
       const { uuid } = currentUser;
 
       const updatedCurrentUser = userRepo.users.find(
-        (user) => user.uuid === uuid
+        (user) => user.uuid === uuid,
       )!;
 
       expect(updatedCurrentUser).toBeTruthy();
@@ -71,12 +71,12 @@ describe('Update user', () => {
       };
 
       expect(userMapper.entityToDTO(updatedCurrentUser)).toMatchObject(
-        expectedUserDto
+        expectedUserDto,
       );
 
       expectDispatchedEvent({
         dateTimeOccurred: now,
-        type: 'UserUpdated',
+        type: "UserUpdated",
         payload: expectedUserDto,
       });
     });

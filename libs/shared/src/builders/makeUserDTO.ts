@@ -1,8 +1,8 @@
-import * as faker from 'faker';
-import { merge } from 'ramda';
+import * as faker from "faker";
+import { merge } from "ramda";
 
-import { UserDTO } from '../DTOs';
-import { generateUuid } from '../generalTypes/uuid';
+import { UserDTO } from "../DTOs";
+import { generateUuid } from "../generalTypes/uuid";
 
 export const makeUserDTO = (userParams: Partial<UserDTO> = {}): UserDTO => {
   const randomUser: UserDTO = {
