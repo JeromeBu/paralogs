@@ -276,6 +276,63 @@
           }
         }
       }
+    },
+    "back-logbook": {
+      "root": "apps/back-logbook",
+      "sourceRoot": "apps/back-logbook/src",
+      "projectType": "application",
+      "prefix": "back-logbook",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/back-logbook",
+            "main": "apps/back-logbook/src/main.ts",
+            "tsConfig": "apps/back-logbook/tsconfig.app.json",
+            "assets": ["apps/back-logbook/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/back-logbook/src/environments/environment.ts",
+                  "with": "apps/back-logbook/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "back-logbook:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "apps/back-logbook/.eslintrc",
+            "tsConfig": [
+              "apps/back-logbook/tsconfig.app.json",
+              "apps/back-logbook/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/back-logbook/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/back-logbook/jest.config.js",
+            "tsConfig": "apps/back-logbook/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {
