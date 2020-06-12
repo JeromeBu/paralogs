@@ -55,7 +55,7 @@ const getInMemoryPersistence = (): Persistence => {
 
 const getPgPersistence = (): Persistence => {
   const knex = getKnex(ENV.nodeEnv);
-  console.log("\n \n NODE_ENV : ", ENV.nodeEnv, "\n \n");
+
   // eslint-disable-next-line @typescript-eslint/no-floating-promises
   if (ENV.nodeEnv !== "test") knex.migrate.latest();
   return {

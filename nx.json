@@ -36,6 +36,9 @@
     },
     "back-auth": {
       "tags": ["back"]
+    },
+    "back-logbook": {
+      "tags": ["back"]
     }
   }
 }
