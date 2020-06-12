@@ -27,6 +27,7 @@
   },
   "private": true,
   "dependencies": {
+    "@reduxjs/toolkit": "^1.3.6",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "document-register-element": "1.13.1",
@@ -40,6 +41,7 @@
     "react": "16.12.0",
     "react-dom": "16.12.0",
     "redis": "^3.0.2",
+    "redux-observable": "^1.2.0",
     "supertest": "^4.0.2",
     "uuid": "^8.1.0",
     "yup": "^0.29.1"

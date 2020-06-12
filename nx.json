@@ -39,6 +39,9 @@
     },
     "back-logbook": {
       "tags": ["back"]
+    },
+    "front-core": {
+      "tags": ["front"]
     }
   }
 }
