@@ -15,7 +15,7 @@
             "main": "apps/front/src/main.tsx",
             "polyfills": "apps/front/src/polyfills.ts",
             "tsConfig": "apps/front/tsconfig.app.json",
-            "assets": ["apps/front/src/favicon.ico", "apps/front/src/assets"],
+            "assets": ["apps/front/src/favicon.ico"],
             "styles": ["apps/front/src/styles.css"],
             "scripts": [],
             "webpackConfig": "@nrwl/react/plugins/webpack"
@@ -92,7 +92,7 @@
             "outputPath": "dist/apps/api",
             "main": "apps/api/src/main.ts",
             "tsConfig": "apps/api/tsconfig.app.json",
-            "assets": ["apps/api/src/assets"]
+            "assets": []
           },
           "configurations": {
             "production": {
@@ -131,34 +131,6 @@
           "options": {
             "jestConfig": "apps/api/jest.config.js",
             "tsConfig": "apps/api/tsconfig.spec.json",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "api-interfaces": {
-      "root": "libs/api-interfaces",
-      "sourceRoot": "libs/api-interfaces/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:lint",
-          "options": {
-            "linter": "eslint",
-            "config": "libs/api-interfaces/.eslintrc",
-            "tsConfig": [
-              "libs/api-interfaces/tsconfig.lib.json",
-              "libs/api-interfaces/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/api-interfaces/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/api-interfaces/jest.config.js",
-            "tsConfig": "libs/api-interfaces/tsconfig.spec.json",
             "passWithNoTests": true
           }
         }
@@ -233,7 +205,7 @@
             "outputPath": "dist/apps/back-auth",
             "main": "apps/back-auth/src/main.ts",
             "tsConfig": "apps/back-auth/tsconfig.app.json",
-            "assets": ["apps/back-auth/src/assets"]
+            "assets": []
           },
           "configurations": {
             "production": {
@@ -290,7 +262,7 @@
             "outputPath": "dist/apps/back-logbook",
             "main": "apps/back-logbook/src/main.ts",
             "tsConfig": "apps/back-logbook/tsconfig.app.json",
-            "assets": ["apps/back-logbook/src/assets"]
+            "assets": []
           },
           "configurations": {
             "production": {

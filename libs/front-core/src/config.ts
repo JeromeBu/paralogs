@@ -1,7 +1,3 @@
-import dotenv from "dotenv";
-
-dotenv.config({ path: "../.env" });
-
 const environment = process.env.REACT_APP_ENVIRONEMENT;
 
 type ConfigShape = { authUrl: string; logbookUrl: string };
