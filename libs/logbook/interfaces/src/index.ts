@@ -5,3 +5,4 @@ export * from "./lib/makePilotDTO";
 export * from "./lib/makeWingDTO";
 export * from "./lib/makeFlightDTO";
 export * from "./lib/logbookRoutes";
+export { pilotsRoute } from "@paralogs/auth/interface";

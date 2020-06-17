@@ -16,6 +16,7 @@
     "prettier/@typescript-eslint"
   ],
   "rules": {
+    "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/camelcase": "off",
     "@typescript-eslint/no-use-before-define": "off",
     "@typescript-eslint/explicit-member-accessibility": "off",
@@ -27,7 +28,46 @@
         "enforceBuildableLibDependency": true,
         "allow": [],
         "depConstraints": [
-          { "sourceTag": "*", "onlyDependOnLibsWithTags": ["*"] }
+//          {
+//            "sourceTag": "back",
+//            "onlyDependOnLibsWithTags": ["back"]
+//          },
+//          {
+//            "sourceTag": "auth",
+//            "onlyDependOnLibsWithTags": ["auth"]
+//          },
+//          {
+//            "sourceTag": "logbook",
+//            "onlyDependOnLibsWithTags": ["logbook"]
+//          },
+//          {
+//            "sourceTag": "front",
+//            "onlyDependOnLibsWithTags": ["front"]
+//          }
+          {
+            "sourceTag": "back",
+            "onlyDependOnLibsWithTags": ["back", "shared"]
+          },
+          {
+            "sourceTag": "front",
+            "onlyDependOnLibsWithTags": ["front", "shared"]
+          },
+          {
+            "sourceTag": "shared",
+            "onlyDependOnLibsWithTags": ["shared"]
+          },
+          {
+            "sourceTag": "auth",
+            "onlyDependOnLibsWithTags": ["auth", "cross-domain"]
+          },
+          {
+            "sourceTag": "logbook",
+            "onlyDependOnLibsWithTags": ["logbook", "cross-domain"]
+          },
+          {
+            "sourceTag": "cross-domain",
+            "onlyDependOnLibsWithTags": ["cross-domain", "logbook", "auth"]
+          }
         ]
       }
     ]

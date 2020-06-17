@@ -338,6 +338,65 @@
           }
         }
       }
+    },
+    "auth-domain": {
+      "root": "libs/auth/domain",
+      "sourceRoot": "libs/auth/domain/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "libs/auth/domain/.eslintrc",
+            "tsConfig": [
+              "libs/auth/domain/tsconfig.lib.json",
+              "libs/auth/domain/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/auth/domain/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/auth/domain/jest.config.js",
+            "tsConfig": "libs/auth/domain/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "auth-secondary-adapters": {
+      "root": "libs/auth/secondary-adapters",
+      "sourceRoot": "libs/auth/secondary-adapters/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "libs/auth/secondary-adapters/.eslintrc",
+            "tsConfig": [
+              "libs/auth/secondary-adapters/tsconfig.lib.json",
+              "libs/auth/secondary-adapters/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/auth/secondary-adapters/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/auth/secondary-adapters/jest.config.js",
+            "tsConfig": "libs/auth/secondary-adapters/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

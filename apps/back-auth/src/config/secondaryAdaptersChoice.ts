@@ -6,14 +6,18 @@ import {
 import { List } from "purify-ts";
 import { liftMaybe } from "purify-ts/MaybeAsync";
 
-import { InMemoryUserRepo } from "../adapters/secondaries/persistence/inMemory/InMemoryUserRepo";
-import { getKnex } from "../adapters/secondaries/persistence/postGres/knex/db";
-import { createPgUserQueries } from "../adapters/secondaries/persistence/postGres/users/PgUserQueries";
-import { PgUserRepo } from "../adapters/secondaries/persistence/postGres/users/PgUserRepo";
-import { UserQueries } from "../domain/reads/gateways/UserQueries";
-import { UserRepo } from "../domain/writes/gateways/UserRepo";
-import { userMapper } from "../domain/writes/mappers/user.mapper";
-import { ENV, EventBusOption, RepositoriesOption } from "./env";
+import {
+  createPgUserQueries,
+  PgUserRepo,
+} from "@paralogs/auth/secondary-adapters";
+import { getKnex } from "@paralogs/auth/secondary-adapters";
+import { ENV, EventBusOption, RepositoriesOption } from "@paralogs/shared";
+import {
+  UserQueries,
+  UserRepo,
+  userMapper,
+  InMemoryUserRepo,
+} from "@paralogs/auth/domain";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const shouldNeverBeCalled = (arg: never) => {
