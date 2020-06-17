@@ -3,7 +3,10 @@
  * @group integration
  */
 
-import { expectEitherToMatchError, expectRight } from "@paralogs/back-shared";
+import {
+  expectEitherToMatchError,
+  expectRight,
+} from "@paralogs/back/test-helpers";
 import { generateUuid, UpdateWingDTO } from "@paralogs/shared";
 
 import { PilotEntity } from "../../../../../domain/writes/entities/PilotEntity";

@@ -3,12 +3,14 @@
  */
 
 import {
-  createExpectDispatchedEvent,
   createInMemoryEventBus,
-  expectEitherToMatchError,
   InMemoryEventBus,
   Result,
 } from "@paralogs/back-shared";
+import {
+  createExpectDispatchedEvent,
+  expectEitherToMatchError,
+} from "@paralogs/back/test-helpers";
 import {
   CurrentUserWithAuthToken,
   FakeUuidGenerator,

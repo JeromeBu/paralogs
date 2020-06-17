@@ -2,7 +2,7 @@
  * @group unit
  */
 
-import { expectEitherToMatchError } from "@paralogs/back-shared";
+import { expectEitherToMatchError } from "@paralogs/back/test-helpers";
 import {
   FlightDTO,
   FlightUuid,

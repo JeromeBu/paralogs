@@ -39,6 +39,12 @@
     },
     "front-core": {
       "tags": ["front"]
+    },
+    "test-helpers": {
+      "tags": []
+    },
+    "back-test-helpers": {
+      "tags": []
     }
   }
 }
