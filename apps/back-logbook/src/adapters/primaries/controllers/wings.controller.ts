@@ -3,7 +3,7 @@ import {
   RightAsync,
   sendHttpResponse,
   validateSchema,
-} from "@paralogs/back-shared";
+} from "@paralogs/back/shared";
 import { addWingSchema, updateWingSchema, wingsRoute } from "@paralogs/shared";
 import { Router } from "express";
 

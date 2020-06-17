@@ -3,7 +3,7 @@
  * @group integration
  */
 
-import { callUseCase, RightAsync } from "@paralogs/back-shared";
+import { callUseCase, RightAsync } from "@paralogs/back/shared";
 import {
   AddWingDTO,
   generateUuid,

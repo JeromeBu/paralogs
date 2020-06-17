@@ -1,4 +1,4 @@
-import { notFoundError, ResultAsync } from "@paralogs/back-shared";
+import { notFoundError, ResultAsync } from "@paralogs/back/shared";
 import { UpdatePilotDTO } from "@paralogs/shared";
 import { liftEither } from "purify-ts/EitherAsync";
 

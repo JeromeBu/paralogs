@@ -3,7 +3,7 @@
  * @group integration
  */
 
-import { PersonName } from "@paralogs/back-shared";
+import { PersonName } from "@paralogs/back/shared";
 import { expectRight } from "@paralogs/back/test-helpers";
 import { UpdatePilotDTO } from "@paralogs/shared";
 import { liftEither } from "purify-ts/EitherAsync";

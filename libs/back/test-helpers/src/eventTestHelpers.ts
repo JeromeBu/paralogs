@@ -1,4 +1,4 @@
-import { AppEvent, InMemoryEventBus } from "@paralogs/back-shared";
+import { AppEvent, InMemoryEventBus } from "@paralogs/back/shared";
 
 export const createExpectDispatchedEvent = (eventBus: InMemoryEventBus) => (
   event: AppEvent,

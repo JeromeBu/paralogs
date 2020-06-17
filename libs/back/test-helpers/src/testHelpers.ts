@@ -1,4 +1,4 @@
-import { Result } from "@paralogs/back-shared";
+import { Result } from "@paralogs/back/shared";
 
 export const expectRight = (result: Result<unknown>) => {
   result.ifLeft((error) => {

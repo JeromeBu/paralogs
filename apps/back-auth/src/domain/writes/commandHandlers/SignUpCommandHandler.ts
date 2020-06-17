@@ -1,9 +1,9 @@
-import { EventBus, ResultAsync } from "@paralogs/back-shared";
+import { EventBus, ResultAsync } from "@paralogs/back/shared";
+import { UuidGenerator } from "@paralogs/shared";
 import {
   CurrentUserWithAuthToken,
   SignUpParams,
-  UuidGenerator,
-} from "@paralogs/shared";
+} from "@paralogs/auth/interface";
 
 import { UserEntity } from "../entities/UserEntity";
 import { HashAndTokenManager } from "../gateways/HashAndTokenManager";

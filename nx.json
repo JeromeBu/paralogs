@@ -14,7 +14,11 @@
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
       "options": {
-        "cacheableOperations": ["build", "lint", "test"]
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "test"
+        ]
       }
     }
   },
@@ -25,23 +29,35 @@
     "shared": {
       "tags": []
     },
-    "back-shared": {
-      "tags": ["back"]
-    },
     "back-auth": {
-      "tags": ["back"]
+      "tags": [
+        "back"
+      ]
     },
     "back-logbook": {
-      "tags": ["back"]
+      "tags": [
+        "back"
+      ]
     },
     "front-core": {
-      "tags": ["front"]
-    },
-    "test-helpers": {
-      "tags": []
+      "tags": [
+        "front"
+      ]
     },
     "back-test-helpers": {
-      "tags": []
+      "tags": [
+        "back"
+      ]
+    },
+    "back-shared": {
+      "tags": [
+        "back"
+      ]
+    },
+    "auth-interface": {
+      "tags": [
+        "logbook"
+      ]
     }
   }
 }

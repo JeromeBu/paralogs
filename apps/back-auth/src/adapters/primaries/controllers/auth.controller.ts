@@ -3,7 +3,8 @@ import {
   RightAsync,
   sendHttpResponse,
   validateSchema,
-} from "@paralogs/back-shared";
+} from "@paralogs/back/shared";
+import { pilotsRoute } from "@paralogs/shared";
 import {
   getMeRoute,
   loginRoute,
@@ -11,8 +12,7 @@ import {
   signUpRoute,
   signUpSchema,
   updateUserSchema,
-  usersRoute,
-} from "@paralogs/shared";
+} from "@paralogs/auth/interface";
 import { Router } from "express";
 
 import { authUseCases } from "../../../config/useCasesChoice";
@@ -48,7 +48,7 @@ export const authController = (): Router => {
     return sendHttpResponse(res, httpResponse);
   });
 
-  authRouter.put(usersRoute, async (req, res) => {
+  authRouter.put(pilotsRoute, async (req, res) => {
     const resultBody = await validateSchema(updateUserSchema, req.body);
 
     const httpResponse = await callUseCase({

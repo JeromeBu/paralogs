@@ -1,4 +1,8 @@
-import { loginRoute, signUpRoute, WithUserUuid } from "@paralogs/shared";
+import {
+  loginRoute,
+  signUpRoute,
+  WithUserUuid,
+} from "@paralogs/auth/interface";
 import type { NextFunction, Request, Response } from "express";
 import * as jwt from "jsonwebtoken";
 

@@ -1,3 +1,4 @@
+import { UserUuid } from "@paralogs/auth/interface";
 import {
   getNextId,
   LeftAsync,
@@ -5,8 +6,8 @@ import {
   ResultAsync,
   RightAsyncVoid,
   validationError,
-} from "@paralogs/back-shared";
-import { findByUuidAndReplace, UserUuid } from "@paralogs/shared";
+} from "@paralogs/back/shared";
+import { findByUuidAndReplace } from "@paralogs/shared";
 import { Left, List } from "purify-ts";
 import { liftEither } from "purify-ts/EitherAsync";
 import { liftMaybe } from "purify-ts/MaybeAsync";

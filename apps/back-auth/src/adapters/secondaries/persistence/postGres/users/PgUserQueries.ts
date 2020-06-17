@@ -1,5 +1,5 @@
-import { fromNullablePromiseCb } from "@paralogs/back-shared";
-import { UserUuid } from "@paralogs/shared";
+import { fromNullablePromiseCb } from "@paralogs/back/shared";
+import { UserUuid } from "@paralogs/auth/interface";
 import Knex from "knex";
 
 import { UserQueries } from "../../../../../domain/reads/gateways/UserQueries";

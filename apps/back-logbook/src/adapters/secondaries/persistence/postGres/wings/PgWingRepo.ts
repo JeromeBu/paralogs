@@ -2,7 +2,7 @@ import {
   notFoundError,
   ResultAsync,
   RightAsyncVoid,
-} from "@paralogs/back-shared";
+} from "@paralogs/back/shared";
 import { PilotUuid, WingUuid } from "@paralogs/shared";
 import Knex from "knex";
 import { liftPromise as liftPromiseToEitherAsync } from "purify-ts/EitherAsync";

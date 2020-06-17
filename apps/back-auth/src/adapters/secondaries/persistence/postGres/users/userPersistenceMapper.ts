@@ -1,5 +1,5 @@
-import { combineEithers, PersonName } from "@paralogs/back-shared";
-import { UserDTO } from "@paralogs/shared";
+import { combineEithers, PersonName } from "@paralogs/back/shared";
+import { UserDTO } from "@paralogs/auth/interface";
 
 import { UserEntity } from "../../../../../domain/writes/entities/UserEntity";
 import { Email } from "../../../../../domain/writes/valueObjects/user/Email";

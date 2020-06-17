@@ -3,7 +3,7 @@ import {
   ResultAsync,
   RightAsyncVoid,
   validationError,
-} from "@paralogs/back-shared";
+} from "@paralogs/back/shared";
 import { FlightUuid, PilotUuid } from "@paralogs/shared";
 import { List } from "purify-ts";
 import { liftMaybe } from "purify-ts/MaybeAsync";

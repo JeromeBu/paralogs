@@ -1,4 +1,8 @@
-import { makeUserDTO, SignUpParams, WithUuid } from "@paralogs/shared";
+import {
+  makeUserDTO,
+  SignUpParams,
+  WithUuid,
+} from "@paralogs/auth/interface";
 
 import { InMemoryUserRepo } from "../../../adapters/secondaries/persistence/inMemory/InMemoryUserRepo";
 import { UserEntity } from "../entities/UserEntity";

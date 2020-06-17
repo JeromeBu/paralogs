@@ -1,4 +1,4 @@
-import { SignUpParams, UserDTO } from "@paralogs/shared";
+import { SignUpParams, UserDTO } from "@paralogs/auth/interface";
 import Knex from "knex";
 
 import { makeUserEntityCreator } from "../../../../domain/writes/testBuilders/makeUserEntityCreator";

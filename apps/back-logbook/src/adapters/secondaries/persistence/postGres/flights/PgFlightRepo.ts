@@ -4,7 +4,7 @@ import {
   ResultAsync,
   RightAsyncVoid,
   validationError,
-} from "@paralogs/back-shared";
+} from "@paralogs/back/shared";
 import { FlightUuid, PilotUuid, WingUuid } from "@paralogs/shared";
 import Knex from "knex";
 import { Maybe } from "purify-ts";

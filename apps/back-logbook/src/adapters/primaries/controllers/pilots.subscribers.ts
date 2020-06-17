@@ -1,4 +1,4 @@
-import { callUseCase, EventBus, RightAsync } from "@paralogs/back-shared";
+import { callUseCase, EventBus, RightAsync } from "@paralogs/back/shared";
 import { PilotUuid } from "@paralogs/shared";
 
 import { pilotsUseCases } from "../../../config/useCasesChoice";

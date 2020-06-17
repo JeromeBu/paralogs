@@ -2,7 +2,7 @@ import {
   createInMemoryEventBus,
   createRedisEventBus,
   EventBus,
-} from "@paralogs/back-shared";
+} from "@paralogs/back/shared";
 import { List } from "purify-ts";
 import { liftMaybe } from "purify-ts/MaybeAsync";
 

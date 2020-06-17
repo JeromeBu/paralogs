@@ -1,4 +1,4 @@
-import { Result, validationError } from "@paralogs/back-shared";
+import { Result, validationError } from "@paralogs/back/shared";
 import { Left, Right } from "purify-ts";
 
 const isEmail = (str: string): boolean =>

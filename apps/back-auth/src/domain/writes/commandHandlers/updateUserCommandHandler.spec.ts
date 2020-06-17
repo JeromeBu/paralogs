@@ -5,7 +5,7 @@
 import {
   createInMemoryEventBus,
   InMemoryEventBus,
-} from "@paralogs/back-shared";
+} from "@paralogs/back/shared";
 import {
   createExpectDispatchedEvent,
   expectRight,

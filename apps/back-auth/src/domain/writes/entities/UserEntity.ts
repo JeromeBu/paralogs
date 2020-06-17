@@ -3,13 +3,13 @@ import {
   Entity,
   PersonName,
   ResultAsync,
-} from "@paralogs/back-shared";
+} from "@paralogs/back/shared";
 import {
   SignUpParams,
   UpdateUserDTO,
   UserUuid,
   WithUuid,
-} from "@paralogs/shared";
+} from "@paralogs/auth/interface";
 import { liftEither, liftPromise } from "purify-ts/EitherAsync";
 
 import { HashAndTokenManager } from "../gateways/HashAndTokenManager";

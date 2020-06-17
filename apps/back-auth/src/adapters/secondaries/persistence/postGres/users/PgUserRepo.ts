@@ -1,5 +1,5 @@
-import { LeftAsync, ResultAsync, RightAsyncVoid } from "@paralogs/back-shared";
-import { UserUuid } from "@paralogs/shared";
+import { LeftAsync, ResultAsync, RightAsyncVoid } from "@paralogs/back/shared";
+import { UserUuid } from "@paralogs/auth/interface";
 import Knex from "knex";
 import { Maybe } from "purify-ts";
 import { liftPromise as liftPromiseToEitherAsync } from "purify-ts/EitherAsync";

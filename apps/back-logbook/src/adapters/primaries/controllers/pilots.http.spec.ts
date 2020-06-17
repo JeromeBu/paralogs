@@ -3,7 +3,7 @@
  * @group integration
  */
 
-import { createInMemoryEventBus } from "@paralogs/back-shared";
+import { createInMemoryEventBus } from "@paralogs/back/shared";
 import { generateUuid, PilotDTO } from "@paralogs/shared";
 
 import { repositories } from "../../../config/secondaryAdaptersChoice";

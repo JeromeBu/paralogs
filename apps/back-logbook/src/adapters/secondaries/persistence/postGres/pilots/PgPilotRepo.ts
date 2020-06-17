@@ -1,4 +1,4 @@
-import { LeftAsync, ResultAsync, RightAsyncVoid } from "@paralogs/back-shared";
+import { LeftAsync, ResultAsync, RightAsyncVoid } from "@paralogs/back/shared";
 import { PilotUuid } from "@paralogs/shared";
 import Knex from "knex";
 import { Maybe } from "purify-ts";

@@ -2,7 +2,7 @@ import {
   checkNotExists,
   notUniqError,
   ResultAsync,
-} from "@paralogs/back-shared";
+} from "@paralogs/back/shared";
 import { FlightDTO } from "@paralogs/shared";
 import { liftEither } from "purify-ts/EitherAsync";
 

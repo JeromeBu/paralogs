@@ -13,7 +13,7 @@ import {
   UpdateUserDTO,
   UpdateWingDTO,
   UserDTO,
-  usersRoute,
+  pilotsRoute,
   WingDTO,
   wingsRoute,
 } from "@paralogs/shared";
@@ -85,8 +85,8 @@ export const httpClient = {
   signUp: POST<SignUpParams, CurrentUserWithAuthToken>(auth(signUpRoute)),
   login: POST<LoginParams, CurrentUserWithAuthToken>(auth(loginRoute)),
 
-  updateUser: PUTwithToken<UpdateUserDTO, UserDTO>(auth(usersRoute)),
-  retrieveUsers: GETwithToken<UserDTO[]>(auth(usersRoute)),
+  updateUser: PUTwithToken<UpdateUserDTO, UserDTO>(auth(pilotsRoute)),
+  retrieveUsers: GETwithToken<UserDTO[]>(auth(pilotsRoute)),
 
   retrieveCurrentPilot: GETwithToken<PilotDTO>(logbook(currentPilotRoute)),
 

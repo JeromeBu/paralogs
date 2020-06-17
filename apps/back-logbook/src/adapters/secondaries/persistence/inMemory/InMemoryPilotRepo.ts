@@ -4,7 +4,7 @@ import {
   notFoundError,
   ResultAsync,
   RightAsyncVoid,
-} from "@paralogs/back-shared";
+} from "@paralogs/back/shared";
 import { findByUuidAndReplace, PilotUuid } from "@paralogs/shared";
 import { List } from "purify-ts";
 import { liftMaybe } from "purify-ts/MaybeAsync";

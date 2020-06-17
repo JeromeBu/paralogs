@@ -1,4 +1,4 @@
-import { ResultAsync } from "@paralogs/back-shared";
+import { ResultAsync } from "@paralogs/back/shared";
 import { FlightDTO, PilotUuid } from "@paralogs/shared";
 import { liftPromise } from "purify-ts/EitherAsync";
 

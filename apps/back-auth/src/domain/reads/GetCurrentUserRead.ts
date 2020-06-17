@@ -1,5 +1,8 @@
-import { notFoundError, ResultAsync } from "@paralogs/back-shared";
-import { CurrentUserWithAuthToken, WithUserUuid } from "@paralogs/shared";
+import { notFoundError, ResultAsync } from "@paralogs/back/shared";
+import {
+  CurrentUserWithAuthToken,
+  WithUserUuid,
+} from "@paralogs/auth/interface";
 
 import { UserQueries } from "./gateways/UserQueries";
 

@@ -1,4 +1,4 @@
-import { Entity, Result } from "@paralogs/back-shared";
+import { Entity, Result } from "@paralogs/back/shared";
 import {
   DateString,
   NumberOfMinutes,
