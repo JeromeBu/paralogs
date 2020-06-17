@@ -1,4 +1,5 @@
-import { PilotDTO, StringError, ValueOf } from "@paralogs/shared";
+import { StringError, ValueOf } from "@paralogs/shared";
+import { PilotDTO } from "@paralogs/logbook/interfaces";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 type PilotState = {

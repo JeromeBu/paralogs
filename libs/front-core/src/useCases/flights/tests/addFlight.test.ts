@@ -2,7 +2,11 @@
  * @group unit
  */
 
-import { FlightDTO, makeFlightDTO, makeWingDTO } from "@paralogs/shared";
+import {
+  FlightDTO,
+  makeFlightDTO,
+  makeWingDTO,
+} from "@paralogs/logbook/interfaces";
 import { Store } from "redux";
 
 import { configureReduxStore } from "../../../reduxStore";

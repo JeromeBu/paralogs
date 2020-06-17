@@ -1,9 +1,5 @@
-import {
-  AddFlightDTO,
-  FlightDTO,
-  StringError,
-  ValueOf,
-} from "@paralogs/shared";
+import { StringError, ValueOf } from "@paralogs/shared";
+import { AddFlightDTO, FlightDTO } from "@paralogs/logbook/interfaces";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 type FlightsState = Readonly<{

@@ -2,7 +2,8 @@
  * @group unit
  */
 
-import { makeUserDTO, PilotUuid } from "@paralogs/shared";
+import { PilotUuid } from "@paralogs/logbook/interfaces";
+import { makeUserDTO } from "@paralogs/auth/interface";
 import { Store } from "redux";
 
 import { configureReduxStore } from "../../../reduxStore";

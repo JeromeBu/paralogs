@@ -1,4 +1,4 @@
-import { makeUserDTO, UserDTO } from "@paralogs/shared";
+import { makeUserDTO, UserDTO } from "@paralogs/auth/interface";
 import { Store } from "redux";
 
 import { configureReduxStore } from "../../../reduxStore";

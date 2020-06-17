@@ -2,12 +2,12 @@
  * @group unit
  */
 
+import { generateUuid } from "@paralogs/shared";
 import {
   FlightDTO,
-  generateUuid,
   makePilotDTO,
   makeWingDTO,
-} from "@paralogs/shared";
+} from "@paralogs/logbook/interfaces";
 import * as R from "ramda";
 import { Store } from "redux";
 

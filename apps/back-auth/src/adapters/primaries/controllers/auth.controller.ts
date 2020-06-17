@@ -4,7 +4,6 @@ import {
   sendHttpResponse,
   validateSchema,
 } from "@paralogs/back/shared";
-import { pilotsRoute } from "@paralogs/shared";
 import {
   getMeRoute,
   loginRoute,
@@ -13,6 +12,7 @@ import {
   signUpSchema,
   updateUserSchema,
 } from "@paralogs/auth/interface";
+import { pilotsRoute } from "@paralogs/logbook/interfaces";
 import { Router } from "express";
 
 import { authUseCases } from "../../../config/useCasesChoice";

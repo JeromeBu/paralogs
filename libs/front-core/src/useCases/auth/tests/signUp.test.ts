@@ -1,9 +1,9 @@
 import {
   CurrentUserWithAuthToken,
   makeUserDTO,
-  PilotUuid,
   SignUpParams,
-} from "@paralogs/shared";
+} from "@paralogs/auth/interface";
+import { PilotUuid } from "@paralogs/logbook/interfaces";
 import { Store } from "redux";
 
 import { configureReduxStore } from "../../../reduxStore";

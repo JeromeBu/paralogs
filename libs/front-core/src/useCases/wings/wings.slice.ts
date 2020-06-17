@@ -1,11 +1,9 @@
+import { findByUuidAndReplace, StringError, ValueOf } from "@paralogs/shared";
 import {
   AddWingDTO,
-  findByUuidAndReplace,
-  StringError,
   UpdateWingDTO,
-  ValueOf,
   WingDTO,
-} from "@paralogs/shared";
+} from "@paralogs/logbook/interfaces";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 type WingsState = Readonly<{

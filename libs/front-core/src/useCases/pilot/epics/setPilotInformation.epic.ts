@@ -1,4 +1,4 @@
-import { PilotUuid } from "@paralogs/shared";
+import { PilotUuid } from "@paralogs/logbook/interfaces";
 import { Epic } from "redux-observable";
 import { filter, map } from "rxjs/operators";
 

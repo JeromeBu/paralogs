@@ -1,4 +1,4 @@
-import { CurrentUserWithAuthToken } from "@paralogs/shared";
+import { CurrentUserWithAuthToken } from "@paralogs/auth/interface";
 
 import { InMemoryDependencies } from "../../../testUtils";
 

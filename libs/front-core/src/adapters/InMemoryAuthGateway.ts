@@ -4,7 +4,7 @@ import {
   SignUpParams,
   UpdateUserDTO,
   UserDTO,
-} from "@paralogs/shared";
+} from "@paralogs/auth/interface";
 import * as R from "ramda";
 import { BehaviorSubject, Observable } from "rxjs";
 import { filter, map } from "rxjs/operators";

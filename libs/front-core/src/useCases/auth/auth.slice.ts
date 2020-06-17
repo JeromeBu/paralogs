@@ -1,12 +1,11 @@
+import { StringError, ValueOf } from "@paralogs/shared";
 import {
   CurrentUserWithAuthToken,
   LoginParams,
   SignUpParams,
-  StringError,
   UpdateUserDTO,
   UserDTO,
-  ValueOf,
-} from "@paralogs/shared";
+} from "@paralogs/auth/interface";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 type AuthState = Readonly<{
