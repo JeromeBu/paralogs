@@ -3,8 +3,8 @@ import {
   notFoundError,
   ResultAsync,
   RightAsyncVoid,
-} from "@paralogs/back-shared";
-import { UpdateUserDTO, WithUuid } from "@paralogs/shared";
+} from "@paralogs/back/shared";
+import { UpdateUserDTO, WithUuid } from "@paralogs/auth/interface";
 import { liftEither } from "purify-ts/EitherAsync";
 
 import { UserRepo } from "../gateways/UserRepo";

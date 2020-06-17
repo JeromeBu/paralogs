@@ -2,8 +2,8 @@ import {
   notFoundError,
   ResultAsync,
   RightAsyncVoid,
-} from "@paralogs/back-shared";
-import { PilotUuid, WingUuid } from "@paralogs/shared";
+} from "@paralogs/back/shared";
+import { PilotUuid, WingUuid } from "@paralogs/logbook/interfaces";
 import Knex from "knex";
 import { liftPromise as liftPromiseToEitherAsync } from "purify-ts/EitherAsync";
 import { Maybe } from "purify-ts/Maybe";

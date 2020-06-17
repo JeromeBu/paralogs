@@ -3,8 +3,7 @@
  * @group integration
  */
 
-import { CurrentUserWithAuthToken, UserDTO } from "@paralogs/shared";
-
+import { CurrentUserWithAuthToken, UserDTO } from "@paralogs/auth/interface";
 import { createAndPersistUser } from "../createAndPersistUser";
 import { getKnex, resetDb } from "../knex/db";
 import { createPgUserQueries } from "./PgUserQueries";

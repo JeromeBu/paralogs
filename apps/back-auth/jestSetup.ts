@@ -1,6 +1,6 @@
-const setup = () => {
+const setup = async () => {
   process.env.NODE_ENV = "test";
-  console.log("Starting test: NODE_ENV", process.env.NODE_ENV);
+  console.log("Starting auth test: NODE_ENV", process.env.NODE_ENV);
 };
 
 export default setup;

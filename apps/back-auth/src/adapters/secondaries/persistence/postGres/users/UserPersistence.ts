@@ -1,4 +1,4 @@
-import { Persisted } from "@paralogs/back-shared";
+import { Persisted } from "@paralogs/back/shared";
 import { UserUuid } from "@paralogs/shared";
 
 export type UserPersistence = {

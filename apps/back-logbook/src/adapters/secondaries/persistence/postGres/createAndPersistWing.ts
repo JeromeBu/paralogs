@@ -1,4 +1,5 @@
-import { RequireField, WingDTO } from "@paralogs/shared";
+import { RequireField } from "@paralogs/shared";
+import { WingDTO } from "@paralogs/logbook/interfaces";
 import Knex from "knex";
 
 import { makeWingEntity } from "../../../../domain/writes/testBuilders/makeWingEntity";

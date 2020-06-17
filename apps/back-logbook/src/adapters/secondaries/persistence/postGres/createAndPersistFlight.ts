@@ -1,4 +1,5 @@
-import { FlightDTO, RequireField } from "@paralogs/shared";
+import { RequireField } from "@paralogs/shared";
+import { FlightDTO } from "@paralogs/logbook/interfaces";
 import Knex from "knex";
 
 import { makeFlightEntity } from "../../../../domain/writes/testBuilders/makeFlightEntity";

@@ -3,13 +3,13 @@
  * @group integration
  */
 
-import { callUseCase, RightAsync } from "@paralogs/back-shared";
+import { callUseCase, RightAsync } from "@paralogs/back/shared";
+import { generateUuid } from "@paralogs/shared";
 import {
   AddWingDTO,
-  generateUuid,
   UpdateWingDTO,
   wingsRoute,
-} from "@paralogs/shared";
+} from "@paralogs/logbook/interfaces";
 import jwt from "jsonwebtoken";
 import supertest from "supertest";
 

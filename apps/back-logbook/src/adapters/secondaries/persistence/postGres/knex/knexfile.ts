@@ -53,4 +53,4 @@ const knexconfig: { [key in EnvironmentOption]: any } = {
   // },
 };
 
-export = knexconfig;
+export default knexconfig;

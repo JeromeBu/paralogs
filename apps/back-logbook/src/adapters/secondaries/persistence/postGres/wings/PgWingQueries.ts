@@ -1,4 +1,4 @@
-import { PilotUuid, WingDTO } from "@paralogs/shared";
+import { PilotUuid, WingDTO } from "@paralogs/logbook/interfaces";
 import Knex from "knex";
 
 import { WingQueries } from "../../../../../domain/reads/gateways/WingQueries";

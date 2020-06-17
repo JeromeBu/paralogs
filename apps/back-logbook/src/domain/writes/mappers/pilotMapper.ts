@@ -1,4 +1,4 @@
-import { PilotDTO } from "@paralogs/shared";
+import { PilotDTO } from "@paralogs/logbook/interfaces";
 
 import { PilotEntity } from "../entities/PilotEntity";
 

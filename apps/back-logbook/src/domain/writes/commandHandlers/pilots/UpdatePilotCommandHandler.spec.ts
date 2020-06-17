@@ -2,7 +2,7 @@
  * @group unit
  */
 
-import { expectRight } from "@paralogs/back-shared";
+import { expectRight } from "@paralogs/back/test-helpers";
 import { List } from "purify-ts";
 
 import { InMemoryPilotRepo } from "../../../../adapters/secondaries/persistence/inMemory/InMemoryPilotRepo";

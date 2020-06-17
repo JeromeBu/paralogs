@@ -1,5 +1,6 @@
-import { getNextId, ResultAsync, RightAsyncVoid } from "@paralogs/back-shared";
-import { findByUuidAndReplace, PilotUuid, WingUuid } from "@paralogs/shared";
+import { getNextId, ResultAsync, RightAsyncVoid } from "@paralogs/back/shared";
+import { findByUuidAndReplace } from "@paralogs/shared";
+import { PilotUuid, WingUuid } from "@paralogs/logbook/interfaces";
 import { List } from "purify-ts";
 import { liftMaybe } from "purify-ts/MaybeAsync";
 

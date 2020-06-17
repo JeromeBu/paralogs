@@ -1,4 +1,4 @@
-import { WithUserUuid } from "@paralogs/shared";
+import { WithUserUuid } from "@paralogs/auth/interface";
 import * as bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 

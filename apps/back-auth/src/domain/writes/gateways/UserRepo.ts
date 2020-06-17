@@ -1,4 +1,4 @@
-import { ResultAsync } from "@paralogs/back-shared";
+import { ResultAsync } from "@paralogs/back/shared";
 import { UserUuid } from "@paralogs/shared";
 import { MaybeAsync } from "purify-ts";
 

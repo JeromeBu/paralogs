@@ -9,7 +9,7 @@ import {
   loginRoute,
   SignUpParams,
   signUpRoute,
-} from "@paralogs/shared";
+} from "@paralogs/auth/interface";
 import supertest from "supertest";
 
 import { ENV } from "../../../config/env";

@@ -1,4 +1,4 @@
-import { makeWingDTO, WingDTO } from "@paralogs/shared";
+import { makeWingDTO, WingDTO } from "@paralogs/logbook/interfaces";
 
 import { WingEntity } from "../entities/WingEntity";
 

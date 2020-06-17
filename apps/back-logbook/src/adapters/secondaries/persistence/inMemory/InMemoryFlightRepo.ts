@@ -3,8 +3,8 @@ import {
   ResultAsync,
   RightAsyncVoid,
   validationError,
-} from "@paralogs/back-shared";
-import { FlightUuid, PilotUuid } from "@paralogs/shared";
+} from "@paralogs/back/shared";
+import { FlightUuid, PilotUuid } from "@paralogs/logbook/interfaces";
 import { List } from "purify-ts";
 import { liftMaybe } from "purify-ts/MaybeAsync";
 

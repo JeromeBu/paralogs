@@ -1,5 +1,5 @@
-import { LeftAsync, ResultAsync, RightAsyncVoid } from "@paralogs/back-shared";
-import { PilotUuid } from "@paralogs/shared";
+import { LeftAsync, ResultAsync, RightAsyncVoid } from "@paralogs/back/shared";
+import { PilotUuid } from "@paralogs/logbook/interfaces";
 import Knex from "knex";
 import { Maybe } from "purify-ts";
 import { liftPromise as liftPromiseToEitherAsync } from "purify-ts/EitherAsync";

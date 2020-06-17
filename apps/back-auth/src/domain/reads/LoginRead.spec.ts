@@ -2,8 +2,9 @@
  * @group unit
  */
 
-import { expectEitherToMatchError, Result } from "@paralogs/back-shared";
-import { CurrentUserWithAuthToken } from "@paralogs/shared";
+import { Result } from "@paralogs/back/shared";
+import { expectEitherToMatchError } from "@paralogs/back/test-helpers";
+import { CurrentUserWithAuthToken } from "@paralogs/auth/interface";
 
 import { InMemoryUserRepo } from "../../adapters/secondaries/persistence/inMemory/InMemoryUserRepo";
 import { TestHashAndTokenManager } from "../../adapters/secondaries/TestHashAndTokenManager";

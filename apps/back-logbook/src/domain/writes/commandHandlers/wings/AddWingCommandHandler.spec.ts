@@ -2,8 +2,9 @@
  * @group unit
  */
 
-import { AppError, Result } from "@paralogs/back-shared";
-import { generateUuid, makeWingDTO, WingDTO } from "@paralogs/shared";
+import { AppError, Result } from "@paralogs/back/shared";
+import { generateUuid } from "@paralogs/shared";
+import { makeWingDTO, WingDTO } from "@paralogs/logbook/interfaces";
 
 import { InMemoryWingRepo } from "../../../../adapters/secondaries/persistence/inMemory/InMemoryWingRepo";
 import {

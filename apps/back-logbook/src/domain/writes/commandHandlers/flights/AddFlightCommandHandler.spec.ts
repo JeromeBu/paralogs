@@ -2,13 +2,13 @@
  * @group unit
  */
 
-import { expectEitherToMatchError } from "@paralogs/back-shared";
+import { expectEitherToMatchError } from "@paralogs/back/test-helpers";
+import { generateUuid } from "@paralogs/shared";
 import {
   FlightDTO,
   FlightUuid,
-  generateUuid,
   makeFlightDTO,
-} from "@paralogs/shared";
+} from "@paralogs/logbook/interfaces";
 
 import { InMemoryFlightRepo } from "../../../../adapters/secondaries/persistence/inMemory/InMemoryFlightRepo";
 import { flightMapper } from "../../mappers/flight.mapper";

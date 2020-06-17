@@ -3,7 +3,10 @@
  * @group integration
  */
 
-import { expectEitherToMatchError, expectRight } from "@paralogs/back-shared";
+import {
+  expectEitherToMatchError,
+  expectRight,
+} from "@paralogs/back/test-helpers";
 
 import { UserEntity } from "../../../../../domain/writes/entities/UserEntity";
 import { UserRepo } from "../../../../../domain/writes/gateways/UserRepo";

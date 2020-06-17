@@ -2,7 +2,8 @@
  * @group unit
  */
 
-import { CurrentUserWithAuthToken, generateUuid } from "@paralogs/shared";
+import { CurrentUserWithAuthToken } from "@paralogs/auth/interface";
+import { generateUuid } from "@paralogs/shared";
 import { Just } from "purify-ts";
 import { liftMaybe } from "purify-ts/MaybeAsync";
 

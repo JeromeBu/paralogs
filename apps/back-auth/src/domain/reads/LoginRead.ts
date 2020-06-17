@@ -5,8 +5,11 @@ import {
   ResultAsync,
   RightAsync,
   validationError,
-} from "@paralogs/back-shared";
-import { CurrentUserWithAuthToken, LoginParams } from "@paralogs/shared";
+} from "@paralogs/back/shared";
+import {
+  CurrentUserWithAuthToken,
+  LoginParams,
+} from "@paralogs/auth/interface";
 import { liftEither, liftPromise } from "purify-ts/EitherAsync";
 
 import { HashAndTokenManager } from "../writes/gateways/HashAndTokenManager";

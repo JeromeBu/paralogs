@@ -3,18 +3,19 @@
  */
 
 import {
-  createExpectDispatchedEvent,
+  CurrentUserWithAuthToken,
+  SignUpParams,
+} from "@paralogs/auth/interface";
+import {
   createInMemoryEventBus,
-  expectEitherToMatchError,
   InMemoryEventBus,
   Result,
-} from "@paralogs/back-shared";
+} from "@paralogs/back/shared";
 import {
-  CurrentUserWithAuthToken,
-  FakeUuidGenerator,
-  generateUuid,
-  SignUpParams,
-} from "@paralogs/shared";
+  createExpectDispatchedEvent,
+  expectEitherToMatchError,
+} from "@paralogs/back/test-helpers";
+import { FakeUuidGenerator, generateUuid } from "@paralogs/shared";
 import * as R from "ramda";
 
 import { InMemoryUserRepo } from "../../../adapters/secondaries/persistence/inMemory/InMemoryUserRepo";

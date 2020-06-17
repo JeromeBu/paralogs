@@ -22,23 +22,29 @@
     "front": {
       "tags": []
     },
-    "api": {
-      "tags": []
-    },
-    "api-interfaces": {
-      "tags": []
-    },
     "shared": {
       "tags": []
-    },
-    "back-shared": {
-      "tags": ["back"]
     },
     "back-auth": {
       "tags": ["back"]
     },
     "back-logbook": {
       "tags": ["back"]
+    },
+    "front-core": {
+      "tags": ["front"]
+    },
+    "back-test-helpers": {
+      "tags": ["back"]
+    },
+    "back-shared": {
+      "tags": ["back"]
+    },
+    "auth-interface": {
+      "tags": ["logbook"]
+    },
+    "logbook-interfaces": {
+      "tags": ["logbook"]
     }
   }
 }

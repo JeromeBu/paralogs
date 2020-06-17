@@ -3,8 +3,8 @@ import {
   RightAsync,
   sendHttpResponse,
   validateSchema,
-} from "@paralogs/back-shared";
-import { addFlightSchema, flightsRoute } from "@paralogs/shared";
+} from "@paralogs/back/shared";
+import { addFlightSchema, flightsRoute } from "@paralogs/logbook/interfaces";
 import { Router } from "express";
 
 import { flightsUseCases } from "../../../config/useCasesChoice";

@@ -2,8 +2,8 @@ import {
   checkNotExists,
   notUniqError,
   ResultAsync,
-} from "@paralogs/back-shared";
-import { FlightDTO } from "@paralogs/shared";
+} from "@paralogs/back/shared";
+import { FlightDTO } from "@paralogs/logbook/interfaces";
 import { liftEither } from "purify-ts/EitherAsync";
 
 import { FlightEntity } from "../../entities/FlightEntity";

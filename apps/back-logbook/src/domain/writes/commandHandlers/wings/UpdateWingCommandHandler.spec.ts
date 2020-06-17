@@ -2,8 +2,11 @@
  * @group unit
  */
 
-import { expectEitherToMatchError, expectRight } from "@paralogs/back-shared";
-import { makeWingDTO } from "@paralogs/shared";
+import {
+  expectEitherToMatchError,
+  expectRight,
+} from "@paralogs/back/test-helpers";
+import { makeWingDTO } from "@paralogs/logbook/interfaces";
 
 import { InMemoryWingRepo } from "../../../../adapters/secondaries/persistence/inMemory/InMemoryWingRepo";
 import { wingMapper } from "../../mappers/wing.mapper";

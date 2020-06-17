@@ -3,11 +3,13 @@
  */
 
 import {
-  createExpectDispatchedEvent,
   createInMemoryEventBus,
-  expectRight,
   InMemoryEventBus,
-} from "@paralogs/back-shared";
+} from "@paralogs/back/shared";
+import {
+  createExpectDispatchedEvent,
+  expectRight,
+} from "@paralogs/back/test-helpers";
 
 import { InMemoryUserRepo } from "../../../adapters/secondaries/persistence/inMemory/InMemoryUserRepo";
 import { TestHashAndTokenManager } from "../../../adapters/secondaries/TestHashAndTokenManager";
