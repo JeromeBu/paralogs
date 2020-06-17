@@ -1,4 +1,4 @@
-import { FlightDTO, PilotUuid } from "@paralogs/shared";
+import { FlightDTO, PilotUuid } from "@paralogs/logbook/interfaces";
 import Knex from "knex";
 
 import { FlightQueries } from "../../../../../domain/reads/gateways/FlightQueries";

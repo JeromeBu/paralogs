@@ -1,4 +1,4 @@
-import { PilotDTO } from "@paralogs/shared";
+import { PilotDTO } from "@paralogs/logbook/interfaces";
 import Knex from "knex";
 
 import { makePilotEntity } from "../../../../domain/writes/testBuilders/makePilotEntity";

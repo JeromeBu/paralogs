@@ -1,7 +1,7 @@
 import merge from "ramda/src/merge";
+import { generateUuid } from "@paralogs/shared";
 
-import { WingDTO } from "../DTOs";
-import { generateUuid } from "../generalTypes/uuid";
+import { WingDTO } from "./WingDTOs";
 
 export const makeWingDTO = (wingParams: Partial<WingDTO> = {}): WingDTO => {
   const randomWing: WingDTO = {

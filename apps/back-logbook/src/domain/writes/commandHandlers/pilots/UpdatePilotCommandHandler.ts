@@ -1,5 +1,5 @@
 import { notFoundError, ResultAsync } from "@paralogs/back/shared";
-import { UpdatePilotDTO } from "@paralogs/shared";
+import { UpdatePilotDTO } from "@paralogs/logbook/interfaces";
 import { liftEither } from "purify-ts/EitherAsync";
 
 import { PilotRepo } from "../../gateways/PilotRepo";

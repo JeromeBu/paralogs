@@ -4,7 +4,11 @@ import {
   sendHttpResponse,
   validateSchema,
 } from "@paralogs/back/shared";
-import { addWingSchema, updateWingSchema, wingsRoute } from "@paralogs/shared";
+import {
+  addWingSchema,
+  updateWingSchema,
+  wingsRoute,
+} from "@paralogs/logbook/interfaces";
 import { Router } from "express";
 
 import { wingsUseCases } from "../../../config/useCasesChoice";

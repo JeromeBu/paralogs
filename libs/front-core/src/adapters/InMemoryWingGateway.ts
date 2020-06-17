@@ -1,4 +1,8 @@
-import { AddWingDTO, UpdateWingDTO, WingDTO } from "@paralogs/shared";
+import {
+  AddWingDTO,
+  UpdateWingDTO,
+  WingDTO,
+} from "@paralogs/logbook/interfaces";
 import { BehaviorSubject } from "rxjs";
 import { map } from "rxjs/operators";
 

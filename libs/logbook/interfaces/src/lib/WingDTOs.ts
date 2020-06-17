@@ -1,6 +1,6 @@
 import * as Yup from "yup";
 
-import { DateString, Flavor, NumberOfMinutes } from "../generalTypes/types";
+import { DateString, Flavor, NumberOfMinutes } from "@paralogs/shared";
 import { WithPilotUuid } from "./PilotDTOs";
 
 export type WingUuid = Flavor<string, "WingUuid">;

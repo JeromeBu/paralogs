@@ -5,7 +5,7 @@ import {
   RightAsyncVoid,
   validationError,
 } from "@paralogs/back/shared";
-import { FlightUuid, PilotUuid, WingUuid } from "@paralogs/shared";
+import { FlightUuid, PilotUuid, WingUuid } from "@paralogs/logbook/interfaces";
 import Knex from "knex";
 import { Maybe } from "purify-ts";
 import { liftPromise as liftPromiseToEitherAsync } from "purify-ts/EitherAsync";

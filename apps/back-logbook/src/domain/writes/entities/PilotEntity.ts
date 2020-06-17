@@ -4,7 +4,11 @@ import {
   PersonName,
   Result,
 } from "@paralogs/back/shared";
-import { PilotDTO, PilotUuid, UpdatePilotDTO } from "@paralogs/shared";
+import {
+  PilotDTO,
+  PilotUuid,
+  UpdatePilotDTO,
+} from "@paralogs/logbook/interfaces";
 
 interface PilotEntityProps {
   uuid: PilotUuid;

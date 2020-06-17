@@ -5,7 +5,7 @@
 
 import { PersonName } from "@paralogs/back/shared";
 import { expectRight } from "@paralogs/back/test-helpers";
-import { UpdatePilotDTO } from "@paralogs/shared";
+import { UpdatePilotDTO } from "@paralogs/logbook/interfaces";
 import { liftEither } from "purify-ts/EitherAsync";
 
 import { PilotEntity } from "../../../../../domain/writes/entities/PilotEntity";

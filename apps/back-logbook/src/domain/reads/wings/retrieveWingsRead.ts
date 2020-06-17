@@ -1,5 +1,5 @@
 import { ResultAsync } from "@paralogs/back/shared";
-import { PilotUuid, WingDTO } from "@paralogs/shared";
+import { PilotUuid, WingDTO } from "@paralogs/logbook/interfaces";
 import { liftPromise } from "purify-ts/EitherAsync";
 
 import { WingQueries } from "../gateways/WingQueries";

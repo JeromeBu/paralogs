@@ -1,7 +1,7 @@
 import * as R from "ramda";
+import { generateUuid } from "@paralogs/shared";
 
-import { FlightDTO } from "../DTOs";
-import { generateUuid } from "../generalTypes/uuid";
+import { FlightDTO } from "./FlightDTOs";
 import { makeWingDTO } from "./makeWingDTO";
 
 export const makeFlightDTO = (

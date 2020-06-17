@@ -3,7 +3,8 @@
  * @group integration
  */
 
-import { generateUuid, PilotDTO, PilotUuid } from "@paralogs/shared";
+import { generateUuid } from "@paralogs/shared";
+import { PilotDTO, PilotUuid } from "@paralogs/logbook/interfaces";
 
 import { createAndPersistPilot } from "../createAndPersistPilot";
 import { createAndPersistWing } from "../createAndPersistWing";

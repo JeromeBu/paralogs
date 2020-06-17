@@ -1,12 +1,11 @@
 import { Entity, Result } from "@paralogs/back/shared";
+import { DateString, NumberOfMinutes } from "@paralogs/shared";
 import {
-  DateString,
-  NumberOfMinutes,
   PilotUuid,
   UpdateWingDTO,
   WingDTO,
   WingUuid,
-} from "@paralogs/shared";
+} from "@paralogs/logbook/interfaces";
 import { Right } from "purify-ts";
 
 interface WingEntityProps {

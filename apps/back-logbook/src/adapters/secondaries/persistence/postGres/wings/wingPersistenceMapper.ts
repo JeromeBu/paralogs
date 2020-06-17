@@ -1,4 +1,4 @@
-import { WingDTO } from "@paralogs/shared";
+import { WingDTO } from "@paralogs/logbook/interfaces";
 
 import { WingEntity } from "../../../../../domain/writes/entities/WingEntity";
 import { WingPersistence } from "./WingPersistence";

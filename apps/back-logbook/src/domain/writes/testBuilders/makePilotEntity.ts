@@ -1,4 +1,4 @@
-import { makePilotDTO, PilotDTO } from "@paralogs/shared";
+import { makePilotDTO, PilotDTO } from "@paralogs/logbook/interfaces";
 
 import { InMemoryPilotRepo } from "../../../adapters/secondaries/persistence/inMemory/InMemoryPilotRepo";
 import { PilotEntity } from "../entities/PilotEntity";

@@ -7,7 +7,8 @@ import {
   expectEitherToMatchError,
   expectRight,
 } from "@paralogs/back/test-helpers";
-import { generateUuid, UpdateWingDTO } from "@paralogs/shared";
+import { generateUuid } from "@paralogs/shared";
+import { UpdateWingDTO } from "@paralogs/logbook/interfaces";
 
 import { PilotEntity } from "../../../../../domain/writes/entities/PilotEntity";
 import { WingEntity } from "../../../../../domain/writes/entities/WingEntity";

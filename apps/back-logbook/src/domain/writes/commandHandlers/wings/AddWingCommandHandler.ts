@@ -3,7 +3,7 @@ import {
   notUniqError,
   ResultAsync,
 } from "@paralogs/back/shared";
-import { WingDTO } from "@paralogs/shared";
+import { WingDTO } from "@paralogs/logbook/interfaces";
 import { liftEither } from "purify-ts/EitherAsync";
 
 import { WingEntity } from "../../entities/WingEntity";

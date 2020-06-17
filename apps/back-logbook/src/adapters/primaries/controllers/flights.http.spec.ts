@@ -8,10 +8,10 @@ import {
   AddFlightDTO,
   AddWingDTO,
   flightsRoute,
-  generateUuid,
   wingsRoute,
   WingUuid,
-} from "@paralogs/shared";
+} from "@paralogs/logbook/interfaces";
+import { generateUuid } from "@paralogs/shared";
 import jwt from "jsonwebtoken";
 import supertest from "supertest";
 

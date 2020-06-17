@@ -1,4 +1,4 @@
-import { FlightDTO, makeFlightDTO } from "@paralogs/shared";
+import { FlightDTO, makeFlightDTO } from "@paralogs/logbook/interfaces";
 
 import { FlightEntity } from "../entities/FlightEntity";
 

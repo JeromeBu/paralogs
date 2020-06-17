@@ -1,4 +1,4 @@
-import { Flavor } from "../generalTypes/types";
+import { Flavor } from "@paralogs/shared";
 
 export type PilotUuid = Flavor<string, "PilotUuid">;
 

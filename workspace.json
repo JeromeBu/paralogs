@@ -15,12 +15,8 @@
             "main": "apps/front/src/main.tsx",
             "polyfills": "apps/front/src/polyfills.ts",
             "tsConfig": "apps/front/tsconfig.app.json",
-            "assets": [
-              "apps/front/src/favicon.ico"
-            ],
-            "styles": [
-              "apps/front/src/styles.css"
-            ],
+            "assets": ["apps/front/src/favicon.ico"],
+            "styles": ["apps/front/src/styles.css"],
             "scripts": [],
             "webpackConfig": "@nrwl/react/plugins/webpack"
           },
@@ -70,10 +66,7 @@
               "apps/front/tsconfig.app.json",
               "apps/front/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/front/**"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/front/**"]
           }
         },
         "test": {
@@ -101,10 +94,7 @@
               "libs/shared/tsconfig.lib.json",
               "libs/shared/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/shared/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/shared/**"]
           }
         },
         "test": {
@@ -161,10 +151,7 @@
               "apps/back-auth/tsconfig.app.json",
               "apps/back-auth/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/back-auth/**"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/back-auth/**"]
           }
         },
         "test": {
@@ -221,10 +208,7 @@
               "apps/back-logbook/tsconfig.app.json",
               "apps/back-logbook/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/back-logbook/**"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/back-logbook/**"]
           }
         },
         "test": {
@@ -252,10 +236,7 @@
               "libs/front-core/tsconfig.lib.json",
               "libs/front-core/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/front-core/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/front-core/**"]
           }
         },
         "test": {
@@ -283,10 +264,7 @@
               "libs/back/test-helpers/tsconfig.lib.json",
               "libs/back/test-helpers/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/back/test-helpers/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/back/test-helpers/**"]
           }
         },
         "test": {
@@ -314,10 +292,7 @@
               "libs/back/shared/tsconfig.lib.json",
               "libs/back/shared/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/back/shared/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/back/shared/**"]
           }
         },
         "test": {
@@ -341,13 +316,25 @@
           "options": {
             "linter": "eslint",
             "config": "libs/auth/interface/.eslintrc",
-            "tsConfig": [
-              "libs/auth/interface/tsconfig.lib.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/auth/interface/**"
-            ]
+            "tsConfig": ["libs/auth/interface/tsconfig.lib.json"],
+            "exclude": ["**/node_modules/**", "!libs/auth/interface/**"]
+          }
+        }
+      }
+    },
+    "logbook-interfaces": {
+      "root": "libs/logbook/interfaces",
+      "sourceRoot": "libs/logbook/interfaces/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "libs/logbook/interfaces/.eslintrc",
+            "tsConfig": ["libs/logbook/interfaces/tsconfig.lib.json"],
+            "exclude": ["**/node_modules/**", "!libs/logbook/interfaces/**"]
           }
         }
       }
