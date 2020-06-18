@@ -6,9 +6,9 @@
 import { createInMemoryEventBus } from "@paralogs/back/shared";
 import { PilotDTO } from "@paralogs/logbook/interfaces";
 import { generateUuid } from "@paralogs/shared";
+import { pilotMapper } from "@paralogs/logbook/domain";
 
 import { repositories } from "../../../config/secondaryAdaptersChoice";
-import { pilotMapper } from "../../../domain/writes/mappers/pilotMapper";
 import { subscribeToEvents } from "./pilots.subscribers";
 
 describe("Pilots reaction to events and routes", () => {

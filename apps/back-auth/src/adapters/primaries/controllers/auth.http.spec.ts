@@ -11,12 +11,9 @@ import {
   signUpRoute,
 } from "@paralogs/auth/interface";
 import supertest from "supertest";
+import { getKnex, resetDb } from "@paralogs/auth/secondary-adapters";
+import { ENV } from "@paralogs/shared";
 
-import { ENV } from "../../../config/env";
-import {
-  getKnex,
-  resetDb,
-} from "../../secondaries/persistence/postGres/knex/db";
 import { app } from "../express/server";
 
 const request = supertest(app);

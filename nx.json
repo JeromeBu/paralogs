@@ -19,32 +19,44 @@
     }
   },
   "projects": {
-    "front": {
-      "tags": []
-    },
     "shared": {
-      "tags": []
+      "tags": ["shared", "cross-domain"]
     },
-    "back-auth": {
-      "tags": ["back"]
-    },
-    "back-logbook": {
-      "tags": ["back"]
+    "front": {
+      "tags": ["front", "cross-domain"]
     },
     "front-core": {
-      "tags": ["front"]
-    },
-    "back-test-helpers": {
-      "tags": ["back"]
+      "tags": ["front", "cross-domain"]
     },
     "back-shared": {
-      "tags": ["back"]
+      "tags": ["back", "cross-domain"]
+    },
+    "back-test-helpers": {
+      "tags": ["back", "cross-domain"]
+    },
+    "back-auth": {
+      "tags": ["back", "auth"]
     },
     "auth-interface": {
-      "tags": ["logbook"]
+      "tags": ["shared", "auth"]
+    },
+    "auth-domain": {
+      "tags": ["back", "auth"]
+    },
+    "auth-secondary-adapters": {
+      "tags": ["back", "auth"]
+    },
+    "back-logbook": {
+      "tags": ["back", "logbook"]
     },
     "logbook-interfaces": {
-      "tags": ["logbook"]
+      "tags": ["shared", "logbook"]
+    },
+    "logbook-secondary-adapters": {
+      "tags": ["back", "logbook"]
+    },
+    "logbook-domain": {
+      "tags": ["back", "logbook"]
     }
   }
 }

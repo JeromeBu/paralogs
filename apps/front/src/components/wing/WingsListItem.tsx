@@ -2,7 +2,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import ListItemText from "@material-ui/core/ListItemText";
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import { WingDTO } from "@paralogs/shared";
+import { WingDTO } from "@paralogs/logbook/interfaces";
 import React from "react";
 
 const useStyles = makeStyles((theme) => ({

@@ -4,7 +4,7 @@ import cors from "cors";
 import express from "express";
 import morgan from "morgan";
 
-import { ENV } from "../../../config/env";
+import { ENV } from "@paralogs/back/shared";
 import { eventBus } from "../../../config/secondaryAdaptersChoice";
 import { flightsController } from "../controllers/flights.controller";
 import { subscribeToEvents } from "../controllers/pilots.subscribers";

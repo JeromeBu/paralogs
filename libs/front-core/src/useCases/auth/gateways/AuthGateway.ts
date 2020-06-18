@@ -4,7 +4,7 @@ import {
   SignUpParams,
   UpdateUserDTO,
   UserDTO,
-} from "@paralogs/shared";
+} from "@paralogs/auth/interface";
 import { Observable } from "rxjs";
 
 export interface AuthGateway {
