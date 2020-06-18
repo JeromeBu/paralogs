@@ -1,4 +1,4 @@
-import { EnvironmentOption } from "@paralogs/shared";
+import { EnvironmentOption } from "@paralogs/back/shared";
 
 const migrations = {
   // schemaName: "auth",

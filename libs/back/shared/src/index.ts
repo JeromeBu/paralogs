@@ -11,3 +11,4 @@ export * from "./EventBus/createInMemoryEventBus";
 export * from "./EventBus/createRedisEventBus";
 
 export * from "./ResponseLib/response-lib";
+export * from "./config";

@@ -1,5 +1,5 @@
 import { ResultAsync } from "@paralogs/back/shared";
-import { PilotUuid } from "@paralogs/shared";
+import { PilotUuid } from "@paralogs/logbook/interfaces";
 import { MaybeAsync } from "purify-ts";
 
 import { PilotEntity } from "../entities/PilotEntity";

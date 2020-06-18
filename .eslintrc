@@ -28,22 +28,6 @@
         "enforceBuildableLibDependency": true,
         "allow": [],
         "depConstraints": [
-//          {
-//            "sourceTag": "back",
-//            "onlyDependOnLibsWithTags": ["back"]
-//          },
-//          {
-//            "sourceTag": "auth",
-//            "onlyDependOnLibsWithTags": ["auth"]
-//          },
-//          {
-//            "sourceTag": "logbook",
-//            "onlyDependOnLibsWithTags": ["logbook"]
-//          },
-//          {
-//            "sourceTag": "front",
-//            "onlyDependOnLibsWithTags": ["front"]
-//          }
           {
             "sourceTag": "back",
             "onlyDependOnLibsWithTags": ["back", "shared"]

@@ -1,4 +1,4 @@
-import { UserDTO } from "@paralogs/shared";
+import { UserDTO } from "@paralogs/auth/interface";
 
 interface Event<K extends string, P> {
   dateTimeOccurred: Date;

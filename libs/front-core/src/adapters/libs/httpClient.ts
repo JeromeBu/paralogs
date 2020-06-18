@@ -1,23 +1,25 @@
 import {
-  AddFlightDTO,
-  AddWingDTO,
-  currentPilotRoute,
   CurrentUserWithAuthToken,
-  FlightDTO,
-  flightsRoute,
   getMeRoute,
   LoginParams,
   loginRoute,
+  pilotsRoute,
   SignUpParams,
   signUpRoute,
   UpdateUserDTO,
-  UpdateWingDTO,
   UserDTO,
-  pilotsRoute,
+} from "@paralogs/auth/interface";
+import {
+  AddFlightDTO,
+  AddWingDTO,
+  currentPilotRoute,
+  FlightDTO,
+  flightsRoute,
+  PilotDTO,
+  UpdateWingDTO,
   WingDTO,
   wingsRoute,
-} from "@paralogs/shared";
-import { PilotDTO } from "@paralogs/shared";
+} from "@paralogs/logbook/interfaces";
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 import { Observable } from "rxjs/internal/Observable";
 import { from } from "rxjs/internal/observable/from";
