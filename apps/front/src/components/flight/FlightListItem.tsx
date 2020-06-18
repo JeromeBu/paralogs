@@ -2,7 +2,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import ListItemText from "@material-ui/core/ListItemText";
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import { FlightDTO } from "@paralogs/shared";
+import { FlightDTO } from "@paralogs/logbook/interfaces";
 import { format } from "date-fns";
 import React from "react";
 

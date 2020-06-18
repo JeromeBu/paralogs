@@ -1,5 +1,5 @@
 import { ResultAsync } from "@paralogs/back/shared";
-import { PilotUuid, WingUuid } from "@paralogs/shared";
+import { PilotUuid, WingUuid } from "@paralogs/logbook/interfaces";
 import { MaybeAsync } from "purify-ts";
 
 import { WingEntity } from "../entities/WingEntity";

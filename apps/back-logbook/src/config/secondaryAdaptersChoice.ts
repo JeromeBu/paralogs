@@ -24,7 +24,7 @@ import {
 
 import { flightMapper } from "@paralogs/logbook/domain";
 import { wingMapper } from "@paralogs/logbook/domain";
-import { ENV, EventBusOption, RepositoriesOption } from "@paralogs/shared";
+import { ENV, EventBusOption, RepositoriesOption } from "@paralogs/back/shared";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const shouldNeverBeCalled = (arg: never) => {

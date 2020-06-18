@@ -1,4 +1,4 @@
-import { PilotDTO } from "@paralogs/shared";
+import { PilotDTO } from "@paralogs/logbook/interfaces";
 import { Observable } from "rxjs";
 
 import { PilotGateway } from "../useCases/pilot/gateways/PilotGateway";

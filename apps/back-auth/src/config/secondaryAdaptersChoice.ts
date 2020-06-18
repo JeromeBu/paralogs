@@ -11,7 +11,7 @@ import {
   PgUserRepo,
 } from "@paralogs/auth/secondary-adapters";
 import { getKnex } from "@paralogs/auth/secondary-adapters";
-import { ENV, EventBusOption, RepositoriesOption } from "@paralogs/shared";
+import { ENV, EventBusOption, RepositoriesOption } from "@paralogs/back/shared";
 import {
   UserQueries,
   UserRepo,

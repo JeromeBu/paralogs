@@ -1,4 +1,4 @@
-import { CurrentUserWithAuthToken, UserUuid } from "@paralogs/shared";
+import { CurrentUserWithAuthToken, UserUuid } from "@paralogs/auth/interface";
 import { MaybeAsync } from "purify-ts";
 
 export interface UserQueries {

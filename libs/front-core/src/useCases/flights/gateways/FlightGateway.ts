@@ -1,4 +1,4 @@
-import { AddFlightDTO, FlightDTO } from "@paralogs/shared";
+import { AddFlightDTO, FlightDTO } from "@paralogs/logbook/interfaces";
 import { Observable } from "rxjs";
 
 export interface FlightGateway {

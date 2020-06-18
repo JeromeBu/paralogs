@@ -1,5 +1,5 @@
+import { UpdateUserDTO, updateUserSchema } from "@paralogs/auth/interface";
 import { authActions } from "@paralogs/front-core";
-import { UpdateUserDTO, updateUserSchema } from "@paralogs/shared";
 import { Form, Formik } from "formik";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";

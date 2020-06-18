@@ -1,11 +1,12 @@
-import { ActualUuidGenerator, ENV } from "@paralogs/shared";
-import { ProductionHashAndTokenManager } from "@paralogs/auth/secondary-adapters";
 import {
   getCurrentUserReadCreator,
   loginReadCreator,
   signUpCommandHandler,
   updateUserCommandHandler,
 } from "@paralogs/auth/domain";
+import { ProductionHashAndTokenManager } from "@paralogs/auth/secondary-adapters";
+import { ENV } from "@paralogs/back/shared";
+import { ActualUuidGenerator } from "@paralogs/shared";
 import { eventBus, queries, repositories } from "./secondaryAdaptersChoice";
 
 const userRepo = repositories.user;
