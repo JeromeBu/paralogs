@@ -1,8 +1,7 @@
-export * from "./lib/PilotDTOs";
-export * from "./lib/FlightDTOs";
-export * from "./lib/WingDTOs";
-export * from "./lib/makePilotDTO";
-export * from "./lib/makeWingDTO";
-export * from "./lib/makeFlightDTO";
-export * from "./lib/logbookRoutes";
-export { pilotsRoute } from "@paralogs/auth/interface";
+export * from "./PilotDTOs";
+export * from "./FlightDTOs";
+export * from "./WingDTOs";
+export * from "./makePilotDTO";
+export * from "./makeWingDTO";
+export * from "./makeFlightDTO";
+export * from "./logbookRoutes";

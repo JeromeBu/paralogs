@@ -29,7 +29,11 @@
       "@paralogs/auth/domain": ["libs/auth/domain/src/index.ts"],
       "@paralogs/auth/secondary-adapters": [
         "libs/auth/secondary-adapters/src/index.ts"
-      ]
+      ],
+      "@paralogs/logbook/secondary-adapters": [
+        "libs/logbook/secondary-adapters/src/index.ts"
+      ],
+      "@paralogs/logbook/domain": ["libs/logbook/domain/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

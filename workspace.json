@@ -397,6 +397,65 @@
           }
         }
       }
+    },
+    "logbook-secondary-adapters": {
+      "root": "libs/logbook/secondary-adapters",
+      "sourceRoot": "libs/logbook/secondary-adapters/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "libs/logbook/secondary-adapters/.eslintrc",
+            "tsConfig": [
+              "libs/logbook/secondary-adapters/tsconfig.lib.json",
+              "libs/logbook/secondary-adapters/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/logbook/secondary-adapters/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/logbook/secondary-adapters/jest.config.js",
+            "tsConfig": "libs/logbook/secondary-adapters/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "logbook-domain": {
+      "root": "libs/logbook/domain",
+      "sourceRoot": "libs/logbook/domain/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "libs/logbook/domain/.eslintrc",
+            "tsConfig": [
+              "libs/logbook/domain/tsconfig.lib.json",
+              "libs/logbook/domain/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/logbook/domain/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/logbook/domain/jest.config.js",
+            "tsConfig": "libs/logbook/domain/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

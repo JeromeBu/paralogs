@@ -3,24 +3,28 @@ import {
   createRedisEventBus,
   EventBus,
 } from "@paralogs/back/shared";
+import {
+  FlightQueries,
+  FlightRepo,
+  PilotRepo,
+  WingQueries,
+  WingRepo,
+  InMemoryFlightRepo,
+  InMemoryPilotRepo,
+  InMemoryWingRepo,
+} from "@paralogs/logbook/domain";
+import {
+  getKnex,
+  createPgFlightQueries,
+  createPgWingQueries,
+  PgFlightRepo,
+  PgPilotRepo,
+  PgWingRepo,
+} from "@paralogs/logbook/secondary-adapters";
 
-import { InMemoryFlightRepo } from "../adapters/secondaries/persistence/inMemory/InMemoryFlightRepo";
-import { InMemoryPilotRepo } from "../adapters/secondaries/persistence/inMemory/InMemoryPilotRepo";
-import { InMemoryWingRepo } from "../adapters/secondaries/persistence/inMemory/InMemoryWingRepo";
-import { createPgFlightQueries } from "../adapters/secondaries/persistence/postGres/flights/PgFlightQueries";
-import { PgFlightRepo } from "../adapters/secondaries/persistence/postGres/flights/PgFlightRepo";
-import { getKnex } from "../adapters/secondaries/persistence/postGres/knex/db";
-import { PgPilotRepo } from "../adapters/secondaries/persistence/postGres/pilots/PgPilotRepo";
-import { createPgWingQueries } from "../adapters/secondaries/persistence/postGres/wings/PgWingQueries";
-import { PgWingRepo } from "../adapters/secondaries/persistence/postGres/wings/PgWingRepo";
-import { FlightQueries } from "../domain/reads/gateways/FlightQueries";
-import { WingQueries } from "../domain/reads/gateways/WingQueries";
-import { FlightRepo } from "../domain/writes/gateways/FlightRepo";
-import { PilotRepo } from "../domain/writes/gateways/PilotRepo";
-import { WingRepo } from "../domain/writes/gateways/WingRepo";
-import { flightMapper } from "../domain/writes/mappers/flight.mapper";
-import { wingMapper } from "../domain/writes/mappers/wing.mapper";
-import { ENV, EventBusOption, RepositoriesOption } from "./env";
+import { flightMapper } from "@paralogs/logbook/domain";
+import { wingMapper } from "@paralogs/logbook/domain";
+import { ENV, EventBusOption, RepositoriesOption } from "@paralogs/shared";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const shouldNeverBeCalled = (arg: never) => {

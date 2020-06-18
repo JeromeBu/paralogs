@@ -1,4 +1,4 @@
-import { ActualUuidGenerator } from "@paralogs/shared";
+import { ActualUuidGenerator, ENV } from "@paralogs/shared";
 import { ProductionHashAndTokenManager } from "@paralogs/auth/secondary-adapters";
 import {
   getCurrentUserReadCreator,
@@ -10,7 +10,7 @@ import { eventBus, queries, repositories } from "./secondaryAdaptersChoice";
 
 const userRepo = repositories.user;
 const userQueries = queries.user;
-const hashAndTokenManager = new ProductionHashAndTokenManager();
+const hashAndTokenManager = new ProductionHashAndTokenManager(ENV.jwtSecret);
 const uuidGenerator = new ActualUuidGenerator();
 
 export const authUseCases = {

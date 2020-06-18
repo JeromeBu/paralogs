@@ -51,6 +51,12 @@
     },
     "logbook-interfaces": {
       "tags": ["shared", "logbook"]
+    },
+    "logbook-secondary-adapters": {
+      "tags": ["back", "logbook"]
+    },
+    "logbook-domain": {
+      "tags": ["back", "logbook"]
     }
   }
 }

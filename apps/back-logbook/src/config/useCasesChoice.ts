@@ -1,11 +1,13 @@
-import { retrieveFlightsRead } from "../domain/reads/flights/retrieveFlightsRead";
-import { retrieveWingsRead } from "../domain/reads/wings/retrieveWingsRead";
-import { addFlightCommandHandlerCreator } from "../domain/writes/commandHandlers/flights/AddFlightCommandHandler";
-import { createPilotCommandHandlerCreator } from "../domain/writes/commandHandlers/pilots/CreatePilotCommandHandler";
-import { updatePilotCommandHandlerCreator } from "../domain/writes/commandHandlers/pilots/UpdatePilotCommandHandler";
-import { addWingCommandHandlerCreator } from "../domain/writes/commandHandlers/wings/AddWingCommandHandler";
-import { updateWingCommandHandlerCreator } from "../domain/writes/commandHandlers/wings/UpdateWingCommandHandler";
-import { queries,repositories } from "./secondaryAdaptersChoice";
+import {
+  addFlightCommandHandlerCreator,
+  addWingCommandHandlerCreator,
+  createPilotCommandHandlerCreator,
+  retrieveFlightsRead,
+  retrieveWingsRead,
+  updatePilotCommandHandlerCreator,
+  updateWingCommandHandlerCreator,
+} from "@paralogs/logbook/domain";
+import { queries, repositories } from "./secondaryAdaptersChoice";
 
 export const pilotsUseCases = {
   create: createPilotCommandHandlerCreator({ pilotRepo: repositories.pilot }),
