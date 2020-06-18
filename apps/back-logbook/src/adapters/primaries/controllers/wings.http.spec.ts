@@ -13,7 +13,7 @@ import {
 import jwt from "jsonwebtoken";
 import supertest from "supertest";
 
-import { ENV } from "@paralogs/shared";
+import { ENV } from "@paralogs/back/shared";
 import { pilotsUseCases } from "../../../config/useCasesChoice";
 import { getKnex, resetDb } from "@paralogs/logbook/secondary-adapters";
 import { app } from "../express/server";

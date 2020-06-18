@@ -1,7 +1,4 @@
-import {
-  throwIfNotInArray,
-  throwIfVariableUndefined,
-} from "../../../shared/src/envHelpers";
+import { throwIfNotInArray, throwIfVariableUndefined } from "@paralogs/shared";
 import dotenv from "dotenv";
 
 dotenv.config({ path: `${__dirname}/../../../../.env` });

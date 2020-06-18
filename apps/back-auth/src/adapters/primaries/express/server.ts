@@ -7,7 +7,7 @@ import morgan from "morgan";
 
 import { authController } from "../controllers/auth.controller";
 
-console.log("ENV : ", ENV);
+console.log("--- Auth --- ENV : ", ENV);
 
 export const app = express();
 

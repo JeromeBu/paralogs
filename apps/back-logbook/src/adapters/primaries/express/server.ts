@@ -10,6 +10,8 @@ import { flightsController } from "../controllers/flights.controller";
 import { subscribeToEvents } from "../controllers/pilots.subscribers";
 import { wingsController } from "../controllers/wings.controller";
 
+console.log("--- Logbook --- ENV : ", ENV);
+
 export const app = express();
 
 app.use(bodyParser.json());
