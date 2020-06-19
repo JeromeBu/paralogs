@@ -20,6 +20,7 @@ import {
   PgFlightRepo,
   PgPilotRepo,
   PgWingRepo,
+  WebpackLogbookMigrationSource,
 } from "@paralogs/logbook/secondary-adapters";
 
 import { flightMapper } from "@paralogs/logbook/domain";
@@ -76,7 +77,10 @@ const getInMemoryPersistence = (): Persistence => {
 const pgPersistence = (): Persistence => {
   const knex = getKnex(ENV.nodeEnv);
   // eslint-disable-next-line @typescript-eslint/no-floating-promises
-  if (ENV.nodeEnv !== "test") knex.migrate.latest();
+  if (ENV.nodeEnv !== "test")
+    knex.migrate.latest({
+      migrationSource: new WebpackLogbookMigrationSource(),
+    });
   return {
     queries: {
       wing: createPgWingQueries(knex),

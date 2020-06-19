@@ -10,7 +10,10 @@ import {
   createPgUserQueries,
   PgUserRepo,
 } from "@paralogs/auth/secondary-adapters";
-import { getKnex } from "@paralogs/auth/secondary-adapters";
+import {
+  getKnex,
+  WebpackAuthMigrationSource,
+} from "@paralogs/auth/secondary-adapters";
 import { ENV, EventBusOption, RepositoriesOption } from "@paralogs/back/shared";
 import {
   UserQueries,
@@ -60,7 +63,11 @@ const getInMemoryPersistence = (): Persistence => {
 const getPgPersistence = (): Persistence => {
   const knex = getKnex(ENV.nodeEnv);
   // eslint-disable-next-line @typescript-eslint/no-floating-promises
-  if (ENV.nodeEnv !== "test") knex.migrate.latest();
+  if (ENV.nodeEnv !== "test") {
+    knex.migrate.latest({
+      migrationSource: new WebpackAuthMigrationSource(),
+    });
+  }
   return {
     repositories: {
       user: new PgUserRepo(knex),

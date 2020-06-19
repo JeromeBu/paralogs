@@ -4,3 +4,4 @@ export * from "./wings/PgWingRepo";
 export * from "./flights/PgFlightQueries";
 export * from "./flights/PgFlightRepo";
 export * from "./knex/db";
+export * from "./knex/WebpackLogbookMigrationSource";
