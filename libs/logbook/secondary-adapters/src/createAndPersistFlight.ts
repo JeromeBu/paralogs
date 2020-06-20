@@ -1,5 +1,5 @@
 import Knex from "knex";
-import { RequireField } from "@paralogs/shared";
+import { RequireField } from "@paralogs/shared/common";
 import { FlightDTO } from "@paralogs/logbook/interfaces";
 import { makeFlightEntity } from "@paralogs/logbook/domain";
 

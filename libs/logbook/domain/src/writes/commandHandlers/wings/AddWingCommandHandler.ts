@@ -2,7 +2,7 @@ import {
   checkNotExists,
   notUniqError,
   ResultAsync,
-} from "@paralogs/back/shared";
+} from "@paralogs/shared/back";
 import { WingDTO } from "@paralogs/logbook/interfaces";
 import { liftEither } from "purify-ts/EitherAsync";
 

@@ -3,7 +3,7 @@ import {
   Entity,
   PersonName,
   Result,
-} from "@paralogs/back/shared";
+} from "@paralogs/shared/back";
 import {
   PilotDTO,
   PilotUuid,

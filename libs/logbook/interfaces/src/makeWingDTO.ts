@@ -1,5 +1,5 @@
 import merge from "ramda/src/merge";
-import { generateUuid } from "@paralogs/shared";
+import { generateUuid } from "@paralogs/shared/common";
 
 import { WingDTO } from "./WingDTOs";
 

@@ -1,4 +1,4 @@
-import { Persisted } from "@paralogs/back/shared";
+import { Persisted } from "@paralogs/shared/back";
 import { FlightUuid, PilotUuid, WingUuid } from "@paralogs/logbook/interfaces";
 
 export interface FlightPersistence {

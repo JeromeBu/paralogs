@@ -2,8 +2,8 @@
  * @group unit
  */
 
-import { Result } from "@paralogs/back/shared";
-import { expectEitherToMatchError } from "@paralogs/back/test-helpers";
+import { Result } from "@paralogs/shared/back";
+import { expectEitherToMatchError } from "@paralogs/shared/back-test-helpers";
 import { CurrentUserWithAuthToken } from "@paralogs/auth/interface";
 
 import {

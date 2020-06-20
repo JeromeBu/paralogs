@@ -12,7 +12,7 @@ import {
   PilotEntity,
   WingRepo,
 } from "@paralogs/logbook/domain";
-import { generateUuid } from "@paralogs/shared";
+import { generateUuid } from "@paralogs/shared/common";
 
 import { getKnex, resetDb } from "../knex/db";
 import { pilotPersistenceMapper } from "../pilots/pilotPersistenceMapper";

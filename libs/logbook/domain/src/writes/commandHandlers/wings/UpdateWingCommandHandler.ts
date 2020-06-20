@@ -1,4 +1,4 @@
-import { notFoundError, ResultAsync } from "@paralogs/back/shared";
+import { notFoundError, ResultAsync } from "@paralogs/shared/back";
 import { UpdateWingDTO, WithPilotUuid } from "@paralogs/logbook/interfaces";
 
 import { WingRepo } from "../../gateways/WingRepo";

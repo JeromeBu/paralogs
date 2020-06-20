@@ -2,7 +2,7 @@ import * as faker from "faker";
 import { merge } from "ramda";
 
 import { UserDTO } from "./UserDTOs";
-import { generateUuid } from "@paralogs/shared";
+import { generateUuid } from "@paralogs/shared/common";
 
 export const makeUserDTO = (userParams: Partial<UserDTO> = {}): UserDTO => {
   const randomUser: UserDTO = {

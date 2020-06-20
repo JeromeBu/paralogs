@@ -5,7 +5,7 @@ import {
   ResultAsync,
   RightAsync,
   validationError,
-} from "@paralogs/back/shared";
+} from "@paralogs/shared/back";
 import {
   CurrentUserWithAuthToken,
   LoginParams,

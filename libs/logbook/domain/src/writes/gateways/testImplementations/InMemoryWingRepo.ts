@@ -1,5 +1,5 @@
-import { getNextId, ResultAsync, RightAsyncVoid } from "@paralogs/back/shared";
-import { findByUuidAndReplace } from "@paralogs/shared";
+import { getNextId, ResultAsync, RightAsyncVoid } from "@paralogs/shared/back";
+import { findByUuidAndReplace } from "@paralogs/shared/common";
 import { PilotUuid, WingUuid } from "@paralogs/logbook/interfaces";
 import { WingEntity } from "@paralogs/logbook/domain";
 import { List } from "purify-ts";

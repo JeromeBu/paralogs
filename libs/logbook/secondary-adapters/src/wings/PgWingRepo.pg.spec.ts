@@ -6,7 +6,7 @@
 import {
   expectEitherToMatchError,
   expectRight,
-} from "@paralogs/back/test-helpers";
+} from "@paralogs/shared/back-test-helpers";
 import {
   makePilotEntity,
   makeWingEntity,
@@ -15,7 +15,7 @@ import {
   WingRepo,
 } from "@paralogs/logbook/domain";
 import { UpdateWingDTO } from "@paralogs/logbook/interfaces";
-import { generateUuid } from "@paralogs/shared";
+import { generateUuid } from "@paralogs/shared/common";
 
 import { getKnex, resetDb } from "../knex/db";
 import { PilotPersistence } from "../pilots/PilotPersistence";

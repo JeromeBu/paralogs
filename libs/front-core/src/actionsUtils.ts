@@ -1,4 +1,4 @@
-import { StringError } from "@paralogs/shared";
+import { StringError } from "@paralogs/shared/common";
 import {
   ActionCreatorWithOptionalPayload,
   PayloadAction,

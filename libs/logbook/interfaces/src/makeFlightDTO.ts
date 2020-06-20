@@ -1,5 +1,5 @@
 import * as R from "ramda";
-import { generateUuid } from "@paralogs/shared";
+import { generateUuid } from "@paralogs/shared/common";
 
 import { FlightDTO } from "./FlightDTOs";
 import { makeWingDTO } from "./makeWingDTO";

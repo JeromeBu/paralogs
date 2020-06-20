@@ -2,8 +2,8 @@
  * @group unit
  */
 
-import { expectRight } from "@paralogs/back/test-helpers";
-import { generateUuid } from "@paralogs/shared";
+import { expectRight } from "@paralogs/shared/back-test-helpers";
+import { generateUuid } from "@paralogs/shared/common";
 
 import { InMemoryPilotRepo } from "../../gateways/testImplementations";
 import { pilotMapper } from "../../mappers/pilotMapper";

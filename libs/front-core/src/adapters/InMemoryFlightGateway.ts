@@ -1,5 +1,5 @@
 import { AddFlightDTO, FlightDTO } from "@paralogs/logbook/interfaces";
-import { generateUuid } from "@paralogs/shared";
+import { generateUuid } from "@paralogs/shared/common";
 import { BehaviorSubject, of } from "rxjs";
 
 import { FlightGateway } from "../useCases/flights/gateways/FlightGateway";

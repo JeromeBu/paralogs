@@ -1,4 +1,4 @@
-import { RequireField } from "@paralogs/shared";
+import { RequireField } from "@paralogs/shared/common";
 import { WingDTO } from "@paralogs/logbook/interfaces";
 import { makeWingEntity } from "@paralogs/logbook/domain";
 import Knex from "knex";

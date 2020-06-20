@@ -3,7 +3,7 @@ import {
   Entity,
   PersonName,
   ResultAsync,
-} from "@paralogs/back/shared";
+} from "@paralogs/shared/back";
 import {
   SignUpParams,
   UpdateUserDTO,

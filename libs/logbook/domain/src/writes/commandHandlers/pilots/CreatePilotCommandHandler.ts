@@ -1,4 +1,4 @@
-import { RightAsyncVoid } from "@paralogs/back/shared";
+import { RightAsyncVoid } from "@paralogs/shared/back";
 import { PilotDTO } from "@paralogs/logbook/interfaces";
 import { liftEither } from "purify-ts/EitherAsync";
 

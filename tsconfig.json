@@ -12,29 +12,57 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "typeRoots": ["node_modules/@types"],
-    "lib": ["es2017", "dom"],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2017",
+      "dom"
+    ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@paralogs/api-interfaces": ["libs/api-interfaces/src/index.ts"],
-      "@paralogs/shared": ["libs/shared/src/index.ts"],
-      "@paralogs/front-core": ["libs/front-core/src/index.ts"],
-      "@paralogs/test-helpers": ["libs/test-helpers/src/index.ts"],
-      "@paralogs/back/test-helpers": ["libs/back/test-helpers/src/index.ts"],
-      "@paralogs/back/shared": ["libs/back/shared/src/index.ts"],
-      "@paralogs/auth/interface": ["libs/auth/interface/src/index.ts"],
-      "@paralogs/logbook/interfaces": ["libs/logbook/interfaces/src/index.ts"],
-      "@paralogs/auth/domain": ["libs/auth/domain/src/index.ts"],
+      "@paralogs/api-interfaces": [
+        "libs/api-interfaces/src/index.ts"
+      ],
+      "@paralogs/front-core": [
+        "libs/front-core/src/index.ts"
+      ],
+      "@paralogs/test-helpers": [
+        "libs/test-helpers/src/index.ts"
+      ],
+      "@paralogs/auth/interface": [
+        "libs/auth/interface/src/index.ts"
+      ],
+      "@paralogs/logbook/interfaces": [
+        "libs/logbook/interfaces/src/index.ts"
+      ],
+      "@paralogs/auth/domain": [
+        "libs/auth/domain/src/index.ts"
+      ],
       "@paralogs/auth/secondary-adapters": [
         "libs/auth/secondary-adapters/src/index.ts"
       ],
       "@paralogs/logbook/secondary-adapters": [
         "libs/logbook/secondary-adapters/src/index.ts"
       ],
-      "@paralogs/logbook/domain": ["libs/logbook/domain/src/index.ts"]
+      "@paralogs/logbook/domain": [
+        "libs/logbook/domain/src/index.ts"
+      ],
+      "@paralogs/shared/back": [
+        "libs/shared/back/src/index.ts"
+      ],
+      "@paralogs/shared/back-test-helpers": [
+        "libs/shared/back-test-helpers/src/index.ts"
+      ],
+      "@paralogs/shared/common": [
+        "libs/shared/common/src/index.ts"
+      ]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }
