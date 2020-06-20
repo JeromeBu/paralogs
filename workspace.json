@@ -86,126 +86,6 @@
         }
       }
     },
-    "back-auth": {
-      "root": "apps/back-auth",
-      "sourceRoot": "apps/back-auth/src",
-      "projectType": "application",
-      "prefix": "back-auth",
-      "schematics": {},
-      "architect": {
-        "build": {
-          "builder": "@nrwl/node:build",
-          "options": {
-            "outputPath": "dist/apps/back-auth",
-            "main": "apps/back-auth/src/main.ts",
-            "tsConfig": "apps/back-auth/tsconfig.app.json",
-            "assets": []
-          },
-          "configurations": {
-            "production": {
-              "optimization": true,
-              "extractLicenses": true,
-              "inspect": false,
-              "fileReplacements": [
-                {
-                  "replace": "apps/back-auth/src/environments/environment.ts",
-                  "with": "apps/back-auth/src/environments/environment.prod.ts"
-                }
-              ]
-            }
-          }
-        },
-        "serve": {
-          "builder": "@nrwl/node:execute",
-          "options": {
-            "buildTarget": "back-auth:build"
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:lint",
-          "options": {
-            "linter": "eslint",
-            "config": "apps/back-auth/.eslintrc",
-            "tsConfig": [
-              "apps/back-auth/tsconfig.app.json",
-              "apps/back-auth/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/back-auth/**"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "apps/back-auth/jest.config.js",
-            "tsConfig": "apps/back-auth/tsconfig.spec.json",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "back-logbook": {
-      "root": "apps/back-logbook",
-      "sourceRoot": "apps/back-logbook/src",
-      "projectType": "application",
-      "prefix": "back-logbook",
-      "schematics": {},
-      "architect": {
-        "build": {
-          "builder": "@nrwl/node:build",
-          "options": {
-            "outputPath": "dist/apps/back-logbook",
-            "main": "apps/back-logbook/src/main.ts",
-            "tsConfig": "apps/back-logbook/tsconfig.app.json",
-            "assets": []
-          },
-          "configurations": {
-            "production": {
-              "optimization": true,
-              "extractLicenses": true,
-              "inspect": false,
-              "fileReplacements": [
-                {
-                  "replace": "apps/back-logbook/src/environments/environment.ts",
-                  "with": "apps/back-logbook/src/environments/environment.prod.ts"
-                }
-              ]
-            }
-          }
-        },
-        "serve": {
-          "builder": "@nrwl/node:execute",
-          "options": {
-            "buildTarget": "back-logbook:build"
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:lint",
-          "options": {
-            "linter": "eslint",
-            "config": "apps/back-logbook/.eslintrc",
-            "tsConfig": [
-              "apps/back-logbook/tsconfig.app.json",
-              "apps/back-logbook/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/back-logbook/**"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "apps/back-logbook/jest.config.js",
-            "tsConfig": "apps/back-logbook/tsconfig.spec.json",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
     "front-core": {
       "root": "libs/front-core",
       "sourceRoot": "libs/front-core/src",
@@ -493,6 +373,126 @@
           "options": {
             "jestConfig": "libs/shared/common/jest.config.js",
             "tsConfig": "libs/shared/common/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "api-logbook": {
+      "root": "apps/api/logbook",
+      "sourceRoot": "apps/api/logbook/src",
+      "projectType": "application",
+      "prefix": "back-logbook",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/api/logbook",
+            "main": "apps/api/logbook/src/main.ts",
+            "tsConfig": "apps/api/logbook/tsconfig.app.json",
+            "assets": []
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/api/logbook/src/environments/environment.ts",
+                  "with": "apps/api/logbook/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "api-logbook:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "apps/api/logbook/.eslintrc",
+            "tsConfig": [
+              "apps/api/logbook/tsconfig.app.json",
+              "apps/api/logbook/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/api/logbook/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/api/logbook/jest.config.js",
+            "tsConfig": "apps/api/logbook/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "api-auth": {
+      "root": "apps/api/auth",
+      "sourceRoot": "apps/api/auth/src",
+      "projectType": "application",
+      "prefix": "back-auth",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/api/auth",
+            "main": "apps/api/auth/src/main.ts",
+            "tsConfig": "apps/api/auth/tsconfig.app.json",
+            "assets": []
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/api/auth/src/environments/environment.ts",
+                  "with": "apps/api/auth/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "api-auth:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "apps/api/auth/.eslintrc",
+            "tsConfig": [
+              "apps/api/auth/tsconfig.app.json",
+              "apps/api/auth/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/api/auth/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/api/auth/jest.config.js",
+            "tsConfig": "apps/api/auth/tsconfig.spec.json",
             "passWithNoTests": true
           }
         }

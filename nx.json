@@ -35,12 +35,6 @@
         "cross-domain"
       ]
     },
-    "back-auth": {
-      "tags": [
-        "back",
-        "auth"
-      ]
-    },
     "auth-interface": {
       "tags": [
         "shared",
@@ -57,12 +51,6 @@
       "tags": [
         "back",
         "auth"
-      ]
-    },
-    "back-logbook": {
-      "tags": [
-        "back",
-        "logbook"
       ]
     },
     "logbook-interfaces": {
@@ -99,6 +87,19 @@
       "tags": [
         "shared",
         "cross-domain"
+      ]
+    },
+    "api-logbook": {
+      "tags": [
+        "back",
+        "logbook"
+      ]
+    },
+    "api-auth": {
+      "tags": [
+        "back",
+        "auth",
+        "app"
       ]
     }
   }
