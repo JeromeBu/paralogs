@@ -1,4 +1,4 @@
-import { LeftAsync, ResultAsync, RightAsyncVoid } from "@paralogs/back/shared";
+import { LeftAsync, ResultAsync, RightAsyncVoid } from "@paralogs/shared/back";
 import { UserUuid } from "@paralogs/auth/interface";
 import Knex from "knex";
 import { Maybe } from "purify-ts";

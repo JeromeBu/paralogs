@@ -2,7 +2,7 @@
  * @group unit
  */
 
-import { generateUuid } from "@paralogs/shared";
+import { generateUuid } from "@paralogs/shared/common";
 import {
   FlightDTO,
   makePilotDTO,

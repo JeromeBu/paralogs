@@ -4,7 +4,7 @@
  */
 
 import { PilotDTO, PilotUuid } from "@paralogs/logbook/interfaces";
-import { generateUuid } from "@paralogs/shared";
+import { generateUuid } from "@paralogs/shared/common";
 
 import { createAndPersistPilot } from "../createAndPersistPilot";
 import { createAndPersistWing } from "../createAndPersistWing";

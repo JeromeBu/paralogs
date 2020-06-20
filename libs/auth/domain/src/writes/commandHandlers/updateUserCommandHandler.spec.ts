@@ -5,11 +5,11 @@
 import {
   createInMemoryEventBus,
   InMemoryEventBus,
-} from "@paralogs/back/shared";
+} from "@paralogs/shared/back";
 import {
   createExpectDispatchedEvent,
   expectRight,
-} from "@paralogs/back/test-helpers";
+} from "@paralogs/shared/back-test-helpers";
 
 import {
   InMemoryUserRepo,

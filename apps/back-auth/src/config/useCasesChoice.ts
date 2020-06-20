@@ -5,8 +5,8 @@ import {
   updateUserCommandHandler,
 } from "@paralogs/auth/domain";
 import { ProductionHashAndTokenManager } from "@paralogs/auth/secondary-adapters";
-import { ENV } from "@paralogs/back/shared";
-import { ActualUuidGenerator } from "@paralogs/shared";
+import { ENV } from "@paralogs/shared/back";
+import { ActualUuidGenerator } from "@paralogs/shared/common";
 import { eventBus, queries, repositories } from "./secondaryAdaptersChoice";
 
 const userRepo = repositories.user;

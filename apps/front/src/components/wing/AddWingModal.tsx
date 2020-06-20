@@ -5,7 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import SaveIcon from "@material-ui/icons/Save";
 import { RootState, wingActions } from "@paralogs/front-core";
 import { AddWingDTO, addWingSchema } from "@paralogs/logbook/interfaces";
-import { generateUuid } from "@paralogs/shared";
+import { generateUuid } from "@paralogs/shared/common";
 import { format } from "date-fns";
 import { Form, Formik } from "formik";
 import * as R from "ramda";

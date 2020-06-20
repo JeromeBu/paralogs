@@ -13,7 +13,7 @@ import {
 import {
   expectEitherToMatchError,
   expectRight,
-} from "@paralogs/back/test-helpers";
+} from "@paralogs/shared/back-test-helpers";
 
 import { getKnex, resetDb } from "../knex/db";
 import { PgUserRepo } from "./PgUserRepo";

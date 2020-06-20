@@ -6,8 +6,8 @@ import {
   ResultAsync,
   RightAsyncVoid,
   validationError,
-} from "@paralogs/back/shared";
-import { findByUuidAndReplace } from "@paralogs/shared";
+} from "@paralogs/shared/back";
+import { findByUuidAndReplace } from "@paralogs/shared/common";
 import { Left, List } from "purify-ts";
 import { liftEither } from "purify-ts/EitherAsync";
 import { liftMaybe } from "purify-ts/MaybeAsync";

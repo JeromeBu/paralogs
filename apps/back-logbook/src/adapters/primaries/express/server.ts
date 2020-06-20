@@ -1,10 +1,10 @@
-import { createAuthenticateMiddleware } from "@paralogs/back/shared";
+import { createAuthenticateMiddleware } from "@paralogs/shared/back";
 import bodyParser from "body-parser";
 import cors from "cors";
 import express from "express";
 import morgan from "morgan";
 
-import { ENV } from "@paralogs/back/shared";
+import { ENV } from "@paralogs/shared/back";
 import { eventBus } from "../../../config/secondaryAdaptersChoice";
 import { flightsController } from "../controllers/flights.controller";
 import { subscribeToEvents } from "../controllers/pilots.subscribers";

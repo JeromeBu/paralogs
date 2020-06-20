@@ -12,7 +12,7 @@ import {
 } from "@paralogs/auth/interface";
 import supertest from "supertest";
 import { getKnex, resetDb } from "@paralogs/auth/secondary-adapters";
-import { ENV } from "@paralogs/back/shared";
+import { ENV } from "@paralogs/shared/back";
 
 import { app } from "../express/server";
 

@@ -1,4 +1,4 @@
-import { findByUuidAndReplace, StringError, ValueOf } from "@paralogs/shared";
+import { findByUuidAndReplace, StringError, ValueOf } from "@paralogs/shared/common";
 import {
   AddWingDTO,
   UpdateWingDTO,

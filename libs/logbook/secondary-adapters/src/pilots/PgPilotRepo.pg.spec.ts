@@ -3,8 +3,8 @@
  * @group integration
  */
 
-import { PersonName } from "@paralogs/back/shared";
-import { expectRight } from "@paralogs/back/test-helpers";
+import { PersonName } from "@paralogs/shared/back";
+import { expectRight } from "@paralogs/shared/back-test-helpers";
 import {
   makePilotEntity,
   PilotEntity,

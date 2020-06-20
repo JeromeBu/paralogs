@@ -14,49 +14,92 @@
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
       "options": {
-        "cacheableOperations": ["build", "lint", "test"]
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "test"
+        ]
       }
     }
   },
   "projects": {
-    "shared": {
-      "tags": ["shared", "cross-domain"]
-    },
     "front": {
-      "tags": ["front", "cross-domain"]
+      "tags": [
+        "front",
+        "cross-domain"
+      ]
     },
     "front-core": {
-      "tags": ["front", "cross-domain"]
-    },
-    "back-shared": {
-      "tags": ["back", "cross-domain"]
-    },
-    "back-test-helpers": {
-      "tags": ["back", "cross-domain"]
+      "tags": [
+        "front",
+        "cross-domain"
+      ]
     },
     "back-auth": {
-      "tags": ["back", "auth"]
+      "tags": [
+        "back",
+        "auth"
+      ]
     },
     "auth-interface": {
-      "tags": ["shared", "auth"]
+      "tags": [
+        "shared",
+        "auth"
+      ]
     },
     "auth-domain": {
-      "tags": ["back", "auth"]
+      "tags": [
+        "back",
+        "auth"
+      ]
     },
     "auth-secondary-adapters": {
-      "tags": ["back", "auth"]
+      "tags": [
+        "back",
+        "auth"
+      ]
     },
     "back-logbook": {
-      "tags": ["back", "logbook"]
+      "tags": [
+        "back",
+        "logbook"
+      ]
     },
     "logbook-interfaces": {
-      "tags": ["shared", "logbook"]
+      "tags": [
+        "shared",
+        "logbook"
+      ]
     },
     "logbook-secondary-adapters": {
-      "tags": ["back", "logbook"]
+      "tags": [
+        "back",
+        "logbook"
+      ]
     },
     "logbook-domain": {
-      "tags": ["back", "logbook"]
+      "tags": [
+        "back",
+        "logbook"
+      ]
+    },
+    "shared-back": {
+      "tags": [
+        "back",
+        "cross-domain"
+      ]
+    },
+    "shared-back-test-helpers": {
+      "tags": [
+        "back",
+        "cross-domain"
+      ]
+    },
+    "shared-common": {
+      "tags": [
+        "shared",
+        "cross-domain"
+      ]
     }
   }
 }

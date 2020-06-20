@@ -1,4 +1,4 @@
-import { generateUuid } from "@paralogs/shared";
+import { generateUuid } from "@paralogs/shared/common";
 
 import { AppEvent, EventBus } from "./EventBus";
 

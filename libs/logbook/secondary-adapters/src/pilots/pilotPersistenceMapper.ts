@@ -1,4 +1,4 @@
-import { combineEithers, PersonName } from "@paralogs/back/shared";
+import { combineEithers, PersonName } from "@paralogs/shared/back";
 import { PilotDTO } from "@paralogs/logbook/interfaces";
 import { PilotEntity } from "@paralogs/logbook/domain";
 

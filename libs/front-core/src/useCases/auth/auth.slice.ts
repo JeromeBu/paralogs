@@ -1,4 +1,4 @@
-import { StringError, ValueOf } from "@paralogs/shared";
+import { StringError, ValueOf } from "@paralogs/shared/common";
 import {
   CurrentUserWithAuthToken,
   LoginParams,

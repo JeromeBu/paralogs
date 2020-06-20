@@ -1,5 +1,5 @@
-import { createAuthenticateMiddleware } from "@paralogs/back/shared";
-import { ENV } from "@paralogs/back/shared";
+import { createAuthenticateMiddleware } from "@paralogs/shared/back";
+import { ENV } from "@paralogs/shared/back";
 import bodyParser from "body-parser";
 import cors from "cors";
 import express from "express";

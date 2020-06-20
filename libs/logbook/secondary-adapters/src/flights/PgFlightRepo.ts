@@ -12,7 +12,7 @@ import {
   ResultAsync,
   RightAsyncVoid,
   validationError,
-} from "@paralogs/back/shared";
+} from "@paralogs/shared/back";
 import { FlightUuid, PilotUuid, WingUuid } from "@paralogs/logbook/interfaces";
 import { FlightEntity, FlightRepo } from "@paralogs/logbook/domain";
 

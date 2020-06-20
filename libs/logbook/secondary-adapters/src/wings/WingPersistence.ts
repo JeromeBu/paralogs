@@ -1,6 +1,6 @@
-import { Persisted } from "@paralogs/back/shared";
+import { Persisted } from "@paralogs/shared/back";
 import { PilotUuid, WingUuid } from "@paralogs/logbook/interfaces";
-import { DateString, NumberOfMinutes } from "@paralogs/shared";
+import { DateString, NumberOfMinutes } from "@paralogs/shared/common";
 
 export interface WingPersistence {
   id?: number;

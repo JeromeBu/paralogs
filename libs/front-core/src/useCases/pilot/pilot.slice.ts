@@ -1,4 +1,4 @@
-import { StringError, ValueOf } from "@paralogs/shared";
+import { StringError, ValueOf } from "@paralogs/shared/common";
 import { PilotDTO } from "@paralogs/logbook/interfaces";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 

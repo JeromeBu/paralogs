@@ -1,4 +1,4 @@
-import { makeAppErrorCreator } from "@paralogs/back/shared";
+import { makeAppErrorCreator } from "@paralogs/shared/back";
 
 export const knexError = makeAppErrorCreator({
   code: 501,

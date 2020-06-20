@@ -1,6 +1,6 @@
 import * as faker from "faker";
 import merge from "ramda/src/merge";
-import { generateUuid } from "@paralogs/shared";
+import { generateUuid } from "@paralogs/shared/common";
 
 import { PilotDTO } from "./PilotDTOs";
 

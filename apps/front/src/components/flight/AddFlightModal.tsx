@@ -8,7 +8,7 @@ import AddIcon from "@material-ui/icons/Add";
 import SaveIcon from "@material-ui/icons/Save";
 import { flightActions, RootState, wingActions } from "@paralogs/front-core";
 import { AddFlightDTO } from "@paralogs/logbook/interfaces";
-import { generateUuid } from "@paralogs/shared";
+import { generateUuid } from "@paralogs/shared/common";
 import { format } from "date-fns";
 import { Form, Formik } from "formik";
 import * as R from "ramda";

@@ -1,4 +1,4 @@
-import { EnvironmentOption } from "@paralogs/back/shared";
+import { EnvironmentOption } from "@paralogs/shared/back";
 
 const migrations = {
   // schemaName: "logbook",

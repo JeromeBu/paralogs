@@ -5,7 +5,7 @@
 import {
   expectEitherToMatchError,
   expectRight,
-} from "@paralogs/back/test-helpers";
+} from "@paralogs/shared/back-test-helpers";
 import { makeWingDTO } from "@paralogs/logbook/interfaces";
 
 import { InMemoryWingRepo } from "../../gateways/testImplementations/InMemoryWingRepo";

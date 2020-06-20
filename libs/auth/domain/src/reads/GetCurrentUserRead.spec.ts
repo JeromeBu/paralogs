@@ -3,7 +3,7 @@
  */
 
 import { CurrentUserWithAuthToken } from "@paralogs/auth/interface";
-import { generateUuid } from "@paralogs/shared";
+import { generateUuid } from "@paralogs/shared/common";
 import { Just } from "purify-ts";
 import { liftMaybe } from "purify-ts/MaybeAsync";
 

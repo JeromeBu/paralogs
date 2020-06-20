@@ -1,4 +1,4 @@
-import { ValueOf } from "@paralogs/shared";
+import { ValueOf } from "@paralogs/shared/common";
 
 import { AuthAction, authActions } from "../useCases/auth/auth.slice";
 import { FlightAction, flightActions } from "../useCases/flights/flights.slice";

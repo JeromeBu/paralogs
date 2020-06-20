@@ -1,6 +1,6 @@
 import * as Yup from "yup";
 
-import { Flavor } from "@paralogs/shared";
+import { Flavor } from "@paralogs/shared/common";
 
 export type UserUuid = Flavor<string, "UserUuid">;
 

@@ -2,7 +2,7 @@ import {
   notFoundError,
   ResultAsync,
   RightAsyncVoid,
-} from "@paralogs/back/shared";
+} from "@paralogs/shared/back";
 import { WingEntity, WingRepo } from "@paralogs/logbook/domain";
 import { PilotUuid, WingUuid } from "@paralogs/logbook/interfaces";
 import Knex from "knex";

@@ -1,4 +1,4 @@
-import { Result, validationError } from "@paralogs/back/shared";
+import { Result, validationError } from "@paralogs/shared/back";
 import { Left, Right } from "purify-ts";
 
 export class Password {

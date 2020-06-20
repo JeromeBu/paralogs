@@ -3,7 +3,7 @@ import {
   notFoundError,
   ResultAsync,
   RightAsyncVoid,
-} from "@paralogs/back/shared";
+} from "@paralogs/shared/back";
 import { UpdateUserDTO, WithUuid } from "@paralogs/auth/interface";
 import { liftEither } from "purify-ts/EitherAsync";
 

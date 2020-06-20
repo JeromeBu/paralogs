@@ -4,8 +4,8 @@ import {
   notFoundError,
   ResultAsync,
   RightAsyncVoid,
-} from "@paralogs/back/shared";
-import { findByUuidAndReplace } from "@paralogs/shared";
+} from "@paralogs/shared/back";
+import { findByUuidAndReplace } from "@paralogs/shared/common";
 import { PilotUuid } from "@paralogs/logbook/interfaces";
 import { PilotEntity } from "@paralogs/logbook/domain";
 import { List } from "purify-ts";

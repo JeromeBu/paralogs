@@ -1,4 +1,4 @@
-import { ResultAsync } from "@paralogs/back/shared";
+import { ResultAsync } from "@paralogs/shared/back";
 import { PilotUuid, WingUuid } from "@paralogs/logbook/interfaces";
 import { MaybeAsync } from "purify-ts";
 

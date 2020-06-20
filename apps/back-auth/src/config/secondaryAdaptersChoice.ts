@@ -2,7 +2,7 @@ import {
   createInMemoryEventBus,
   createRedisEventBus,
   EventBus,
-} from "@paralogs/back/shared";
+} from "@paralogs/shared/back";
 import { List } from "purify-ts";
 import { liftMaybe } from "purify-ts/MaybeAsync";
 
@@ -14,7 +14,7 @@ import {
   getKnex,
   WebpackAuthMigrationSource,
 } from "@paralogs/auth/secondary-adapters";
-import { ENV, EventBusOption, RepositoriesOption } from "@paralogs/back/shared";
+import { ENV, EventBusOption, RepositoriesOption } from "@paralogs/shared/back";
 import {
   UserQueries,
   UserRepo,

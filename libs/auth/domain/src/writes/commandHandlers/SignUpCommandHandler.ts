@@ -1,5 +1,5 @@
-import { EventBus, ResultAsync } from "@paralogs/back/shared";
-import { UuidGenerator } from "@paralogs/shared";
+import { EventBus, ResultAsync } from "@paralogs/shared/back";
+import { UuidGenerator } from "@paralogs/shared/common";
 import {
   CurrentUserWithAuthToken,
   SignUpParams,

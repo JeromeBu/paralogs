@@ -1,5 +1,5 @@
 import { UserUuid } from "@paralogs/auth/interface";
-import { Persisted } from "@paralogs/back/shared";
+import { Persisted } from "@paralogs/shared/back";
 
 export type UserPersistence = {
   id?: number;

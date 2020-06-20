@@ -1,5 +1,5 @@
-import { Entity, Result } from "@paralogs/back/shared";
-import { DateString, NumberOfMinutes } from "@paralogs/shared";
+import { Entity, Result } from "@paralogs/shared/back";
+import { DateString, NumberOfMinutes } from "@paralogs/shared/common";
 import {
   PilotUuid,
   UpdateWingDTO,

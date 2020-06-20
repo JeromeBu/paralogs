@@ -11,12 +11,12 @@ import {
   createInMemoryEventBus,
   InMemoryEventBus,
   Result,
-} from "@paralogs/back/shared";
+} from "@paralogs/shared/back";
 import {
   createExpectDispatchedEvent,
   expectEitherToMatchError,
-} from "@paralogs/back/test-helpers";
-import { FakeUuidGenerator, generateUuid } from "@paralogs/shared";
+} from "@paralogs/shared/back-test-helpers";
+import { FakeUuidGenerator, generateUuid } from "@paralogs/shared/common";
 
 import {
   InMemoryUserRepo,

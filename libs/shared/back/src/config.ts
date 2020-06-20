@@ -1,4 +1,4 @@
-import { throwIfNotInArray, throwIfVariableUndefined } from "@paralogs/shared";
+import { throwIfNotInArray, throwIfVariableUndefined } from "@paralogs/shared/common";
 import dotenv from "dotenv";
 
 dotenv.config({ path: `${__dirname}/../../../../.env` });

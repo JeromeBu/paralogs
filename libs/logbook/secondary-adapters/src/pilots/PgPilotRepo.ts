@@ -1,4 +1,4 @@
-import { LeftAsync, ResultAsync, RightAsyncVoid } from "@paralogs/back/shared";
+import { LeftAsync, ResultAsync, RightAsyncVoid } from "@paralogs/shared/back";
 import { PilotEntity, PilotRepo } from "@paralogs/logbook/domain";
 import { PilotUuid } from "@paralogs/logbook/interfaces";
 import Knex from "knex";

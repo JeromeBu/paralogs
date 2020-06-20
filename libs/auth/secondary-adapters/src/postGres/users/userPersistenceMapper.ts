@@ -1,4 +1,4 @@
-import { combineEithers, PersonName } from "@paralogs/back/shared";
+import { combineEithers, PersonName } from "@paralogs/shared/back";
 import { UserDTO } from "@paralogs/auth/interface";
 
 import { Email, UserEntity } from "@paralogs/auth/domain";

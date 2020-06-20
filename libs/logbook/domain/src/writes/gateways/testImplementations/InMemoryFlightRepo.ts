@@ -3,7 +3,7 @@ import {
   ResultAsync,
   RightAsyncVoid,
   validationError,
-} from "@paralogs/back/shared";
+} from "@paralogs/shared/back";
 import { FlightUuid, PilotUuid } from "@paralogs/logbook/interfaces";
 import { FlightEntity } from "@paralogs/logbook/domain";
 import { List } from "purify-ts";

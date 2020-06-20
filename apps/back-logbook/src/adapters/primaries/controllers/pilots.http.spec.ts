@@ -3,9 +3,9 @@
  * @group integration
  */
 
-import { createInMemoryEventBus } from "@paralogs/back/shared";
+import { createInMemoryEventBus } from "@paralogs/shared/back";
 import { PilotDTO } from "@paralogs/logbook/interfaces";
-import { generateUuid } from "@paralogs/shared";
+import { generateUuid } from "@paralogs/shared/common";
 import { pilotMapper } from "@paralogs/logbook/domain";
 
 import { repositories } from "../../../config/secondaryAdaptersChoice";

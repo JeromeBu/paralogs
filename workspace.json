@@ -15,8 +15,12 @@
             "main": "apps/front/src/main.tsx",
             "polyfills": "apps/front/src/polyfills.ts",
             "tsConfig": "apps/front/tsconfig.app.json",
-            "assets": ["apps/front/src/favicon.ico"],
-            "styles": ["apps/front/src/styles.css"],
+            "assets": [
+              "apps/front/src/favicon.ico"
+            ],
+            "styles": [
+              "apps/front/src/styles.css"
+            ],
             "scripts": [],
             "webpackConfig": "@nrwl/react/plugins/webpack"
           },
@@ -66,7 +70,10 @@
               "apps/front/tsconfig.app.json",
               "apps/front/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/front/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/front/**"
+            ]
           }
         },
         "test": {
@@ -74,34 +81,6 @@
           "options": {
             "jestConfig": "apps/front/jest.config.js",
             "tsConfig": "apps/front/tsconfig.spec.json",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "shared": {
-      "root": "libs/shared",
-      "sourceRoot": "libs/shared/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:lint",
-          "options": {
-            "linter": "eslint",
-            "config": "libs/shared/.eslintrc",
-            "tsConfig": [
-              "libs/shared/tsconfig.lib.json",
-              "libs/shared/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/shared/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/shared/jest.config.js",
-            "tsConfig": "libs/shared/tsconfig.spec.json",
             "passWithNoTests": true
           }
         }
@@ -151,7 +130,10 @@
               "apps/back-auth/tsconfig.app.json",
               "apps/back-auth/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/back-auth/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/back-auth/**"
+            ]
           }
         },
         "test": {
@@ -208,7 +190,10 @@
               "apps/back-logbook/tsconfig.app.json",
               "apps/back-logbook/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/back-logbook/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/back-logbook/**"
+            ]
           }
         },
         "test": {
@@ -236,7 +221,10 @@
               "libs/front-core/tsconfig.lib.json",
               "libs/front-core/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/front-core/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/front-core/**"
+            ]
           }
         },
         "test": {
@@ -244,62 +232,6 @@
           "options": {
             "jestConfig": "libs/front-core/jest.config.js",
             "tsConfig": "libs/front-core/tsconfig.spec.json",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "back-test-helpers": {
-      "root": "libs/back/test-helpers",
-      "sourceRoot": "libs/back/test-helpers/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:lint",
-          "options": {
-            "linter": "eslint",
-            "config": "libs/back/test-helpers/.eslintrc",
-            "tsConfig": [
-              "libs/back/test-helpers/tsconfig.lib.json",
-              "libs/back/test-helpers/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/back/test-helpers/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/back/test-helpers/jest.config.js",
-            "tsConfig": "libs/back/test-helpers/tsconfig.spec.json",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "back-shared": {
-      "root": "libs/back/shared",
-      "sourceRoot": "libs/back/shared/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:lint",
-          "options": {
-            "linter": "eslint",
-            "config": "libs/back/shared/.eslintrc",
-            "tsConfig": [
-              "libs/back/shared/tsconfig.lib.json",
-              "libs/back/shared/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/back/shared/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/back/shared/jest.config.js",
-            "tsConfig": "libs/back/shared/tsconfig.spec.json",
             "passWithNoTests": true
           }
         }
@@ -316,8 +248,13 @@
           "options": {
             "linter": "eslint",
             "config": "libs/auth/interface/.eslintrc",
-            "tsConfig": ["libs/auth/interface/tsconfig.lib.json"],
-            "exclude": ["**/node_modules/**", "!libs/auth/interface/**"]
+            "tsConfig": [
+              "libs/auth/interface/tsconfig.lib.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/auth/interface/**"
+            ]
           }
         }
       }
@@ -333,8 +270,13 @@
           "options": {
             "linter": "eslint",
             "config": "libs/logbook/interfaces/.eslintrc",
-            "tsConfig": ["libs/logbook/interfaces/tsconfig.lib.json"],
-            "exclude": ["**/node_modules/**", "!libs/logbook/interfaces/**"]
+            "tsConfig": [
+              "libs/logbook/interfaces/tsconfig.lib.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/logbook/interfaces/**"
+            ]
           }
         }
       }
@@ -354,7 +296,10 @@
               "libs/auth/domain/tsconfig.lib.json",
               "libs/auth/domain/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/auth/domain/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/auth/domain/**"
+            ]
           }
         },
         "test": {
@@ -444,7 +389,10 @@
               "libs/logbook/domain/tsconfig.lib.json",
               "libs/logbook/domain/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/logbook/domain/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/logbook/domain/**"
+            ]
           }
         },
         "test": {
@@ -452,6 +400,99 @@
           "options": {
             "jestConfig": "libs/logbook/domain/jest.config.js",
             "tsConfig": "libs/logbook/domain/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "shared-back": {
+      "root": "libs/shared/back",
+      "sourceRoot": "libs/shared/back/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "libs/shared/back/.eslintrc",
+            "tsConfig": [
+              "libs/shared/back/tsconfig.lib.json",
+              "libs/shared/back/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/shared/back/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/back/jest.config.js",
+            "tsConfig": "libs/shared/back/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "shared-back-test-helpers": {
+      "root": "libs/shared/back-test-helpers",
+      "sourceRoot": "libs/shared/back-test-helpers/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "libs/shared/back-test-helpers/.eslintrc",
+            "tsConfig": [
+              "libs/shared/back-test-helpers/tsconfig.lib.json",
+              "libs/shared/back-test-helpers/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/shared/back-test-helpers/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/back-test-helpers/jest.config.js",
+            "tsConfig": "libs/shared/back-test-helpers/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "shared-common": {
+      "root": "libs/shared/common",
+      "sourceRoot": "libs/shared/common/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "libs/shared/common/.eslintrc",
+            "tsConfig": [
+              "libs/shared/common/tsconfig.lib.json",
+              "libs/shared/common/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/shared/common/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/common/jest.config.js",
+            "tsConfig": "libs/shared/common/tsconfig.spec.json",
             "passWithNoTests": true
           }
         }

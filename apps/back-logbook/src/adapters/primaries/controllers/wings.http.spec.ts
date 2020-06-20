@@ -3,8 +3,8 @@
  * @group integration
  */
 
-import { callUseCase, RightAsync } from "@paralogs/back/shared";
-import { generateUuid } from "@paralogs/shared";
+import { callUseCase, RightAsync } from "@paralogs/shared/back";
+import { generateUuid } from "@paralogs/shared/common";
 import {
   AddWingDTO,
   UpdateWingDTO,
@@ -13,7 +13,7 @@ import {
 import jwt from "jsonwebtoken";
 import supertest from "supertest";
 
-import { ENV } from "@paralogs/back/shared";
+import { ENV } from "@paralogs/shared/back";
 import { pilotsUseCases } from "../../../config/useCasesChoice";
 import { getKnex, resetDb } from "@paralogs/logbook/secondary-adapters";
 import { app } from "../express/server";
