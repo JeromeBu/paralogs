@@ -3,24 +3,12 @@ image: docker:latest
 services:
   - docker:dind
 
-stages:
-  - lint
-  - test
-
-cache:
-  paths:
-    - node_modules/
-
 before_script:
   - docker build -t paralogs -f dev.Dockerfile .
 
-lint:
-  stage: lint
-  script:
-    - docker run paralogs npm run lint:all
-
-test:
+ci:
   stage: test
   script:
+    - docker run paralogs npm run lint:all
     - docker-compose -f docker-compose.test.yml
     - docker run paralogs npm run test:all
