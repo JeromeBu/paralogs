@@ -4,11 +4,17 @@ services:
   - docker:dind
 
 before_script:
-  - docker build -t paralogs -f dev.Dockerfile .
+  - docker info
+  - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  - docker pull $CI_REGISTRY_IMAGE:latest || true
+  - docker build --cache-from $CI_REGISTRY_IMAGE:latest --tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA --tag $CI_REGISTRY_IMAGE:latest -f dev.Dockerfile .
+#  - docker build -t paralogs -f dev.Dockerfile .
 
-ci:
+CI:
   stage: test
   script:
-    - docker run paralogs npm run lint:all
-    - docker-compose -f docker-compose.test.yml
-    - docker run paralogs npm run test:all
+    - docker run $CI_REGISTRY_IMAGE:latest npm run lint:all
+#    - docker-compose -f docker-compose.test.yml
+#    - docker run $CI_REGISTRY_IMAGE:latest npm run test:all
+    - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
+    - docker push $CI_REGISTRY_IMAGE:latest
