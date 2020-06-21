@@ -1,4 +1,4 @@
-image: node:14
+image: docker:latest
 
 services:
   - docker:dind
@@ -12,19 +12,15 @@ cache:
     - node_modules/
 
 before_script:
-  - apk update
-  - apk upgrade
-  - apk add python python-dev py-pip build-base
-  - pip install docker-compose
-  - npm ci
+  - docker build -t paralogs -f dev.Dockerfile .
 
 lint:
   stage: lint
   script:
-    - npm run lint:all
+    - docker run paralogs npm run lint:all
 
 test:
   stage: test
   script:
     - docker-compose -f docker-compose.test.yml
-    - npm run test:all
+    - docker run paralogs npm run test:all
