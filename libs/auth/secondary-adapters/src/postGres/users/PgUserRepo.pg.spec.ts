@@ -10,6 +10,7 @@ import {
   UserEntity,
   UserRepo,
 } from "@paralogs/auth/domain";
+import { ENV } from "@paralogs/shared/back";
 import {
   expectEitherToMatchError,
   expectRight,

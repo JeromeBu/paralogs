@@ -1,4 +1,4 @@
-import { EnvironmentOption } from "@paralogs/shared/back";
+import { ENV, EnvironmentOption } from "@paralogs/shared/back";
 
 const migrations = {
   // schemaName: "auth",
@@ -16,6 +16,7 @@ const knexconfig: { [key in EnvironmentOption]: any } = {
   development: {
     client: "pg",
     connection: {
+      host: ENV.pgHost,
       port: 5432,
       database: "paralogs-dev",
       user: "postgres",
@@ -27,7 +28,8 @@ const knexconfig: { [key in EnvironmentOption]: any } = {
   test: {
     client: "pg",
     connection: {
-      port: 5433,
+      host: ENV.pgHost,
+      port: ENV.pgPort,
       database: "paralogs-test",
       user: "postgres",
       password: "pg-password",

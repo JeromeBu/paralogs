@@ -1,10 +1,11 @@
 import { createClient } from "redis";
+import { ENV } from "../config";
 
 import { EventBus } from "./EventBus";
 
 export const createRedisEventBus = (): EventBus => {
-  const publisher = createClient();
-  const subscriber = createClient();
+  const publisher = createClient(6379, ENV.redisHost);
+  const subscriber = createClient(6379, ENV.redisHost);
   return {
     publish: ({ type, payload }) =>
       publisher.publish(type, JSON.stringify(payload)),

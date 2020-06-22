@@ -1,20 +1,22 @@
-image: docker:latest
+variables:
+  DOCKER_HOST: tcp://docker:2375/
+  DOCKER_DRIVER: overlay2
+
+image:
+  name: docker/compose:latest
 
 services:
   - docker:dind
 
 before_script:
   - docker info
-  - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-  - docker pull $CI_REGISTRY_IMAGE:latest || true
-  - docker build --cache-from $CI_REGISTRY_IMAGE:latest --tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA --tag $CI_REGISTRY_IMAGE:latest -f dev.Dockerfile .
+#  - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+#  - docker pull $CI_REGISTRY_IMAGE:latest || true
+#  - docker build --cache-from $CI_REGISTRY_IMAGE:latest --tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA --tag $CI_REGISTRY_IMAGE:latest -f dev.Dockerfile .
 #  - docker build -t paralogs -f dev.Dockerfile .
 
 CI:
   stage: test
   script:
-    - docker run $CI_REGISTRY_IMAGE:latest npm run lint:all
-#    - docker-compose -f docker-compose.test.yml
-#    - docker run $CI_REGISTRY_IMAGE:latest npm run test:all
-    - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
-    - docker push $CI_REGISTRY_IMAGE:latest
+    - docker-compose -f docker-compose.ci.yml up --build --abort-on-container-exit
+#    - docker-compose push paralogs --tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA --tag $CI_REGISTRY_IMAGE:latest

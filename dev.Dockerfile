@@ -1,4 +1,4 @@
-FROM node:14
+FROM node:12
 
 WORKDIR /paralogs
 
@@ -12,7 +12,8 @@ COPY nx.json .
 COPY workspace.json .
 COPY .eslintrc .
 COPY jest.config.js .
-COPY .env .
+COPY ./.git ./.git/
 COPY ./apps ./apps/
 COPY ./libs ./libs/
 
+CMD ["npm", "run", "serve:auth"]
