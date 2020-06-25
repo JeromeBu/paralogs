@@ -367,14 +367,6 @@
               "!libs/shared/common/**"
             ]
           }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/shared/common/jest.config.js",
-            "tsConfig": "libs/shared/common/tsconfig.spec.json",
-            "passWithNoTests": true
-          }
         }
       }
     },
