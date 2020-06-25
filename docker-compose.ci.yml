@@ -1,0 +1,35 @@
+version: "3.8"
+services:
+  paralogs:
+    build:
+      dockerfile: dev.Dockerfile
+      context: .
+      cache_from:
+        - jeromebu/paralogs
+    image: jeromebu/paralogs
+    ports:
+    - "4001:4001"
+    env_file:
+      - ./.env
+    environment:
+      - IS_DOCKER_COMPOSE=TRUE
+      - NODE_ENV=test
+    depends_on:
+      - pg
+      - redis
+    command: bash -c "npm run lint:all && npm run test:all"
+
+  pg:
+    image: postgres
+    restart: unless-stopped
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_DB: paralogs-test
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: pg-password
+
+  redis:
+    image: "redis:alpine"
+    ports:
+    - "6379:6379"

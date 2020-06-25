@@ -1,4 +1,7 @@
-import { throwIfNotInArray, throwIfVariableUndefined } from "@paralogs/shared/common";
+import {
+  throwIfNotInArray,
+  throwIfVariableUndefined,
+} from "@paralogs/shared/common";
 import dotenv from "dotenv";
 
 dotenv.config({ path: `${__dirname}/../../../../.env` });
@@ -11,11 +14,16 @@ const nodeEnv = throwIfNotInArray(
 const repositories = throwIfNotInArray(["IN_MEMORY", "PG"], "REPOSITORIES");
 const eventBus = throwIfNotInArray(["IN_MEMORY", "REDIS"], "EVENT_BUS");
 
+const isDockerCompose = process.env.IS_DOCKER_COMPOSE === "TRUE";
+
 export const ENV = {
   nodeEnv,
   jwtSecret,
   repositories,
   eventBus,
+  pgHost: isDockerCompose ? "pg" : "localhost",
+  redisHost: isDockerCompose ? "redis" : "localhost",
+  pgPort: isDockerCompose ? 5432 : 5433,
 };
 
 export type RepositoriesOption = typeof ENV.repositories;

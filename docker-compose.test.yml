@@ -9,5 +9,3 @@ services:
       POSTGRES_DB: paralogs-test
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: pg-password
-    volumes:
-      - ./pgdata/test:/var/lib/postgresql/data
