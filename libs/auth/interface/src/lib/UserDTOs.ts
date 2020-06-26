@@ -38,8 +38,12 @@ export const loginSchema = Yup.object().shape<LoginParams>({
   password: Yup.string().required(),
 });
 
-export type SignUpParams = WithEmail & WithPassword & WithOtherInformation;
+export type SignUpParams = WithUuid &
+  WithEmail &
+  WithPassword &
+  WithOtherInformation;
 export const signUpSchema = Yup.object().shape<SignUpParams>({
+  uuid: Yup.string().required(),
   email: Yup.string().email().required(),
   password: Yup.string().required().min(8),
   firstName: Yup.string().required(),

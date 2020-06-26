@@ -10,13 +10,15 @@ import {
   createExpectDispatchedEvent,
   expectRight,
 } from "@paralogs/shared/back-test-helpers";
+import { Hasher } from "../gateways/Hasher";
 
 import {
   InMemoryUserRepo,
-  TestHashAndTokenManager,
+  TestTokenManager,
 } from "../gateways/testImplementations";
 import { UserEntity } from "../entities/UserEntity";
-import { HashAndTokenManager } from "../gateways/HashAndTokenManager";
+import { TestHasher } from "../gateways/testImplementations/TestHasher";
+import { TokenManager } from "../gateways/TokenManager";
 import { userMapper } from "../mappers/user.mapper";
 import { setupCurrentUserCreator } from "../testBuilders/makeUserEntityCreator";
 import { updateUserCommandHandler } from "./updateUserCommandHandler";
@@ -27,20 +29,23 @@ describe("Update user", () => {
     let userRepo: InMemoryUserRepo;
     let currentUser: UserEntity;
     let updateUser: ReturnType<typeof updateUserCommandHandler>;
-    let hashAndTokenManager: HashAndTokenManager;
+    let tokenManager: TokenManager;
+    let hasher: Hasher;
     let eventBus: InMemoryEventBus;
     let expectDispatchedEvent: ReturnType<typeof createExpectDispatchedEvent>;
 
     beforeEach(async () => {
       userRepo = new InMemoryUserRepo();
-      hashAndTokenManager = new TestHashAndTokenManager();
+      tokenManager = new TestTokenManager();
+      hasher = new TestHasher();
       eventBus = createInMemoryEventBus({
         getNow: () => now,
       });
       expectDispatchedEvent = createExpectDispatchedEvent(eventBus);
       currentUser = await setupCurrentUserCreator({
         userRepo,
-        hashAndTokenManager,
+        tokenManager,
+        hasher,
       })();
       updateUser = updateUserCommandHandler({
         userRepo,

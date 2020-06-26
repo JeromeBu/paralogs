@@ -1,34 +1,24 @@
-import {
-  combineEithers,
-  Entity,
-  PersonName,
-  ResultAsync,
-} from "@paralogs/shared/back";
-import {
-  SignUpParams,
-  UpdateUserDTO,
-  UserUuid,
-  WithUuid,
-} from "@paralogs/auth/interface";
-import { liftEither, liftPromise } from "purify-ts/EitherAsync";
+import { combineEithers, Entity, PersonName } from "@paralogs/shared/back";
+import { UpdateUserDTO, UserUuid } from "@paralogs/auth/interface";
+import { Hasher, TokenManager } from "../..";
 
-import { HashAndTokenManager } from "../gateways/HashAndTokenManager";
 import { Email } from "../valueObjects/Email";
 import { Password } from "../valueObjects/Password";
 
-interface UserEntityProps {
+interface UserEntityParams {
   uuid: UserUuid;
-  email: Email;
   firstName: PersonName;
   lastName?: PersonName;
-  // isEmailConfirmed: boolean;
-  hashedPassword: string;
+  email: Email;
+  password: Password;
+}
+
+interface UserEntityProps extends UserEntityParams {
   authToken: string;
-  password?: never; // this field is forbidden
 }
 
 interface UserDependencies {
-  hashAndTokenManager: HashAndTokenManager;
+  tokenManager: TokenManager;
 }
 
 export class UserEntity extends Entity<UserEntityProps> {
@@ -37,40 +27,24 @@ export class UserEntity extends Entity<UserEntityProps> {
   }
 
   static create(
-    params: SignUpParams & WithUuid,
-    { hashAndTokenManager }: UserDependencies,
-  ): ResultAsync<UserEntity> {
-    const eitherValidParams = Email.create(params.email).chain((email) => {
-      return Password.create(params.password).chain((password) => {
-        return PersonName.create(params.firstName).chain((firstName) => {
-          return PersonName.create(params.lastName).map((lastName) => {
-            return { email, password, firstName, lastName };
-          });
-        });
-      });
-    });
-
-    return liftEither(eitherValidParams).chain(({ password, ...validParams }) =>
-      liftPromise(async () => {
-        const hashedPassword = await hashAndTokenManager.hash(password);
-        return new UserEntity({
-          uuid: params.uuid,
-          ...validParams,
-          // isEmailConfirmed: false,
-          authToken: hashAndTokenManager.generateToken({
-            userUuid: params.uuid,
-          }),
-          hashedPassword,
-        });
+    params: UserEntityParams,
+    { tokenManager }: UserDependencies,
+  ): UserEntity {
+    return new UserEntity({
+      uuid: params.uuid,
+      ...params,
+      // isEmailConfirmed: false,
+      authToken: tokenManager.generateToken({
+        userUuid: params.uuid,
       }),
-    );
+    });
   }
 
   static fromDTO(props: UserEntityProps): UserEntity {
     return new UserEntity(props);
   }
 
-  update(params: UpdateUserDTO) {
+  public update(params: UpdateUserDTO) {
     return combineEithers({
       ...(params.firstName
         ? { firstName: PersonName.create(params.firstName) }
@@ -87,12 +61,9 @@ export class UserEntity extends Entity<UserEntityProps> {
 
   public checkPassword(
     candidatePassword: string,
-    { hashAndTokenManager }: UserDependencies,
+    hasher: Hasher,
   ): Promise<boolean> {
-    return hashAndTokenManager.compareHashes(
-      candidatePassword,
-      this.props.hashedPassword,
-    );
+    return this.props.password.isEqual(candidatePassword, hasher);
   }
 
   private constructor(props: UserEntityProps) {

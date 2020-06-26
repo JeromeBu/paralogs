@@ -6,11 +6,11 @@
 import {
   Email,
   makeUserEntityCreator,
-  TestHashAndTokenManager,
+  TestTokenManager,
   UserEntity,
   UserRepo,
+  TestHasher,
 } from "@paralogs/auth/domain";
-import { ENV } from "@paralogs/shared/back";
 import {
   expectEitherToMatchError,
   expectRight,
@@ -22,7 +22,10 @@ import { UserPersisted, UserPersistence } from "./UserPersistence";
 import { userPersistenceMapper } from "./userPersistenceMapper";
 
 describe("User repository postgres tests", () => {
-  const makeUserEntity = makeUserEntityCreator(new TestHashAndTokenManager());
+  const makeUserEntity = makeUserEntityCreator({
+    tokenManager: new TestTokenManager(),
+    hasher: new TestHasher(),
+  });
   let pgUserRepo: UserRepo;
   const knex = getKnex("test");
   const johnEmail = "john@mail.com";
@@ -52,7 +55,7 @@ describe("User repository postgres tests", () => {
     const userPersistenceToMatch: UserPersistence = {
       uuid: props.uuid,
       email: props.email.value,
-      hashed_password: props.hashedPassword,
+      password: props.password.value,
       auth_token: props.authToken,
       first_name: props.firstName.value,
       last_name: props.lastName?.value,

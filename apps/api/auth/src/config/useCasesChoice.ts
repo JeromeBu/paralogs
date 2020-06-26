@@ -1,33 +1,35 @@
 import {
   getCurrentUserReadCreator,
-  loginReadCreator,
+  loginRead,
   signUpCommandHandler,
   updateUserCommandHandler,
 } from "@paralogs/auth/domain";
-import { ProductionHashAndTokenManager } from "@paralogs/auth/secondary-adapters";
+import {
+  ProductionTokenManager,
+  ProductionHasher,
+} from "@paralogs/auth/secondary-adapters";
 import { ENV } from "@paralogs/shared/back";
-import { ActualUuidGenerator } from "@paralogs/shared/common";
 import { eventBus, queries, repositories } from "./secondaryAdaptersChoice";
 
 const userRepo = repositories.user;
 const userQueries = queries.user;
-const hashAndTokenManager = new ProductionHashAndTokenManager(ENV.jwtSecret);
-const uuidGenerator = new ActualUuidGenerator();
+const tokenManager = new ProductionTokenManager(ENV.jwtSecret);
+const hasher = new ProductionHasher();
 
 export const authUseCases = {
   updateUser: updateUserCommandHandler({
     eventBus,
     userRepo,
   }),
-  login: loginReadCreator({
+  login: loginRead({
     userRepo,
-    hashAndTokenManager,
+    hasher,
   }),
   signUp: signUpCommandHandler({
     eventBus,
     userRepo,
-    hashAndTokenManager,
-    uuidGenerator,
+    tokenManager,
+    hasher,
   }),
   getMe: getCurrentUserReadCreator({
     userQueries,

@@ -13,3 +13,4 @@ services:
       - ./pgdata/dev:/var/lib/postgresql/data
   redis:
     image: "redis:alpine"
+

@@ -1,7 +1,7 @@
 import { combineEithers, PersonName } from "@paralogs/shared/back";
 import { UserDTO } from "@paralogs/auth/interface";
 
-import { Email, UserEntity } from "@paralogs/auth/domain";
+import { Email, Password, UserEntity } from "@paralogs/auth/domain";
 import { UserPersistence } from "./UserPersistence";
 
 export const userPersistenceMapper = {
@@ -10,7 +10,7 @@ export const userPersistenceMapper = {
     const {
       email,
       authToken,
-      hashedPassword,
+      password,
       uuid,
       firstName,
       lastName,
@@ -22,7 +22,7 @@ export const userPersistenceMapper = {
       first_name: firstName.value,
       last_name: lastName?.value,
       auth_token: authToken,
-      hashed_password: hashedPassword,
+      password: password.value,
     };
   },
   toEntity: (params: UserPersistence): UserEntity => {
@@ -36,7 +36,7 @@ export const userPersistenceMapper = {
           ...validResults,
           uuid: params.uuid,
           authToken: params.auth_token,
-          hashedPassword: params.hashed_password,
+          password: Password.fromHash(params.password),
         });
         userEntity.setIdentity(params.id);
         return userEntity;

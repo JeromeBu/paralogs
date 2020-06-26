@@ -1,21 +1,36 @@
-import { Result, validationError } from "@paralogs/shared/back";
-import { Left, Right } from "purify-ts";
+import {
+  AppError,
+  LeftAsync,
+  ResultAsync,
+  validationError,
+} from "@paralogs/shared/back";
+import { liftPromise } from "purify-ts/EitherAsync";
+import { Hasher } from "../gateways/Hasher";
 
 export class Password {
-  private constructor(public readonly value: string) {
-    this.value = value;
+  private constructor(public readonly value: string) {}
+
+  static create(password: string, hasher: Hasher): ResultAsync<Password> {
+    if (password.length < 8)
+      return failWithMessage("Password must be at least 8 characters long");
+    if (password.toLowerCase() === password)
+      return failWithMessage("Password must have upper case characters");
+    if (password.toUpperCase() === password)
+      return failWithMessage("Password must have lower case characters");
+
+    return liftPromise<string, AppError>(() => hasher.hash(password)).map(
+      (hashedPwd) => new Password(hashedPwd),
+    );
   }
 
-  static create(password: string): Result<Password> {
-    if (password.length < 8)
-      return Left(
-        validationError("Password must be at least 8 characters long"),
-      );
-    if (password.toLowerCase() === password)
-      return Left(validationError("Password must have upper case characters"));
-    if (password.toUpperCase() === password)
-      return Left(validationError("Password must have lower case characters"));
+  static fromHash(hash: string) {
+    return new Password(hash);
+  }
 
-    return Right(new Password(password));
+  public isEqual(candidate: string, hasher: Hasher): Promise<boolean> {
+    return hasher.compare(candidate, this.value);
   }
 }
+
+const failWithMessage = (message: string) =>
+  LeftAsync(validationError(message));
