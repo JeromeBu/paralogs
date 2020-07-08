@@ -9,7 +9,9 @@ import {
   loginRoute,
   SignUpParams,
   signUpRoute,
+  UserUuid,
 } from "@paralogs/auth/interface";
+import { generateUuid } from "@paralogs/shared/common";
 import supertest from "supertest";
 import { getKnex, resetDb } from "@paralogs/auth/secondary-adapters";
 import { ENV } from "@paralogs/shared/back";
@@ -37,9 +39,11 @@ describe("Authentication routes", () => {
 
   describe("when all is good", () => {
     it("calls sign up than login, than getMe", async () => {
+      const userUuid: UserUuid = generateUuid();
       const email = "hey@mail.com";
       const password = "CraZy123";
       const signUpParams: SignUpParams = {
+        uuid: userUuid,
         email,
         firstName: "John",
         lastName: "Doe",
@@ -64,7 +68,7 @@ describe("Authentication routes", () => {
         .get(getMeRoute)
         .set("Authorization", `Bearer ${token}`);
       expect(getMeResponse.body).toMatchObject({
-        currentUser: { email },
+        currentUser: { uuid: userUuid, email },
       });
     });
   });

@@ -3,9 +3,8 @@
  */
 
 import { CurrentUserWithAuthToken } from "@paralogs/auth/interface";
+import { JustAsync } from "@paralogs/shared/back";
 import { generateUuid } from "@paralogs/shared/common";
-import { Just } from "purify-ts";
-import { liftMaybe } from "purify-ts/MaybeAsync";
 
 import { UserQueries } from "./gateways/UserQueries";
 import { getCurrentUserReadCreator } from "./GetCurrentUserRead";
@@ -13,7 +12,6 @@ import { getCurrentUserReadCreator } from "./GetCurrentUserRead";
 describe("Get Me, recovers logged user information", () => {
   it("get's users information", async () => {
     const userUuid = generateUuid();
-
     const userDto = {
       uuid: userUuid,
       email: "john@mail.com",
@@ -23,7 +21,7 @@ describe("Get Me, recovers logged user information", () => {
 
     const userQueries: UserQueries = {
       findByUuidWithToken: () =>
-        liftMaybe(Just({ token: "someAuthToken", currentUser: userDto })),
+        JustAsync({ token: "someAuthToken", currentUser: userDto }),
     };
 
     const getCurrentUserRead = getCurrentUserReadCreator({ userQueries });

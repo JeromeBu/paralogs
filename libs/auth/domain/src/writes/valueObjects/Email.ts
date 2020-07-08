@@ -1,5 +1,6 @@
 import { Result, validationError } from "@paralogs/shared/back";
 import { Left, Right } from "purify-ts";
+import { trim } from "ramda";
 
 const isEmail = (str: string): boolean =>
   !!str.match(
@@ -13,10 +14,12 @@ export class Email {
   }
 
   static create(email: string): Result<Email> {
-    if (!isEmail(email)) {
+    const emailToSave = trim(email);
+
+    if (!isEmail(emailToSave)) {
       return Left(validationError("Not a valid Email"));
     }
 
-    return Right(new Email(email.toLowerCase()));
+    return Right(new Email(emailToSave.toLowerCase()));
   }
 }

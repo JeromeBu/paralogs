@@ -7,7 +7,7 @@ export type UserPersistence = {
   email: string;
   first_name: string;
   last_name?: string;
-  hashed_password: string;
+  password: string;
   auth_token: string;
 };
 

@@ -7,6 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import { SignUpParams, signUpSchema } from "@paralogs/auth/interface";
 import { authActions } from "@paralogs/front-core";
+import { generateUuid } from "@paralogs/shared/common";
 import { Form, Formik } from "formik";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -42,10 +43,11 @@ export const SignUpView: React.FC = () => {
   useRedirectOnAuthentication();
 
   const handleSubmit = (values: SignUpParams) => {
-    dispatch(authActions.signUpRequested(values));
+    dispatch(authActions.signUpRequested({ ...values, uuid: generateUuid() }));
   };
 
   const initialValues: SignUpParams = {
+    uuid: generateUuid(),
     email: "",
     password: "",
     firstName: "",

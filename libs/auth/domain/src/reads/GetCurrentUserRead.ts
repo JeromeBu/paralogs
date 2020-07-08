@@ -19,18 +19,3 @@ export const getCurrentUserReadCreator = ({
     .findByUuidWithToken(userUuid)
     .toEitherAsync(notFoundError(`No user found with id : ${userUuid}`));
 };
-
-// export const getCurrentUserReadCreator = ({ userRepo }: GetMeDependencies) => ({
-//   userUuid,
-// }: WithUserUuid): ResultAsync<CurrentUserWithAuthToken> => {
-//   return userRepo
-//     .findByUuid(userUuid)
-//     .map((userEntity) => {
-//       const userDTO = userMapper.entityToDTO(userEntity);
-//       return {
-//         currentUser: userDTO,
-//         token: userEntity.getProps().authToken,
-//       };
-//     })
-//     .toEitherAsync(notFoundError(`No user found with id : ${userUuid}`));
-// };

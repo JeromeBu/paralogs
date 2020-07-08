@@ -5,33 +5,36 @@
 import { Result } from "@paralogs/shared/back";
 import { expectEitherToMatchError } from "@paralogs/shared/back-test-helpers";
 import { CurrentUserWithAuthToken } from "@paralogs/auth/interface";
-
+import { Hasher } from "../writes/gateways/Hasher";
 import {
-  TestHashAndTokenManager,
+  TestTokenManager,
   InMemoryUserRepo,
 } from "../writes/gateways/testImplementations";
+import { TestHasher } from "../writes/gateways/testImplementations/TestHasher";
 import { makeUserEntityCreator } from "../writes/testBuilders/makeUserEntityCreator";
-import { LoginRead, loginReadCreator } from "./LoginRead";
+import { loginRead } from "./loginRead";
 
 describe("User Login", () => {
-  let hashAndTokenManager: TestHashAndTokenManager;
-  let loginUseCase: LoginRead;
+  let tokenManager: TestTokenManager;
+  let hasher: Hasher;
+  let login: ReturnType<typeof loginRead>;
   let userRepo: InMemoryUserRepo;
   let makeUserEntity: ReturnType<typeof makeUserEntityCreator>;
 
   beforeEach(() => {
-    hashAndTokenManager = new TestHashAndTokenManager();
+    tokenManager = new TestTokenManager();
+    hasher = new TestHasher();
     userRepo = new InMemoryUserRepo();
-    loginUseCase = loginReadCreator({
+    login = loginRead({
       userRepo,
-      hashAndTokenManager,
+      hasher,
     });
-    makeUserEntity = makeUserEntityCreator(hashAndTokenManager);
+    makeUserEntity = makeUserEntityCreator({ tokenManager, hasher });
   });
 
   describe("Email is not valid", () => {
     it("warns that email is not valid", async () => {
-      const response = await loginUseCase({
+      const response = await login({
         email: "not an email",
         password: "whatever",
       }).run();
@@ -41,7 +44,7 @@ describe("User Login", () => {
 
   describe("Email does not match any user", () => {
     it("warns no user found", async () => {
-      const response = await loginUseCase({
+      const response = await login({
         email: "notFound@mail.com",
         password: "whatever",
       }).run();
@@ -53,7 +56,7 @@ describe("User Login", () => {
     it("warns password is wrong", async () => {
       const email = "john.Doe@mail.com";
       userRepo.setUsers([await makeUserEntity({ email })]);
-      const response = await loginUseCase({
+      const response = await login({
         email,
         password: "wrongPassword",
       }).run();
@@ -68,7 +71,7 @@ describe("User Login", () => {
       const lastName = "Doe";
       const password = "Secret123";
       const jwtToken = "someFakeToken";
-      hashAndTokenManager.setGeneratedToken(jwtToken);
+      tokenManager.setGeneratedToken(jwtToken);
       const userEntity = await makeUserEntity({
         email,
         password,
@@ -76,7 +79,7 @@ describe("User Login", () => {
         lastName,
       });
       userRepo.setUsers([userEntity]);
-      const response = await loginUseCase({
+      const response = await login({
         email,
         password,
       }).run();

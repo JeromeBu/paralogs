@@ -1,4 +1,12 @@
-import { Either, EitherAsync, Left, Maybe, MaybeAsync, Right } from "purify-ts";
+import {
+  Either,
+  EitherAsync,
+  Just,
+  Left,
+  Maybe,
+  MaybeAsync,
+  Right,
+} from "purify-ts";
 import { liftEither } from "purify-ts/EitherAsync";
 import { liftMaybe, liftPromise } from "purify-ts/MaybeAsync";
 
@@ -9,6 +17,8 @@ export type ResultAsync<T> = EitherAsync<AppError, T>;
 
 export const RightAsync = <T>(t: T) => liftEither(Right(t));
 export const LeftAsync = <T>(t: T) => liftEither(Left(t));
+
+export const JustAsync = <T>(t: T) => liftMaybe(Just(t));
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const RightVoid = (param?: any) => Right(undefined);

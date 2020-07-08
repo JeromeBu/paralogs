@@ -2,10 +2,12 @@
  * @group unit
  */
 
+import { MakeUserEntity, makeUserEntityCreator } from "@paralogs/auth/domain";
 import * as R from "ramda";
 import {
   CurrentUserWithAuthToken,
   SignUpParams,
+  UserUuid,
 } from "@paralogs/auth/interface";
 import {
   createInMemoryEventBus,
@@ -16,65 +18,72 @@ import {
   createExpectDispatchedEvent,
   expectEitherToMatchError,
 } from "@paralogs/shared/back-test-helpers";
-import { FakeUuidGenerator, generateUuid } from "@paralogs/shared/common";
+import { generateUuid } from "@paralogs/shared/common";
+import { Hasher } from "../gateways/Hasher";
 
 import {
   InMemoryUserRepo,
-  TestHashAndTokenManager,
+  TestTokenManager,
 } from "../gateways/testImplementations";
 import { UserEntity } from "../entities/UserEntity";
+import { TestHasher } from "../gateways/testImplementations/TestHasher";
 import {
   SignUpCommandHandler,
   signUpCommandHandler,
-} from "./SignUpCommandHandler";
+} from "./signUpCommandHandler";
 
 describe("User signUp", () => {
-  let userUuid = generateUuid();
-  const fakeUuidGenerator = new FakeUuidGenerator(userUuid);
-  let hashAndTokenManager: TestHashAndTokenManager;
+  let userUuid: UserUuid;
+  let tokenManager: TestTokenManager;
+  let hasher: Hasher;
   let signUpUseCase: SignUpCommandHandler;
   let userRepo: InMemoryUserRepo;
   let eventBus: InMemoryEventBus;
   let expectDispatchedEvent: any;
+  let makeUserEntity: MakeUserEntity;
   const getNow = () => new Date("2020-01-01");
 
   beforeEach(() => {
     userUuid = generateUuid();
-    fakeUuidGenerator.setUuid(userUuid);
     userRepo = new InMemoryUserRepo();
-    hashAndTokenManager = new TestHashAndTokenManager();
+    tokenManager = new TestTokenManager();
+    hasher = new TestHasher();
+    makeUserEntity = makeUserEntityCreator({ tokenManager, hasher });
     eventBus = createInMemoryEventBus({ getNow });
     expectDispatchedEvent = createExpectDispatchedEvent(eventBus);
     signUpUseCase = signUpCommandHandler({
       eventBus,
       userRepo,
-      uuidGenerator: fakeUuidGenerator,
-      hashAndTokenManager,
+      tokenManager,
+      hasher,
     });
   });
 
   describe("email is not the write format", () => {
     it("fails to signUp with an explicit message", async () => {
-      const signUpParams = buildSignUpParams({ email: "mail.com" });
-      const userDtoOrError = await signUpUseCase(signUpParams).run();
-      expectEitherToMatchError(userDtoOrError, "Not a valid Email");
+      const result = await signUp({ email: "mail.com" });
+      expectEitherToMatchError(result, "Not a valid Email");
+      expect(userRepo.users.length).toBe(0);
     });
   });
 
   describe("email is already taken", () => {
     it("fails to signUp with an explicit message", async () => {
-      const signUpParams = buildSignUpParams({ email: "some@mail.com" });
-      await signUpUseCase(signUpParams).run();
-      const sameEmailSignUpParams = buildSignUpParams({
-        email: "some@mail.com",
-      });
-      const emailTakenResult = await signUpUseCase(sameEmailSignUpParams).run();
+      const email = "some@mail.com";
+      await populateWithUserWithEmail(email);
+      const result = await signUp({ email });
       expectEitherToMatchError(
-        emailTakenResult,
+        result,
         "Email is already taken. Consider logging in.",
       );
+      expect(userRepo.users.length).toBe(1);
     });
   });
+
+  const populateWithUserWithEmail = async (email: string) => {
+    const preexistingUser = await makeUserEntity({ email });
+    userRepo.setUsers([preexistingUser]);
+  };
 
   describe("password doesn't match criteria", () => {
     it("fails to signUp with an explicit message", async () => {
@@ -102,24 +111,30 @@ describe("User signUp", () => {
   });
 
   describe("all is good", () => {
-    it("signs up a user and reformat email and trim names", async () => {
-      const signUpParams = buildSignUpParams();
+    it("signs up a user, reformat and trim email and names", async () => {
       const someFakeToken = "someFakeToken";
-      hashAndTokenManager.setGeneratedToken(someFakeToken);
-      const currentUserWithToken = await signUpUseCase(signUpParams).run();
+      tokenManager.setGeneratedToken(someFakeToken);
+
+      const currentUserWithToken = await signUp({
+        uuid: userUuid,
+        email: " jOhN@mAil.com ",
+        firstName: " john",
+        lastName: "doe ",
+      });
+
       const expectedUser = {
         uuid: userUuid,
         email: "john@mail.com",
         firstName: "John",
         lastName: "Doe",
       };
+
       expectUserResultToEqual(currentUserWithToken, {
         currentUser: expectedUser,
         token: someFakeToken,
       });
       const userEntity = userRepo.users[0];
       expect(userEntity.uuid).toEqual(userUuid);
-
       expectDispatchedEvent({
         dateTimeOccurred: getNow(),
         type: "UserSignedUp",
@@ -133,10 +148,16 @@ describe("User signUp", () => {
     });
   });
 
+  const signUp = async (params: Partial<SignUpParams>) => {
+    const signUpParams = buildSignUpParams(params);
+    return signUpUseCase(signUpParams).run();
+  };
+
   const buildSignUpParams = (
     params: Partial<SignUpParams> = {},
   ): SignUpParams => {
     const randomSignUpParams = {
+      uuid: generateUuid(),
       email: "joHn@mail.com",
       password: "Secret123",
       firstName: " john",
@@ -157,7 +178,7 @@ describe("User signUp", () => {
   //   expect(userEntity.getProps().isEmailConfirmed).toBe(false);
 
   const expectUserHashedPasswordExist = (userEntity: UserEntity) => {
-    expect(userEntity.getProps().hashedPassword.length).toBe(60);
+    expect(userEntity.getProps().password.value.length).toBe(60);
   };
 
   const expectUserToHaveAnAuthToken = (userEntity: UserEntity) => {

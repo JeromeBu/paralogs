@@ -1,3 +1,7 @@
+/**
+ * @group unit
+ */
+
 import { makeUserDTO, UserDTO } from "@paralogs/auth/interface";
 import { Store } from "redux";
 

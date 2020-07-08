@@ -7,8 +7,6 @@ services:
       cache_from:
         - jeromebu/paralogs
     image: jeromebu/paralogs
-    ports:
-    - "4001:4001"
     env_file:
       - ./.env
     environment:
@@ -22,8 +20,6 @@ services:
   pg:
     image: postgres
     restart: unless-stopped
-    ports:
-      - "5433:5432"
     environment:
       POSTGRES_DB: paralogs-test
       POSTGRES_USER: postgres
@@ -31,5 +27,4 @@ services:
 
   redis:
     image: "redis:alpine"
-    ports:
-    - "6379:6379"
+

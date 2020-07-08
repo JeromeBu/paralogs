@@ -2,13 +2,13 @@ import { WithUserUuid } from "@paralogs/auth/interface";
 import * as bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
-import { HashAndTokenManager } from "@paralogs/auth/domain";
+import { TokenManager } from "@paralogs/auth/domain";
 import { Password } from "@paralogs/auth/domain";
 
 // the number passed in bcrypt.hash is the number of salt loops.
 // The bigger it is the longest the request will be (12 => 300 to 400 ms)
 
-export class ProductionHashAndTokenManager implements HashAndTokenManager {
+export class ProductionTokenManager implements TokenManager {
   constructor(private jwtSecret: string) {}
 
   public generateToken(params: WithUserUuid) {

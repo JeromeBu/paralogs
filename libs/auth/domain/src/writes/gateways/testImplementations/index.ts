@@ -1,2 +1,3 @@
 export * from "./InMemoryUserRepo";
-export * from "./TestHashAndTokenManager";
+export * from "./TestTokenManager";
+export * from "./TestHasher";

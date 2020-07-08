@@ -1,9 +1,14 @@
+/**
+ * @group unit
+ */
+
 import {
   CurrentUserWithAuthToken,
   makeUserDTO,
   SignUpParams,
 } from "@paralogs/auth/interface";
 import { PilotUuid } from "@paralogs/logbook/interfaces";
+import { generateUuid } from "@paralogs/shared/common";
 import { Store } from "redux";
 
 import { configureReduxStore } from "../../../reduxStore";
@@ -37,6 +42,7 @@ describe("Sign up", () => {
 
   describe("Sign up successfully", () => {
     it("retrieve user and his authentication info", () => {
+      const uuid = generateUuid();
       const email = "jerome@mail.com";
       const password = "password";
       const firstName = "John";
@@ -45,7 +51,7 @@ describe("Sign up", () => {
       const currentUser = makeUserDTO({ email, firstName, lastName });
       const token = "someFakeToken";
 
-      signUpUser({ email, password, firstName, lastName });
+      signUpUser({ uuid, email, password, firstName, lastName });
       feedWithCurrentUser({ currentUser, token });
       expectStateToMatch({
         auth: {
@@ -67,6 +73,7 @@ describe("Sign up", () => {
 
   describe("when email already exists", () => {
     it("refuses to sign up", () => {
+      const uuid = generateUuid();
       const email = "jerome@mail.com";
       const password = "password";
       const firstName = "John";
@@ -75,7 +82,7 @@ describe("Sign up", () => {
       const errorMessage =
         "This email is already used, consider logging in instead";
 
-      signUpUser({ email, password, firstName, lastName });
+      signUpUser({ uuid, email, password, firstName, lastName });
       feedWithError(errorMessage);
       expectStateToMatch({
         auth: {
