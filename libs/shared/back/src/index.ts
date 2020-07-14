@@ -9,6 +9,7 @@ export * from "./getNextId";
 export * from "./EventBus/EventBus";
 export * from "./EventBus/createInMemoryEventBus";
 export * from "./EventBus/createRedisEventBus";
+export * from "./EventBus/createKafkaEventBus";
 
 export * from "./ResponseLib/response-lib";
 export * from "./config";

@@ -12,7 +12,10 @@ const nodeEnv = throwIfNotInArray(
   "NODE_ENV",
 );
 const repositories = throwIfNotInArray(["IN_MEMORY", "PG"], "REPOSITORIES");
-const eventBus = throwIfNotInArray(["IN_MEMORY", "REDIS"], "EVENT_BUS");
+const eventBus = throwIfNotInArray(
+  ["IN_MEMORY", "REDIS", "KAFKA"],
+  "EVENT_BUS",
+);
 
 const isDockerCompose = process.env.IS_DOCKER_COMPOSE === "TRUE";
 
@@ -23,7 +26,7 @@ export const ENV = {
   eventBus,
   pgHost: isDockerCompose ? "pg" : "localhost",
   redisHost: isDockerCompose ? "redis" : "localhost",
-  pgPort: isDockerCompose ? 5432 : 5433,
+  pgPort: isDockerCompose || nodeEnv === "development" ? 5432 : 5433,
 };
 
 export type RepositoriesOption = typeof ENV.repositories;

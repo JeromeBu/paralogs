@@ -8,7 +8,7 @@ import { PilotDTO } from "@paralogs/logbook/interfaces";
 import { generateUuid } from "@paralogs/shared/common";
 import { pilotMapper } from "@paralogs/logbook/domain";
 
-import { repositories } from "../../../config/secondaryAdaptersChoice";
+import { repositories } from "../config/secondaryAdaptersChoice";
 import { subscribeToEvents } from "./pilots.subscribers";
 
 describe("Pilots reaction to events and routes", () => {

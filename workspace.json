@@ -220,6 +220,16 @@
             "tsConfig": "libs/auth/secondary-adapters/tsconfig.spec.json",
             "passWithNoTests": true
           }
+        },
+        "migrate-latest": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "knex migrate:latest --knexfile libs/auth/secondary-adapters/src/postGres/knex/knexfile.ts"
+              }
+            ]
+          }
         }
       }
     },

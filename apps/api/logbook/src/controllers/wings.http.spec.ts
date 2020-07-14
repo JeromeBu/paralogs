@@ -4,6 +4,10 @@
  */
 
 import { callUseCase, RightAsync } from "@paralogs/shared/back";
+import {
+  getSupertestRequest,
+  SupertestRequest,
+} from "@paralogs/shared/back-test-helpers";
 import { generateUuid } from "@paralogs/shared/common";
 import {
   AddWingDTO,
@@ -11,16 +15,13 @@ import {
   wingsRoute,
 } from "@paralogs/logbook/interfaces";
 import jwt from "jsonwebtoken";
-import supertest from "supertest";
-
 import { ENV } from "@paralogs/shared/back";
-import { pilotsUseCases } from "../../../config/useCasesChoice";
+import { pilotsUseCases } from "../config/useCasesChoice";
 import { getKnex, resetDb } from "@paralogs/logbook/secondary-adapters";
-import { app } from "../express/server";
-
-const request = supertest(app);
+import { configureServer } from "../express/server";
 
 describe("Wings routes", () => {
+  let request: SupertestRequest;
   const knex = getKnex(ENV.nodeEnv);
   const pilot = {
     uuid: generateUuid(),
@@ -31,6 +32,7 @@ describe("Wings routes", () => {
 
   beforeAll(async () => {
     if (ENV.nodeEnv !== "test") throw new Error("Should be TEST env");
+    request = await getSupertestRequest(configureServer);
     await resetDb(knex);
     await callUseCase({
       useCase: pilotsUseCases.create,
