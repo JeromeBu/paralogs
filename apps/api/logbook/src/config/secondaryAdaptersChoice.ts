@@ -1,6 +1,7 @@
 import {
   createInMemoryEventBus,
   createRedisEventBus,
+  createKafkaEventBus,
   EventBus,
 } from "@paralogs/shared/back";
 import {
@@ -107,12 +108,16 @@ const getRepositoriesAndQueries = (
   }
 };
 
-const getEventBus = (repositories: EventBusOption): EventBus => {
+const selectEventBus = (repositories: EventBusOption) => async (): Promise<
+  EventBus
+> => {
   switch (repositories) {
     case "IN_MEMORY":
       return createInMemoryEventBus({ getNow: () => new Date() });
     case "REDIS":
       return createRedisEventBus();
+    case "KAFKA":
+      return createKafkaEventBus();
     default:
       return shouldNeverBeCalled(repositories);
   }
@@ -122,4 +127,4 @@ export const { repositories, queries } = getRepositoriesAndQueries(
   ENV.repositories,
 );
 
-export const eventBus = getEventBus(ENV.eventBus);
+export const getEventBus = selectEventBus(ENV.eventBus);

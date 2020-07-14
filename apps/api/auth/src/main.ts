@@ -1,10 +1,12 @@
-import { app } from "./adapters/primaries/express/server";
+import { configureServer } from "./express/server";
 
 const port = 4001;
 
-const server = app.listen(port, () =>
-  // eslint-disable-next-line no-console
-  console.log(`--- Auth App is running on port: ${port} ---`),
-);
+configureServer().then((app) => {
+  const server = app.listen(port, () =>
+    // eslint-disable-next-line no-console
+    console.log(`--- Auth App is running on port: ${port} ---`),
+  );
 
-server.on("error", console.error);
+  server.on("error", console.error);
+});

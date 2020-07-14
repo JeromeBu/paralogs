@@ -11,7 +11,7 @@ import {
 } from "@paralogs/logbook/interfaces";
 import { Router } from "express";
 
-import { wingsUseCases } from "../../../config/useCasesChoice";
+import { wingsUseCases } from "../config/useCasesChoice";
 
 const wingsRouter = Router();
 

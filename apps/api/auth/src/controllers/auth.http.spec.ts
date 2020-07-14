@@ -11,17 +11,19 @@ import {
   signUpRoute,
   UserUuid,
 } from "@paralogs/auth/interface";
+import {
+  getSupertestRequest,
+  SupertestRequest,
+} from "@paralogs/shared/back-test-helpers";
 import { generateUuid } from "@paralogs/shared/common";
-import supertest from "supertest";
 import { getKnex, resetDb } from "@paralogs/auth/secondary-adapters";
 import { ENV } from "@paralogs/shared/back";
-
-import { app } from "../express/server";
-
-const request = supertest(app);
+import { configureServer } from "../express/server";
 
 describe("Authentication routes", () => {
+  let request: SupertestRequest;
   beforeAll(async () => {
+    request = await getSupertestRequest(configureServer);
     if (ENV.nodeEnv !== "test") throw new Error("Should be TEST env");
     const knex = getKnex(ENV.nodeEnv);
     await resetDb(knex);

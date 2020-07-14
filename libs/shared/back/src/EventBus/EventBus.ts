@@ -19,8 +19,6 @@ export interface EventBus {
   subscribe: <T extends AppEvent["type"]>(
     eventType: T,
     callback: (payload: NarrowEvent<T>["payload"]) => void,
-  ) => {
-    unsubscribe: () => void;
-  };
+  ) => { unsubscribe: () => void } | Promise<{ unsubscribe: () => void }>;
   publish: (eventParams: Omit<AppEvent, "dateTimeOccurred">) => void;
 }

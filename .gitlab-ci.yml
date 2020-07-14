@@ -18,5 +18,5 @@ before_script:
 CI:
   stage: test
   script:
-    - docker-compose -f docker-compose.ci.yml up --build --abort-on-container-exit
+    - npm run docker-ci
 #    - docker-compose push paralogs --tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA --tag $CI_REGISTRY_IMAGE:latest

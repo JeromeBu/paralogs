@@ -7,7 +7,7 @@ import {
 import { addFlightSchema, flightsRoute } from "@paralogs/logbook/interfaces";
 import { Router } from "express";
 
-import { flightsUseCases } from "../../../config/useCasesChoice";
+import { flightsUseCases } from "../config/useCasesChoice";
 
 export const flightsRouter = Router();
 
