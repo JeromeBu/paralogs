@@ -9,12 +9,15 @@ import { authController } from "../controllers/auth.controller";
 
 console.log("--- Auth --- ENV : ", ENV);
 
-export const app = express();
+export const configureServer = async () => {
+  const app = express();
 
-app.use(bodyParser.json());
-app.use(cors());
-app.use(morgan("dev"));
+  app.use(bodyParser.json());
+  app.use(cors());
+  app.use(morgan("dev"));
 
-app.use(createAuthenticateMiddleware(ENV.jwtSecret));
+  app.use(createAuthenticateMiddleware(ENV.jwtSecret));
 
-app.use(authController());
+  app.use(await authController());
+  return app;
+};

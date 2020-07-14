@@ -1,7 +1,7 @@
 import { callUseCase, EventBus, RightAsync } from "@paralogs/shared/back";
 import { PilotUuid } from "@paralogs/logbook/interfaces";
 
-import { pilotsUseCases } from "../../../config/useCasesChoice";
+import { pilotsUseCases } from "../config/useCasesChoice";
 
 export const subscribeToEvents = async (eventBus: EventBus) => {
   eventBus.subscribe("UserSignedUp", async (userDTO) => {

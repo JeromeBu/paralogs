@@ -15,11 +15,12 @@ import {
 import { pilotsRoute } from "@paralogs/auth/interface";
 import { Router } from "express";
 
-import { authUseCases } from "../../../config/useCasesChoice";
+import { getAuthUseCases } from "../config/useCasesChoice";
 
 const authRouter = Router();
 
-export const authController = (): Router => {
+export const authController = async (): Promise<Router> => {
+  const authUseCases = await getAuthUseCases();
   authRouter.post(loginRoute, async (req, res) => {
     const eitherAsyncParams = await validateSchema(loginSchema, req.body);
     const httpResponse = await callUseCase({

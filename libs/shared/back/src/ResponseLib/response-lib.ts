@@ -54,7 +54,11 @@ export const callUseCase = <P>({
     .then((eitherReturned) =>
       eitherReturned
         .map(success)
-        .mapLeft((error) => failure(error.message, error.code))
+        .mapLeft((error) => {
+          // eslint-disable-next-line no-console
+          console.error(error);
+          return failure(error.message, error.code);
+        })
         .extract(),
     );
 };

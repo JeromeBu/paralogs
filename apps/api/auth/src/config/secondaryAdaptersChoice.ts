@@ -1,5 +1,6 @@
 import {
   createInMemoryEventBus,
+  createKafkaEventBus,
   createRedisEventBus,
   EventBus,
 } from "@paralogs/shared/back";
@@ -60,11 +61,10 @@ const getInMemoryPersistence = (): Persistence => {
   };
 };
 
-const getPgPersistence = (): Persistence => {
+const getPgPersistence = async (): Promise<Persistence> => {
   const knex = getKnex(ENV.nodeEnv);
-  // eslint-disable-next-line @typescript-eslint/no-floating-promises
   if (ENV.nodeEnv !== "test") {
-    knex.migrate.latest({
+    await knex.migrate.latest({
       migrationSource: new WebpackAuthMigrationSource(),
     });
   }
@@ -76,9 +76,9 @@ const getPgPersistence = (): Persistence => {
   };
 };
 
-const getRepositoriesAndQueries = (
+const selectRepositoriesAndQueries = (
   repositories: RepositoriesOption,
-): Persistence => {
+) => async (): Promise<Persistence> => {
   switch (repositories) {
     case "IN_MEMORY":
       return getInMemoryPersistence();
@@ -89,18 +89,22 @@ const getRepositoriesAndQueries = (
   }
 };
 
-const getEventBus = (repositories: EventBusOption): EventBus => {
+const selectEventBus = (repositories: EventBusOption) => async (): Promise<
+  EventBus
+> => {
   switch (repositories) {
     case "IN_MEMORY":
       return createInMemoryEventBus({ getNow: () => new Date() });
     case "REDIS":
       return createRedisEventBus();
+    case "KAFKA":
+      return createKafkaEventBus();
     default:
       return shouldNeverBeCalled(repositories);
   }
 };
 
-export const { repositories, queries } = getRepositoriesAndQueries(
+export const getRepositoriesAndQueries = selectRepositoriesAndQueries(
   ENV.repositories,
 );
-export const eventBus = getEventBus(ENV.eventBus);
+export const getEventBus = selectEventBus(ENV.eventBus);
