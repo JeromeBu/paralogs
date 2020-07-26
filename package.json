@@ -99,7 +99,7 @@
     "eslint-plugin-react": "7.17.0",
     "eslint-plugin-react-hooks": "2.3.0",
     "faker": "^4.1.0",
-    "jest": "25.2.3",
+    "jest": "25.5.4",
     "jest-runner-groups": "^2.0.1",
     "prettier": "2.0.4",
     "ts-jest": "25.2.1",
