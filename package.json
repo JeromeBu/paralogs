@@ -101,7 +101,7 @@
     "faker": "^4.1.0",
     "jest": "25.2.3",
     "jest-runner-groups": "^2.0.1",
-    "prettier": "2.0.4",
+    "prettier": "2.1.2",
     "ts-jest": "25.2.1",
     "ts-node": "~7.0.0",
     "tslint": "~6.0.0",
