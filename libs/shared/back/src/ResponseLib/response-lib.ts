@@ -52,14 +52,14 @@ export const callUseCase = <P>({
     .chain(useCase)
     .run()
     .then((eitherReturned) =>
-      eitherReturned
-        .map(success)
-        .mapLeft((error) => {
+      eitherReturned.caseOf({
+        Right: success,
+        Left: (error) => {
           // eslint-disable-next-line no-console
           console.error(error);
           return failure(error.message, error.code);
-        })
-        .extract(),
+        },
+      }),
     );
 };
 

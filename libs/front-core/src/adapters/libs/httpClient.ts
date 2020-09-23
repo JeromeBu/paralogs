@@ -24,13 +24,22 @@ import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 import { Observable } from "rxjs/internal/Observable";
 import { from } from "rxjs/internal/observable/from";
 import { map } from "rxjs/internal/operators/map";
+import { catchError } from "rxjs/internal/operators";
 
 import { config } from "../../config";
 import { LocalClientStorage } from "../LocalClientStorage";
 
 const responseToObservable = <Output>(
   axiosResponsePromise: Promise<AxiosResponse<Output>>,
-) => from(axiosResponsePromise).pipe(map(({ data }) => data));
+): Observable<any> =>
+  from(axiosResponsePromise).pipe(
+    map(({ data }) => data),
+    catchError((err) => {
+      const responseErr = err?.response?.data?.message;
+      if (responseErr) throw responseErr;
+      throw err.message ?? err;
+    }),
+  );
 
 const POST = <Input, Output>(
   route: string,

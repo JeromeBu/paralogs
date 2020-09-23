@@ -31,7 +31,6 @@ export class UserEntity extends Entity<UserEntityProps> {
     { tokenManager }: UserDependencies,
   ): UserEntity {
     return new UserEntity({
-      uuid: params.uuid,
       ...params,
       // isEmailConfirmed: false,
       authToken: tokenManager.generateToken({
