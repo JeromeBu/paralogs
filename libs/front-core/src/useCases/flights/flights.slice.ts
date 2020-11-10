@@ -1,4 +1,4 @@
-import { StringError, ValueOf } from "@paralogs/shared/common";
+import { id, StringError, ValueOf } from "@paralogs/shared/common";
 import { AddFlightDTO, FlightDTO } from "@paralogs/logbook/interfaces";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
@@ -10,13 +10,6 @@ type FlightsState = Readonly<{
   isSaving: boolean;
 }>;
 
-const initialState: FlightsState = {
-  isLoading: false,
-  isSaving: false,
-  isAddFlightFormVisible: false,
-  data: [],
-};
-
 const setError = (state: FlightsState, action: PayloadAction<StringError>) => ({
   ...state,
   isLoading: false,
@@ -26,7 +19,12 @@ const setError = (state: FlightsState, action: PayloadAction<StringError>) => ({
 
 const flightsSlice = createSlice({
   name: "flights",
-  initialState,
+  initialState: id<FlightsState>({
+    isLoading: false,
+    isSaving: false,
+    isAddFlightFormVisible: false,
+    data: [],
+  }),
   reducers: {
     showAddFlightForm: (state) => ({ ...state, isAddFlightFormVisible: true }),
     hideAddFlightForm: (state) => ({ ...state, isAddFlightFormVisible: false }),

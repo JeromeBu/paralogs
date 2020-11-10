@@ -1,4 +1,4 @@
-import { StringError, ValueOf } from "@paralogs/shared/common";
+import { id, StringError, ValueOf } from "@paralogs/shared/common";
 import { PilotDTO } from "@paralogs/logbook/interfaces";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
@@ -8,13 +8,6 @@ type PilotState = {
   isSaving: boolean;
   isLoading: boolean;
   data: PilotDTO | null;
-};
-
-const initialState: PilotState = {
-  isUpdateFormVisible: false,
-  isSaving: false,
-  isLoading: false,
-  data: null,
 };
 
 const setPilotInformation = (
@@ -28,7 +21,12 @@ const setPilotInformation = (
 
 const pilotSlice = createSlice({
   name: "pilot",
-  initialState,
+  initialState: id<PilotState>({
+    isUpdateFormVisible: false,
+    isSaving: false,
+    isLoading: false,
+    data: null,
+  }),
   reducers: {
     showUpdateForm: (state): PilotState => ({
       ...state,

@@ -17,3 +17,6 @@ export const findByUuidAndReplace = <T extends { uuid: string }>(
   if (indexToReplace === -1) return arrayToSearch;
   return Object.assign([], arrayToSearch, { [indexToReplace]: newValue });
 };
+
+// identity
+export const id = <T>(t: T) => t;

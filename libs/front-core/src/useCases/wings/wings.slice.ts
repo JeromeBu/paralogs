@@ -1,4 +1,9 @@
-import { findByUuidAndReplace, StringError, ValueOf } from "@paralogs/shared/common";
+import {
+  findByUuidAndReplace,
+  id,
+  StringError,
+  ValueOf,
+} from "@paralogs/shared/common";
 import {
   AddWingDTO,
   UpdateWingDTO,
@@ -14,13 +19,6 @@ type WingsState = Readonly<{
   error?: StringError;
 }>;
 
-const initialState: WingsState = {
-  isAddWingFormVisible: false,
-  data: [],
-  isSaving: false,
-  isLoading: false,
-};
-
 const setError = (
   state: WingsState,
   action: PayloadAction<StringError>,
@@ -33,7 +31,12 @@ const setError = (
 
 const wingsSlice = createSlice({
   name: "wings",
-  initialState,
+  initialState: id<WingsState>({
+    isAddWingFormVisible: false,
+    data: [],
+    isSaving: false,
+    isLoading: false,
+  }),
   reducers: {
     showAddWingForm: (state) => ({ ...state, isAddWingFormVisible: true }),
     hideAddWingForm: (state) => ({ ...state, isAddWingFormVisible: false }),

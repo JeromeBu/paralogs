@@ -1,4 +1,4 @@
-import { StringError, ValueOf } from "@paralogs/shared/common";
+import { id, StringError, ValueOf } from "@paralogs/shared/common";
 import {
   CurrentUserWithAuthToken,
   LoginParams,
@@ -17,14 +17,6 @@ type AuthState = Readonly<{
   isUpdateFormVisible: boolean;
 }>;
 
-const initialState: AuthState = {
-  isLoading: false,
-  isSaving: false,
-  currentUser: null,
-  token: null,
-  isUpdateFormVisible: false,
-};
-
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const startLoading = <P>() => (state: AuthState, action: PayloadAction<P>) => ({
   ...state,
@@ -40,7 +32,13 @@ const setError = (state: AuthState, action: PayloadAction<StringError>) => ({
 
 const authSlice = createSlice({
   name: "auth",
-  initialState,
+  initialState: id<AuthState>({
+    isLoading: false,
+    isSaving: false,
+    currentUser: null,
+    token: null,
+    isUpdateFormVisible: false,
+  }),
   reducers: {
     logoutRequested: startLoading<void>(),
     logoutSucceeded: (state) => ({
