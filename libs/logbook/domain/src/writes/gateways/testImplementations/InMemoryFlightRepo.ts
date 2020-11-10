@@ -6,8 +6,7 @@ import {
 } from "@paralogs/shared/back";
 import { FlightUuid, PilotUuid } from "@paralogs/logbook/interfaces";
 import { FlightEntity } from "@paralogs/logbook/domain";
-import { List } from "purify-ts";
-import { liftMaybe } from "purify-ts/MaybeAsync";
+import { List, MaybeAsync } from "purify-ts";
 
 import { FlightRepo } from "../FlightRepo";
 
@@ -15,7 +14,7 @@ export class InMemoryFlightRepo implements FlightRepo {
   private _flights: FlightEntity[] = [];
 
   public findByUuid(flightUuid: FlightUuid) {
-    return liftMaybe(
+    return MaybeAsync.liftMaybe(
       List.find((flight) => flight.uuid === flightUuid, this._flights),
     );
   }

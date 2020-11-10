@@ -8,8 +8,7 @@ import {
 import { findByUuidAndReplace } from "@paralogs/shared/common";
 import { PilotUuid } from "@paralogs/logbook/interfaces";
 import { PilotEntity } from "@paralogs/logbook/domain";
-import { List } from "purify-ts";
-import { liftMaybe } from "purify-ts/MaybeAsync";
+import { List, MaybeAsync } from "purify-ts";
 
 import { PilotRepo } from "../PilotRepo";
 
@@ -22,7 +21,7 @@ export class InMemoryPilotRepo implements PilotRepo {
   }
 
   public findByUuid(pilotUuid: PilotUuid) {
-    return liftMaybe(
+    return MaybeAsync.liftMaybe(
       List.find((pilotEntity) => pilotEntity.uuid === pilotUuid, this._pilots),
     );
   }

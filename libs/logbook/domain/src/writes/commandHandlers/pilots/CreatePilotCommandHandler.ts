@@ -1,6 +1,6 @@
 import { RightAsyncVoid } from "@paralogs/shared/back";
 import { PilotDTO } from "@paralogs/logbook/interfaces";
-import { liftEither } from "purify-ts/EitherAsync";
+import { EitherAsync } from "purify-ts";
 
 import { PilotEntity } from "../../entities/PilotEntity";
 import { PilotRepo } from "../../gateways/PilotRepo";
@@ -12,6 +12,6 @@ export type CreatePilotDependencies = {
 export const createPilotCommandHandlerCreator = ({
   pilotRepo,
 }: CreatePilotDependencies) => (params: PilotDTO) =>
-  liftEither(PilotEntity.create(params))
+  EitherAsync.liftEither(PilotEntity.create(params))
     .chain((p) => pilotRepo.save(p))
     .map(RightAsyncVoid);

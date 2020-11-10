@@ -2,8 +2,7 @@ import { getNextId, ResultAsync, RightAsyncVoid } from "@paralogs/shared/back";
 import { findByUuidAndReplace } from "@paralogs/shared/common";
 import { PilotUuid, WingUuid } from "@paralogs/logbook/interfaces";
 import { WingEntity } from "@paralogs/logbook/domain";
-import { List } from "purify-ts";
-import { liftMaybe } from "purify-ts/MaybeAsync";
+import { List, MaybeAsync } from "purify-ts";
 
 import { WingRepo } from "../WingRepo";
 
@@ -15,7 +14,7 @@ export class InMemoryWingRepo implements WingRepo {
       (wing) => wing.uuid === wingUuid,
       this.wings,
     );
-    return liftMaybe(maybeWingEntity);
+    return MaybeAsync.liftMaybe(maybeWingEntity);
   }
 
   public async findByPilotUuid(pilotUuid: PilotUuid) {

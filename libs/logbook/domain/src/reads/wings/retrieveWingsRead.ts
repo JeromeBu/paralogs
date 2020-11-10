@@ -1,6 +1,6 @@
 import { ResultAsync } from "@paralogs/shared/back";
 import { PilotUuid, WingDTO } from "@paralogs/logbook/interfaces";
-import { liftPromise } from "purify-ts/EitherAsync";
+import { EitherAsync } from "purify-ts";
 
 import { WingQueries } from "../gateways/WingQueries";
 
@@ -13,5 +13,5 @@ export const retrieveWingsRead = ({
 }: RetrieveWingsDependencies) => (
   currentUserUuid: PilotUuid,
 ): ResultAsync<WingDTO[]> => {
-  return liftPromise(() => wingQueries.findByPilotUuid(currentUserUuid));
+  return EitherAsync(() => wingQueries.findByPilotUuid(currentUserUuid));
 };

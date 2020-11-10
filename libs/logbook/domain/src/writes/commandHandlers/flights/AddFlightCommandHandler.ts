@@ -4,7 +4,7 @@ import {
   ResultAsync,
 } from "@paralogs/shared/back";
 import { FlightDTO } from "@paralogs/logbook/interfaces";
-import { liftEither } from "purify-ts/EitherAsync";
+import { EitherAsync } from "purify-ts";
 
 import { FlightEntity } from "../../entities/FlightEntity";
 import { FlightRepo } from "../../gateways/FlightRepo";
@@ -21,7 +21,7 @@ export const addFlightCommandHandlerCreator = ({
     maybeAsyncFlightEntity,
     notUniqError("A flight with this id already exists"),
   )
-    .chain(() => liftEither(FlightEntity.create(flightDto)))
+    .chain(() => EitherAsync.liftEither(FlightEntity.create(flightDto)))
     .chain((flightEntity) => flightRepo.save(flightEntity));
 };
 

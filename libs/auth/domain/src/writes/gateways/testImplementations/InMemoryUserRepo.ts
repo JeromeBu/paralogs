@@ -8,9 +8,7 @@ import {
   validationError,
 } from "@paralogs/shared/back";
 import { findByUuidAndReplace } from "@paralogs/shared/common";
-import { Left, List } from "purify-ts";
-import { liftEither } from "purify-ts/EitherAsync";
-import { liftMaybe } from "purify-ts/MaybeAsync";
+import { EitherAsync, Left, List, MaybeAsync } from "purify-ts";
 
 import { UserEntity } from "../../entities/UserEntity";
 import { UserRepo } from "../UserRepo";
@@ -25,7 +23,7 @@ export class InMemoryUserRepo implements UserRepo {
   }
 
   public findByEmail(email: Email) {
-    return liftMaybe(
+    return MaybeAsync.liftMaybe(
       List.find(
         (userEntity) => userEntity.getProps().email.value === email.value,
         this._users,
@@ -34,7 +32,7 @@ export class InMemoryUserRepo implements UserRepo {
   }
 
   public findByUuid(userUuid: UserUuid) {
-    return liftMaybe(
+    return MaybeAsync.liftMaybe(
       List.find((userEntity) => userEntity.uuid === userUuid, this._users),
     );
   }
@@ -53,7 +51,7 @@ export class InMemoryUserRepo implements UserRepo {
         user.getProps().email.value === userEntity.getProps().email.value,
     );
     if (isEmailTaken)
-      return liftEither(
+      return EitherAsync.liftEither(
         Left(validationError("Email is already taken. Consider logging in.")),
       );
     userEntity.setIdentity(getNextId(this._users));

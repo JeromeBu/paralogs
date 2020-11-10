@@ -4,7 +4,7 @@ import {
   ResultAsync,
   validationError,
 } from "@paralogs/shared/back";
-import { liftPromise } from "purify-ts/EitherAsync";
+import { EitherAsync } from "purify-ts";
 import { Hasher } from "../gateways/Hasher";
 
 export class Password {
@@ -18,7 +18,7 @@ export class Password {
     if (password.toUpperCase() === password)
       return failWithMessage("Password must have lower case characters");
 
-    return liftPromise<string, AppError>(() => hasher.hash(password)).map(
+    return EitherAsync<AppError, string>(() => hasher.hash(password)).map(
       (hashedPwd) => new Password(hashedPwd),
     );
   }

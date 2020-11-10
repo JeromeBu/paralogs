@@ -1,4 +1,5 @@
 import {
+  AppError,
   notFoundError,
   ResultAsync,
   RightAsyncVoid,
@@ -6,12 +7,7 @@ import {
 import { WingEntity, WingRepo } from "@paralogs/logbook/domain";
 import { PilotUuid, WingUuid } from "@paralogs/logbook/interfaces";
 import Knex from "knex";
-import { liftPromise as liftPromiseToEitherAsync } from "purify-ts/EitherAsync";
-import { Maybe } from "purify-ts/Maybe";
-import {
-  liftMaybe,
-  liftPromise as liftPromiseToMaybeAsync,
-} from "purify-ts/MaybeAsync";
+import { EitherAsync, MaybeAsync, Maybe, Either, Right } from "purify-ts";
 
 import { knexError } from "../knex/knexErrors";
 import { PilotPersisted } from "../pilots/PilotPersistence";
@@ -28,10 +24,10 @@ export class PgWingRepo implements WingRepo {
   }
 
   public findByUuid(uuid: WingUuid) {
-    return liftPromiseToMaybeAsync(() =>
+    return MaybeAsync(() =>
       this.knex.from<WingPersisted>("wings").where({ uuid }).first(),
     )
-      .chain((w) => liftMaybe(Maybe.fromNullable(w)))
+      .chain((w) => MaybeAsync.liftMaybe(Maybe.fromNullable(w)))
       .map(wingPersistenceMapper.toEntity);
   }
 
@@ -45,7 +41,7 @@ export class PgWingRepo implements WingRepo {
 
   private _create(wingEntity: WingEntity, pilot_id: number) {
     const wingPersistence = wingPersistenceMapper.toPersistence(wingEntity);
-    return liftPromiseToEitherAsync(() =>
+    return EitherAsync(() =>
       this.knex<WingPersisted>("wings").insert({
         ...wingPersistence,
         pilot_id,
@@ -53,7 +49,7 @@ export class PgWingRepo implements WingRepo {
       }),
     )
       .chain(RightAsyncVoid)
-      .mapLeft((error) => knexError(error.message));
+      .mapLeft((error) => knexError((error as Error).message));
   }
 
   private _update(wingEntity: WingEntity, pilot_id: number) {
@@ -66,7 +62,7 @@ export class PgWingRepo implements WingRepo {
       ownerUntil,
     } = wingEntity.getProps();
 
-    return liftPromiseToEitherAsync(() =>
+    return EitherAsync<Error, unknown>(() =>
       this.knex
         .from<WingPersisted>("wings")
         .where({ uuid: wingEntity.uuid })
@@ -80,19 +76,19 @@ export class PgWingRepo implements WingRepo {
           owner_until: ownerUntil,
         }),
     )
-      .chain(RightAsyncVoid)
-      .mapLeft((error) => knexError(error.message));
+      .chain(() => EitherAsync.liftEither(Right(undefined)))
+      .mapLeft((error) => knexError((error as Error).message));
   }
 
   private _getPilotId(uuid: PilotUuid): ResultAsync<number> {
-    return liftPromiseToMaybeAsync(() =>
+    return MaybeAsync(() =>
       this.knex
         .from<PilotPersisted>("pilots")
         .select("id")
         .where({ uuid })
         .first(),
     )
-      .chain((p) => liftMaybe(Maybe.fromNullable(p)))
+      .chain((p) => MaybeAsync.liftMaybe(Maybe.fromNullable(p)))
       .map(({ id }) => id)
       .toEitherAsync(notFoundError(`No pilot matched this pilotUuid: ${uuid}`));
   }

@@ -5,7 +5,7 @@ import {
   RightAsyncVoid,
 } from "@paralogs/shared/back";
 import { UpdateUserDTO, WithUuid } from "@paralogs/auth/interface";
-import { liftEither } from "purify-ts/EitherAsync";
+import { EitherAsync } from "purify-ts";
 
 import { UserRepo } from "../gateways/UserRepo";
 import { userMapper } from "../mappers/user.mapper";
@@ -24,7 +24,7 @@ export const updateUserCommandHandler = ({
   return userRepo
     .findByUuid(params.uuid)
     .toEitherAsync(notFoundError(`No pilot found with this id: ${params.uuid}`))
-    .chain((userEntity) => liftEither(userEntity.update(params)))
+    .chain((userEntity) => EitherAsync.liftEither(userEntity.update(params)))
     .chain((userToSave) =>
       userRepo.save(userToSave).chain(() => {
         eventBus.publish({

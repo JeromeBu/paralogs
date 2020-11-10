@@ -1,7 +1,7 @@
 import { makeUserDTO, SignUpParams, WithUuid } from "@paralogs/auth/interface";
 import { combineEithers, PersonName } from "@paralogs/shared/back";
 import { generateUuid } from "@paralogs/shared/common";
-import { liftEither } from "purify-ts/EitherAsync";
+import { EitherAsync } from "purify-ts";
 import { Email } from "../valueObjects/Email";
 import { Password } from "../valueObjects/Password";
 import { Hasher } from "../gateways/Hasher";
@@ -13,7 +13,7 @@ const validateSignUpParams = (
   { email, firstName, lastName, password }: SignUpParams,
   hasher: Hasher,
 ) =>
-  liftEither(
+  EitherAsync.liftEither(
     combineEithers({
       email: Email.create(email),
       firstName: PersonName.create(firstName),

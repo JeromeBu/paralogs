@@ -1,12 +1,12 @@
-import { LeftAsync, ResultAsync, RightAsyncVoid } from "@paralogs/shared/back";
+import {
+  AppError,
+  LeftAsync,
+  ResultAsync,
+  RightAsyncVoid,
+} from "@paralogs/shared/back";
 import { UserUuid } from "@paralogs/auth/interface";
 import Knex from "knex";
-import { Maybe } from "purify-ts";
-import { liftPromise as liftPromiseToEitherAsync } from "purify-ts/EitherAsync";
-import {
-  liftMaybe,
-  liftPromise as liftPromiseToMaybeAsync,
-} from "purify-ts/MaybeAsync";
+import { EitherAsync, MaybeAsync, Maybe } from "purify-ts";
 import { UserEntity, UserRepo, Email } from "@paralogs/auth/domain";
 
 import { knexError } from "../knex/knexErrors";
@@ -23,34 +23,34 @@ export class PgUserRepo implements UserRepo {
   }
 
   public findByEmail(email: Email) {
-    return liftPromiseToMaybeAsync(() =>
+    return MaybeAsync(() =>
       this.knex
         .from<UserPersisted>("users")
         .where({ email: email.value })
         .first(),
     )
       .chain((userPersistence) =>
-        liftMaybe(Maybe.fromNullable(userPersistence)),
+        MaybeAsync.liftMaybe(Maybe.fromNullable(userPersistence)),
       )
       .map(userPersistenceMapper.toEntity);
   }
 
   public findByUuid(uuid: UserUuid) {
-    return liftPromiseToMaybeAsync(() =>
+    return MaybeAsync(() =>
       this.knex.from<UserPersisted>("users").where({ uuid }).first(),
     )
       .chain((userPersistence) =>
-        liftMaybe(Maybe.fromNullable(userPersistence)),
+        MaybeAsync.liftMaybe(Maybe.fromNullable(userPersistence)),
       )
       .map(userPersistenceMapper.toEntity);
   }
 
   private _create(userEntity: UserEntity): ResultAsync<void> {
     const userPersistence = userPersistenceMapper.toPersistence(userEntity);
-    return liftPromiseToEitherAsync(() =>
-      this.knex("users").insert(userPersistence),
-    )
-      .chainLeft((error: any) => {
+    return EitherAsync<AppError, void>(() => {
+      return this.knex("users").insert(userPersistence);
+    })
+      .ifLeft((error: any) => {
         const isEmailTaken: boolean =
           error.detail?.includes("already exists") &&
           error.detail?.includes("email");
@@ -67,7 +67,7 @@ export class PgUserRepo implements UserRepo {
 
   private _update(userEntity: UserEntity) {
     const { firstName, lastName } = userEntity.getProps();
-    return liftPromiseToEitherAsync(() => {
+    return EitherAsync<Error, void>(() => {
       return this.knex
         .from<UserPersisted>("users")
         .where({ uuid: userEntity.uuid })

@@ -1,6 +1,6 @@
 import { ResultAsync } from "@paralogs/shared/back";
 import { FlightDTO, PilotUuid } from "@paralogs/logbook/interfaces";
-import { liftPromise } from "purify-ts/EitherAsync";
+import { EitherAsync } from "purify-ts";
 
 import { FlightQueries } from "../gateways/FlightQueries";
 
@@ -13,7 +13,7 @@ export const retrieveFlightsRead = ({
 }: RetrieveFlightsDependencies) => (
   currentUserUuid: PilotUuid,
 ): ResultAsync<FlightDTO[]> => {
-  return liftPromise(() => flightQueries.findByPilotUuid(currentUserUuid));
+  return EitherAsync(() => flightQueries.findByPilotUuid(currentUserUuid));
 };
 
 export type RetrieveFlightsRead = ReturnType<typeof retrieveFlightsRead>;

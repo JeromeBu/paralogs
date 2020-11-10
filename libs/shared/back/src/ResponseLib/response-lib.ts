@@ -1,6 +1,5 @@
 import type { Response } from "express";
 import { EitherAsync } from "purify-ts";
-import { liftPromise } from "purify-ts/EitherAsync";
 import * as R from "ramda";
 import { ObjectSchema, Shape } from "yup";
 
@@ -34,7 +33,7 @@ export const validateSchema = <T extends object>(
 ): ResultAsync<Shape<object, T>> => {
   if (R.isEmpty(body))
     return LeftAsync(validationError("No body was provided"));
-  return liftPromise(() =>
+  return EitherAsync(() =>
     validationSchema.validate(body, { abortEarly: false }),
   );
 };

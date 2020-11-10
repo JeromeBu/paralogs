@@ -4,7 +4,7 @@ import {
   ResultAsync,
 } from "@paralogs/shared/back";
 import { WingDTO } from "@paralogs/logbook/interfaces";
-import { liftEither } from "purify-ts/EitherAsync";
+import { EitherAsync } from "purify-ts";
 
 import { WingEntity } from "../../entities/WingEntity";
 import { WingRepo } from "../../gateways/WingRepo";
@@ -24,7 +24,7 @@ export const addWingCommandHandlerCreator = ({
   );
 
   return eitherAsyncNotExists
-    .chain(() => liftEither(WingEntity.create(wingDTO)))
+    .chain(() => EitherAsync.liftEither(WingEntity.create(wingDTO)))
     .chain((wingEntity) => wingRepo.save(wingEntity).map(() => wingDTO));
 };
 

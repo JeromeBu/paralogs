@@ -1,10 +1,5 @@
 import Knex from "knex";
-import { Maybe } from "purify-ts";
-import { liftPromise as liftPromiseToEitherAsync } from "purify-ts/EitherAsync";
-import {
-  liftMaybe,
-  liftPromise as liftPromiseToMaybeAsync,
-} from "purify-ts/MaybeAsync";
+import { EitherAsync, Maybe, MaybeAsync } from "purify-ts";
 
 import {
   LeftAsync,
@@ -15,6 +10,8 @@ import {
 } from "@paralogs/shared/back";
 import { FlightUuid, PilotUuid, WingUuid } from "@paralogs/logbook/interfaces";
 import { FlightEntity, FlightRepo } from "@paralogs/logbook/domain";
+import { error } from "util";
+import { knexError } from "../knex/knexErrors";
 
 import { PilotPersisted } from "../pilots/PilotPersistence";
 import { WingPersisted } from "../wings/WingPersistence";
@@ -40,7 +37,7 @@ export class PgFlightRepo implements FlightRepo {
 
     return eitherParams
       .chain(({ pilot_id, wing_id }) =>
-        liftPromiseToEitherAsync(() =>
+        EitherAsync<Error, unknown>(() =>
           this.knex<FlightPersistence>("flights").insert({
             ...flightPersistenceMapper.toPersistence(flightEntity),
             pilot_id,
@@ -49,7 +46,8 @@ export class PgFlightRepo implements FlightRepo {
           }),
         ),
       )
-      .chain(RightAsyncVoid);
+      .chain(RightAsyncVoid)
+      .mapLeft((error) => knexError(error.message));
   }
 
   public async findByPilotUuid(pilot_uuid: PilotUuid) {
@@ -59,37 +57,39 @@ export class PgFlightRepo implements FlightRepo {
   }
 
   public findByUuid(uuid: FlightUuid) {
-    return liftPromiseToMaybeAsync(() =>
+    return MaybeAsync(() =>
       this.knex.from<FlightPersisted>("flights").where({ uuid }).first(),
     )
       .chain((flightPersistence) =>
-        liftMaybe(Maybe.fromNullable(flightPersistence)),
+        MaybeAsync.liftMaybe(Maybe.fromNullable(flightPersistence)),
       )
       .map(flightPersistenceMapper.toEntity);
   }
 
   private _getPilotId(uuid: PilotUuid): ResultAsync<number> {
-    return liftPromiseToMaybeAsync(() =>
+    return MaybeAsync(() =>
       this.knex
         .from<PilotPersisted>("pilots")
         .select("id")
         .where({ uuid })
         .first(),
     )
-      .chain((p) => liftMaybe(Maybe.fromNullable(p)))
+      .chain((p) => MaybeAsync.liftMaybe(Maybe.fromNullable(p)))
       .map(({ id }) => id)
       .toEitherAsync(notFoundError("No pilot matched this pilotUuid"));
   }
 
   private _getWingId(uuid: WingUuid): ResultAsync<number> {
-    return liftPromiseToMaybeAsync(() =>
+    return MaybeAsync(() =>
       this.knex
         .from<WingPersisted>("wings")
         .select("id")
         .where({ uuid })
         .first(),
     )
-      .chain((wingPersisted) => liftMaybe(Maybe.fromNullable(wingPersisted)))
+      .chain((wingPersisted) =>
+        MaybeAsync.liftMaybe(Maybe.fromNullable(wingPersisted)),
+      )
       .map(({ id }) => id)
       .toEitherAsync(notFoundError("No wing matched this wingUuid"));
   }

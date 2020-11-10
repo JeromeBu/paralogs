@@ -15,10 +15,7 @@ export const flightsController = () => {
   flightsRouter
     .route(flightsRoute)
     .post(async (req, res) => {
-      const resultAddFlightBody = await validateSchema(
-        addFlightSchema,
-        req.body,
-      );
+      const resultAddFlightBody = validateSchema(addFlightSchema, req.body);
       return sendHttpResponse(
         res,
         await callUseCase({

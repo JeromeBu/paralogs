@@ -10,7 +10,7 @@ import {
   CurrentUserWithAuthToken,
   LoginParams,
 } from "@paralogs/auth/interface";
-import { liftEither, liftPromise } from "purify-ts/EitherAsync";
+import { EitherAsync } from "purify-ts";
 import { Hasher } from "..";
 import { UserRepo } from "../writes/gateways/UserRepo";
 import { userMapper } from "../writes/mappers/user.mapper";
@@ -24,12 +24,12 @@ interface LoginDependencies {
 export const loginRead = ({ userRepo, hasher }: LoginDependencies) => (
   params: LoginParams,
 ): ResultAsync<CurrentUserWithAuthToken> =>
-  liftEither(Email.create(params.email)).chain((email) =>
+  EitherAsync.liftEither(Email.create(params.email)).chain((email) =>
     userRepo
       .findByEmail(email)
       .toEitherAsync(notFoundError("No user found with this email"))
       .chain((userEntity) =>
-        liftPromise<boolean, AppError>(() =>
+        EitherAsync<AppError, boolean>(() =>
           userEntity.checkPassword(params.password, hasher),
         ).chain((isPasswordCorrect) => {
           if (!isPasswordCorrect)

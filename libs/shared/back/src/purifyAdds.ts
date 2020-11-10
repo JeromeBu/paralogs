@@ -7,24 +7,24 @@ import {
   MaybeAsync,
   Right,
 } from "purify-ts";
-import { liftEither } from "purify-ts/EitherAsync";
-import { liftMaybe, liftPromise } from "purify-ts/MaybeAsync";
 
 import { AppError } from "./errors";
 
 export type Result<T> = Either<AppError, T>;
 export type ResultAsync<T> = EitherAsync<AppError, T>;
 
-export const RightAsync = <T>(t: T) => liftEither(Right(t));
-export const LeftAsync = <T>(t: T) => liftEither(Left(t));
+export const RightAsync = <T>(t: T) => EitherAsync.liftEither(Right(t));
+export const LeftAsync = <T>(t: T) => EitherAsync.liftEither(Left(t));
 
-export const JustAsync = <T>(t: T) => liftMaybe(Just(t));
+export const JustAsync = <T>(t: T) => MaybeAsync.liftMaybe(Just(t));
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const RightVoid = (param?: any) => Right(undefined);
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const RightAsyncVoid = (param?: any): ResultAsync<void> =>
-  RightAsync(undefined);
+// export const RightAsyncVoid = (param?: any): ResultAsync<void> =>
+//   RightAsync(undefined);
+
+export const RightAsyncVoid = () => EitherAsync.liftEither(Right(undefined));
 
 export const combineEithers = <T extends { [key in string]: Result<unknown> }>(
   resultsObject: T,
@@ -58,6 +58,6 @@ export const checkNotExists = (
 export const fromNullablePromiseCb = <T>(
   nullablePromiseCb: () => Promise<T | null | undefined>,
 ): MaybeAsync<T> =>
-  liftPromise(nullablePromiseCb).chain((yo) =>
-    liftMaybe(Maybe.fromNullable(yo)),
+  MaybeAsync(nullablePromiseCb).chain((value) =>
+    MaybeAsync.liftMaybe(Maybe.fromNullable(value)),
   );

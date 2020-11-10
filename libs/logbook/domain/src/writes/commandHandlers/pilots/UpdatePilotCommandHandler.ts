@@ -1,6 +1,6 @@
 import { notFoundError, ResultAsync } from "@paralogs/shared/back";
 import { UpdatePilotDTO } from "@paralogs/logbook/interfaces";
-import { liftEither } from "purify-ts/EitherAsync";
+import { EitherAsync } from "purify-ts";
 
 import { PilotRepo } from "../../gateways/PilotRepo";
 
@@ -18,7 +18,9 @@ export const updatePilotCommandHandlerCreator = ({
   return pilotRepo
     .findByUuid(params.uuid)
     .toEitherAsync(notFoundError(`No pilot found with this id: ${params.uuid}`))
-    .chain((currentPilot) => liftEither(currentPilot.update(params)))
+    .chain((currentPilot) =>
+      EitherAsync.liftEither(currentPilot.update(params)),
+    )
     .chain((pilotToSave) => pilotRepo.save(pilotToSave));
 };
 

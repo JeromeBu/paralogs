@@ -4,8 +4,7 @@ import {
   createRedisEventBus,
   EventBus,
 } from "@paralogs/shared/back";
-import { List } from "purify-ts";
-import { liftMaybe } from "purify-ts/MaybeAsync";
+import { List, MaybeAsync } from "purify-ts";
 
 import {
   createPgUserQueries,
@@ -50,7 +49,7 @@ const getInMemoryPersistence = (): Persistence => {
     queries: {
       user: {
         findByUuidWithToken: (userUuid) =>
-          liftMaybe(
+          MaybeAsync.liftMaybe(
             List.find(({ uuid }) => uuid === userUuid, userRepo.users),
           ).map((userEntity) => ({
             currentUser: userMapper.entityToDTO(userEntity),

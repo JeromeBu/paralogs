@@ -41,10 +41,7 @@ export const wingsController = () => {
       );
     })
     .put(async (req, res) => {
-      const resultUpdateWingBody = await validateSchema(
-        updateWingSchema,
-        req.body,
-      );
+      const resultUpdateWingBody = validateSchema(updateWingSchema, req.body);
       return sendHttpResponse(
         res,
         await callUseCase({

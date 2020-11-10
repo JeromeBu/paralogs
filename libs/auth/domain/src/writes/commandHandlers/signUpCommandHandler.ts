@@ -8,7 +8,7 @@ import {
   PersonName,
   ResultAsync,
 } from "@paralogs/shared/back";
-import { liftEither } from "purify-ts/EitherAsync";
+import { EitherAsync } from "purify-ts";
 import { UserEntity } from "../entities/UserEntity";
 import { Hasher } from "../gateways/Hasher";
 import { TokenManager } from "../gateways/TokenManager";
@@ -48,7 +48,7 @@ const validateSignUpParams = (
   { email, firstName, lastName, password, uuid }: SignUpParams,
   hasher: Hasher,
 ) =>
-  liftEither(
+  EitherAsync.liftEither(
     combineEithers({
       email: Email.create(email),
       firstName: PersonName.create(firstName),

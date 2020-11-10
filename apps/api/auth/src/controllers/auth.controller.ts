@@ -22,7 +22,7 @@ const authRouter = Router();
 export const authController = async (): Promise<Router> => {
   const authUseCases = await getAuthUseCases();
   authRouter.post(loginRoute, async (req, res) => {
-    const eitherAsyncParams = await validateSchema(loginSchema, req.body);
+    const eitherAsyncParams = validateSchema(loginSchema, req.body);
     const httpResponse = await callUseCase({
       eitherAsyncParams,
       useCase: authUseCases.login,
@@ -31,7 +31,7 @@ export const authController = async (): Promise<Router> => {
   });
 
   authRouter.post(signUpRoute, async (req, res) => {
-    const eitherAsyncParams = await validateSchema(signUpSchema, req.body);
+    const eitherAsyncParams = validateSchema(signUpSchema, req.body);
     const httpResponse = await callUseCase({
       eitherAsyncParams,
       useCase: authUseCases.signUp,
@@ -50,11 +50,11 @@ export const authController = async (): Promise<Router> => {
   });
 
   authRouter.put(pilotsRoute, async (req, res) => {
-    const resultBody = await validateSchema(updateUserSchema, req.body);
+    const eitherAsyncParams = validateSchema(updateUserSchema, req.body);
 
     const httpResponse = await callUseCase({
       useCase: authUseCases.updateUser,
-      eitherAsyncParams: resultBody.map((body) => ({
+      eitherAsyncParams: eitherAsyncParams.map((body) => ({
         ...body,
         uuid: req.currentUserUuid,
       })),
